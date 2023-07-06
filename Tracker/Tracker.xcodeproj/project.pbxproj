@@ -13,6 +13,7 @@
 		896F98012A4F7A880022841C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 896F97FF2A4F7A880022841C /* Main.storyboard */; };
 		896F98032A4F7A890022841C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 896F98022A4F7A890022841C /* Assets.xcassets */; };
 		896F98062A4F7A890022841C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 896F98042A4F7A890022841C /* LaunchScreen.storyboard */; };
+		899F9B732A575F3700B18476 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 899F9B722A575F3700B18476 /* UIColor+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		896F98022A4F7A890022841C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		896F98052A4F7A890022841C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		896F98072A4F7A890022841C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		899F9B722A575F3700B18476 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 		896F97F82A4F7A880022841C /* Tracker */ = {
 			isa = PBXGroup;
 			children = (
+				899F9B712A575F0F00B18476 /* Helper */,
 				896F97F92A4F7A880022841C /* AppDelegate.swift */,
 				896F97FB2A4F7A880022841C /* SceneDelegate.swift */,
 				896F97FD2A4F7A880022841C /* ViewController.swift */,
@@ -65,6 +68,14 @@
 				896F98072A4F7A890022841C /* Info.plist */,
 			);
 			path = Tracker;
+			sourceTree = "<group>";
+		};
+		899F9B712A575F0F00B18476 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				899F9B722A575F3700B18476 /* UIColor+Extensions.swift */,
+			);
+			path = Helper;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -141,6 +152,7 @@
 				896F97FE2A4F7A880022841C /* ViewController.swift in Sources */,
 				896F97FA2A4F7A880022841C /* AppDelegate.swift in Sources */,
 				896F97FC2A4F7A880022841C /* SceneDelegate.swift in Sources */,
+				899F9B732A575F3700B18476 /* UIColor+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
