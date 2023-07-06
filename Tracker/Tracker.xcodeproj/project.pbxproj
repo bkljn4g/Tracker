@@ -58,10 +58,10 @@
 		896F97F82A4F7A880022841C /* Tracker */ = {
 			isa = PBXGroup;
 			children = (
-				899F9B712A575F0F00B18476 /* Helper */,
 				896F97F92A4F7A880022841C /* AppDelegate.swift */,
 				896F97FB2A4F7A880022841C /* SceneDelegate.swift */,
 				896F97FD2A4F7A880022841C /* ViewController.swift */,
+				899F9B712A575F0F00B18476 /* Helper */,
 				896F97FF2A4F7A880022841C /* Main.storyboard */,
 				896F98022A4F7A890022841C /* Assets.xcassets */,
 				896F98042A4F7A890022841C /* LaunchScreen.storyboard */,
