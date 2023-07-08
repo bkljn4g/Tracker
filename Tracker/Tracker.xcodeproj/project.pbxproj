@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		89474B9B2A59A3DD005531BB /* TrackersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89474B9A2A59A3DD005531BB /* TrackersViewController.swift */; };
+		89474B9D2A59DF31005531BB /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89474B9C2A59DF31005531BB /* Date+Extension.swift */; };
 		896F97FA2A4F7A880022841C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 896F97F92A4F7A880022841C /* AppDelegate.swift */; };
 		896F97FC2A4F7A880022841C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 896F97FB2A4F7A880022841C /* SceneDelegate.swift */; };
 		896F97FE2A4F7A880022841C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 896F97FD2A4F7A880022841C /* ViewController.swift */; };
@@ -19,6 +21,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		89474B9A2A59A3DD005531BB /* TrackersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackersViewController.swift; sourceTree = "<group>"; };
+		89474B9C2A59DF31005531BB /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		896F97F62A4F7A880022841C /* Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		896F97F92A4F7A880022841C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		896F97FB2A4F7A880022841C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -43,6 +47,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		89474B9E2A59E1E8005531BB /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				89474B9A2A59A3DD005531BB /* TrackersViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 		896F97ED2A4F7A880022841C = {
 			isa = PBXGroup;
 			children = (
@@ -62,14 +74,12 @@
 		896F97F82A4F7A880022841C /* Tracker */ = {
 			isa = PBXGroup;
 			children = (
-				896F98042A4F7A890022841C /* LaunchScreen.storyboard */,
 				896F97F92A4F7A880022841C /* AppDelegate.swift */,
 				896F97FB2A4F7A880022841C /* SceneDelegate.swift */,
 				896F97FD2A4F7A880022841C /* ViewController.swift */,
-				899F9B742A583FDE00B18476 /* Resources */,
+				89474B9E2A59E1E8005531BB /* Controllers */,
 				899F9B712A575F0F00B18476 /* Helper */,
-				896F98022A4F7A890022841C /* Assets.xcassets */,
-				896F98072A4F7A890022841C /* Info.plist */,
+				899F9B742A583FDE00B18476 /* Resources */,
 			);
 			path = Tracker;
 			sourceTree = "<group>";
@@ -78,6 +88,7 @@
 			isa = PBXGroup;
 			children = (
 				899F9B722A575F3700B18476 /* UIColor+Extensions.swift */,
+				89474B9C2A59DF31005531BB /* Date+Extension.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -85,6 +96,9 @@
 		899F9B742A583FDE00B18476 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				896F98022A4F7A890022841C /* Assets.xcassets */,
+				896F98072A4F7A890022841C /* Info.plist */,
+				896F98042A4F7A890022841C /* LaunchScreen.storyboard */,
 				899F9B792A58403700B18476 /* SFProDisplay-Regular.ttf */,
 				899F9B772A58402F00B18476 /* SFProDisplay-Medium.ttf */,
 				899F9B752A58402600B18476 /* SFProDisplay-Bold.ttf */,
@@ -167,8 +181,10 @@
 			files = (
 				896F97FE2A4F7A880022841C /* ViewController.swift in Sources */,
 				896F97FA2A4F7A880022841C /* AppDelegate.swift in Sources */,
+				89474B9B2A59A3DD005531BB /* TrackersViewController.swift in Sources */,
 				896F97FC2A4F7A880022841C /* SceneDelegate.swift in Sources */,
 				899F9B732A575F3700B18476 /* UIColor+Extensions.swift in Sources */,
+				89474B9D2A59DF31005531BB /* Date+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
