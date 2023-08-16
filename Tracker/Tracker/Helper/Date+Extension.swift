@@ -2,7 +2,7 @@
 //  Date+Extension.swift
 //  Tracker
 //
-//  Created by Anka on 08.07.2023.
+//  Created by Ann Goncharova on 08.07.2023.
 //
 
 import UIKit
