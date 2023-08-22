@@ -2,7 +2,7 @@
 //  EnumWeakday.swift
 //  Tracker
 //
-//  Created by Anka on 16.07.2023.
+//  Created by Anka on 22.08.2023.
 //
 
 import Foundation
