@@ -2,10 +2,10 @@
 //  Date+Extension.swift
 //  Tracker
 //
-//  Created by Ann Goncharova on 08.07.2023.
+//  Created by Anka on 22.08.2023.
 //
 
-import UIKit
+import Foundation
 
 extension Date {
     var yearMonthDayComponents: DateComponents {
