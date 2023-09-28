@@ -34,7 +34,7 @@ class TrackersVC: UIViewController {
         let label = UILabel()
         label.textColor = .black
         label.text = "Что будем отслеживать?"
-        label.font = .systemFont(ofSize: 12)
+        label.font = .systemFont(ofSize: 12, weight: .medium)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -97,6 +97,7 @@ class TrackersVC: UIViewController {
             datePicker.datePickerMode = .date
             datePicker.locale = Locale(identifier: "ru_RU")
             datePicker.accessibilityLabel = dateFormatter.string(from: datePicker.date)
+            
             let rightButton = UIBarButtonItem(customView: datePicker)
             datePicker.addTarget(self, action: #selector(dateChanged), for: .valueChanged)
             rightButton.accessibilityLabel = dateFormatter.string(from: datePicker.date)

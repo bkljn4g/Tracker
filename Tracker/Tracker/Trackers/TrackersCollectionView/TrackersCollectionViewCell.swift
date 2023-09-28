@@ -59,7 +59,7 @@ final class TrackersCollectionViewCell: UICollectionViewCell {
     
     private lazy var checkButton: UIButton = {
         let checkButton = UIButton()
-        checkButton.setImage(UIImage(named: "plus"), for: .normal)
+        checkButton.setImage(UIImage(named: "plus"), for: .normal) // добавить картинку нормального размера
         checkButton.addTarget(self, action: #selector(didTapCheckButton), for: .touchUpInside)
         checkButton.tintColor = .white
         checkButton.layer.cornerRadius = 17

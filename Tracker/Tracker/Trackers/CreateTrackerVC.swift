@@ -2,7 +2,7 @@
 //  CreateTrackerVC.swift
 //  Tracker
 //
-//  Created by Anka on 22.08.2023.
+//  Created by Ann Goncharova on 22.08.2023.
 //
 
 import UIKit
@@ -19,14 +19,15 @@ class CreateTrackerVC: UIViewController {
         let label = UILabel()
         label.textColor = .black
         label.text = "Создание трекера"
-        label.font = .systemFont(ofSize: 16)
+        label.font = .systemFont(ofSize: 16, weight: .medium) // поменяла на .medium
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
     private lazy var createRegularEventButton: UIButton = {
-        let button = UIButton()
+        let button = UIButton(type: .custom)
         button.setTitle("Привычка", for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .medium) // поправила шрифт кнопки
         button.backgroundColor = .ypBlack
         button.layer.cornerRadius = 16
         button.addTarget(self, action: #selector(regularEventButtonAction), for: .touchUpInside)
@@ -35,13 +36,13 @@ class CreateTrackerVC: UIViewController {
     }()
     
     private lazy var createIrregularEventButton: UIButton = {
-        let button = UIButton()
+        let button = UIButton(type: .custom)
         button.setTitle("Нерегулярное событие", for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .medium) // поправила шрифт кнопки
         button.backgroundColor = .ypBlack
         button.layer.cornerRadius = 16
         button.addTarget(self, action: #selector(irregularEventButtonAction), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
-        
         return button
     }()
     
