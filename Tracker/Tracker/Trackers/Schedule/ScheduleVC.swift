@@ -15,11 +15,12 @@ class ScheduleVC: UIViewController {
     
     public weak var delegate: ScheduleVCDelegate?
     private var schedule: [WeekDay] = []
+    
     private lazy var label: UILabel = {
         let label = UILabel()
-        label.textColor = .black
+        label.textColor = .ypBlack
         label.text = "Расписание"
-        label.font = .systemFont(ofSize: 16)
+        label.font = .systemFont(ofSize: 16, weight: .medium) // поменяла шрифт на .medium
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()

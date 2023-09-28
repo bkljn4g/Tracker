@@ -59,7 +59,7 @@ class CreateEventVC: UIViewController {
         return label
     }()
     
-    private lazy var textField: UITextField = {
+    private lazy var textField: UITextField = { // добавление привычки или нерегулярного события
         let textField = UITextField()
         textField.indent(size: 10)
         textField.placeholder = "Введите название трекера"
@@ -148,7 +148,7 @@ class CreateEventVC: UIViewController {
         return label
     }()
     
-    private lazy var createEventButton: UIButton = {
+    private lazy var createEventButton: UIButton = { // кнопка "Создать"
         let button = UIButton()
         button.setTitle("Создать", for: .normal)
         button.backgroundColor = .gray
@@ -158,7 +158,7 @@ class CreateEventVC: UIViewController {
         return button
     }()
     
-    private lazy var cancelButton: UIButton = {
+    private lazy var cancelButton: UIButton = { // кнопка "Отменить"
         let button = UIButton()
         button.setTitle("Отменить", for: .normal)
         button.setTitleColor(UIColor.ypRed, for: UIControl.State.normal)
