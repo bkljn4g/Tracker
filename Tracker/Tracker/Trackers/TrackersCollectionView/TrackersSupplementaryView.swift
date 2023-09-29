@@ -11,7 +11,7 @@ class TrackersSupplementaryView: UICollectionReusableView {
     
     static let identifier = "header"
     
-    var titleLabel: UILabel = {
+    var titleLabel: UILabel = { // лейбл-название категории трекера (Важное, Тренировки и т.д.)
         let label = UILabel()
         label.textColor = .black
         label.font = .boldSystemFont(ofSize: 19)

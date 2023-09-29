@@ -41,9 +41,10 @@ final class TrackersCollectionViewCell: UICollectionViewCell {
         return emojiLabel
     }()
     
-    private lazy var trackerNameLabel: UILabel = {
+    private lazy var trackerNameLabel: UILabel = { // лейбл названия трекера
         let trackerNameLabel = UILabel()
-        trackerNameLabel.font = .systemFont(ofSize: 12)
+        trackerNameLabel.font = .systemFont(ofSize: 12, weight: .medium) // поменяла размер шрифта
+        trackerNameLabel.textColor = .white // поменяла цвет (black - white)
         trackerNameLabel.numberOfLines = 2
         trackerNameLabel.text = "Название трекера "
         trackerNameLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -53,6 +54,7 @@ final class TrackersCollectionViewCell: UICollectionViewCell {
     private lazy var resultLabel: UILabel = {
         let resultLabel = UILabel()
         resultLabel.text = "0 дней"
+        resultLabel.font = .systemFont(ofSize: 12, weight: .medium) // поменяла шрифт и его размер
         resultLabel.translatesAutoresizingMaskIntoConstraints = false
         return resultLabel
     }()
@@ -95,7 +97,7 @@ final class TrackersCollectionViewCell: UICollectionViewCell {
             trackerNameLabel.topAnchor.constraint(equalTo: trackerView.topAnchor, constant: 44),
             trackerNameLabel.trailingAnchor.constraint(equalTo: trackerView.trailingAnchor, constant: -12),
             trackerNameLabel.leadingAnchor.constraint(equalTo: trackerView.leadingAnchor, constant: 12),
-            trackerNameLabel.heightAnchor.constraint(equalToConstant: 34),
+            trackerNameLabel.heightAnchor.constraint(equalToConstant: 44), // ближе к нижнему краю
             
             checkButton.topAnchor.constraint(equalTo: trackerView.bottomAnchor, constant: 8),
             checkButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -12),
