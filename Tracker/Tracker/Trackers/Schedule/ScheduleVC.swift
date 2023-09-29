@@ -26,9 +26,10 @@ class ScheduleVC: UIViewController {
     }()
     
     private lazy var enterButton: UIButton = {
-        let button = UIButton()
+        let button = UIButton(type: .custom)
         button.setTitle("Готово", for: .normal)
         button.titleLabel?.textColor = .white
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .medium) // поменяла шрифт на .medium
         button.backgroundColor = .ypBlack
         button.layer.cornerRadius = 16
         button.addTarget(self, action: #selector(enterButtonAction), for: .touchUpInside)
@@ -93,7 +94,8 @@ extension ScheduleVC: UITableViewDataSource {
             return UITableViewCell()
         }
         weekDayCell.delegate = self
-        weekDayCell.contentView.backgroundColor = .backgroundColor
+        //weekDayCell.contentView.backgroundColor = .backgroundColor
+        weekDayCell.selectionStyle = .none // убрала выделение ячеек серым при нажатии
         weekDayCell.label.text = WeekDay.allCases[indexPath.row].rawValue
         weekDayCell.weekDay = WeekDay.allCases[indexPath.row]
         if indexPath.row == 6 {
