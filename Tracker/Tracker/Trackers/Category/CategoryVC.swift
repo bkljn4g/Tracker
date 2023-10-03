@@ -122,7 +122,7 @@ extension CategoryVC: UITableViewDataSource {
         guard let categoryCell = tableView.dequeueReusableCell(withIdentifier: CategoryTableViewCell.identifier) as? CategoryTableViewCell else {
             return UITableViewCell()
         }
-        categoryCell.contentView.backgroundColor = .backgroundColor
+        //categoryCell.contentView.backgroundColor = .backgroundColor // убрала наложение двух слоев серого
         categoryCell.label.text = "Важное"
         
         if indexPath.row == 0 {
