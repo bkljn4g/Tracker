@@ -28,7 +28,7 @@ class CategoryVC: UIViewController {
     private lazy var label: UILabel = {
         let label = UILabel()
         label.textColor = .black
-        label.text = "Привычки и события можно объединять по смыслу"
+        label.text = "Привычки и события можно объединить по смыслу" // поправила опечатку согласно макету
         label.numberOfLines = 2
         label.textAlignment = .center
         label.font = .systemFont(ofSize: 12)
