@@ -261,13 +261,13 @@ class CreateEventVC: UIViewController {
             forwardImage1.centerYAnchor.constraint(equalTo: categoryButton.centerYAnchor),
             
             cancelButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            cancelButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -35),
-            cancelButton.widthAnchor.constraint(equalToConstant: 161),
+            cancelButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -34),
+            cancelButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -(view.frame.width/2) - 4), // фикс расстояния между кнопками
             cancelButton.heightAnchor.constraint(equalToConstant: 60),
             
             createEventButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            createEventButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -35),
-            createEventButton.widthAnchor.constraint(equalToConstant: 161),
+            createEventButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -34),
+            createEventButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: (view.frame.width/2) + 4), // фикс расстояния между кнопками
             createEventButton.heightAnchor.constraint(equalToConstant: 60)
         ]
         
