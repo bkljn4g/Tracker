@@ -54,7 +54,7 @@ class CreateEventVC: UIViewController {
         let label = UILabel()
         label.textColor = .black
         label.text = event.titleText
-        label.font = .systemFont(ofSize: 16)
+        label.font = .systemFont(ofSize: 16, weight: .medium) // смена шрифта верхнего тайтла экрана
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
