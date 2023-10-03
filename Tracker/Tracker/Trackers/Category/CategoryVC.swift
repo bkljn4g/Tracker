@@ -13,7 +13,7 @@ class CategoryVC: UIViewController {
         let label = UILabel()
         label.textColor = .black
         label.text = "Категория"
-        label.font = .systemFont(ofSize: 16)
+        label.font = .systemFont(ofSize: 16, weight: .medium) // поправила шрифт верхнего тайтла
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -37,8 +37,9 @@ class CategoryVC: UIViewController {
     }()
     
     private lazy var addCategoryButton: UIButton = {
-        let button = UIButton()
+        let button = UIButton(type: .custom)
         button.setTitle("Добавить категорию", for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .medium) // поправила шрифт на кнопке
         button.titleLabel?.textColor = .white
         button.backgroundColor = .ypBlack
         button.layer.cornerRadius = 16
