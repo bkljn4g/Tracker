@@ -182,7 +182,7 @@ class TrackersVC: UIViewController {
             for tracker in category.trackers {
                 guard let schedule = tracker.schedule else { return }
                 let scheduleInts = schedule.map { $0.numberOfDay }
-                if let day = currentDate, scheduleInts.contains(day) &&  (searchText.isEmpty || tracker.name.contains(searchText)) {
+                if let day = currentDate, scheduleInts.contains(day) && (searchText.isEmpty || tracker.name.contains(searchText)) {
                     newTrackers.append(tracker)
                 }
             }
