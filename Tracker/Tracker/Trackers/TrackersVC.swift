@@ -9,8 +9,7 @@ import UIKit
 
 class TrackersVC: UIViewController {
     
-    //  private var categories: [TrackerCategory] = [] //список категорий и вложенных в них трекеров
-    private var categories: [TrackerCategory] = MockData.categories
+    private var categories: [TrackerCategory] = MockData.categories //список категорий и вложенных в них трекеров
     private var completedTrackers: [TrackerRecord] = [] //трекеры, которые были «выполнены» в выбранную дату
     private var visibleCategories: [TrackerCategory] = [] //отображается при поиске и/или изменении дня недели
     private var currentDate: Int?
