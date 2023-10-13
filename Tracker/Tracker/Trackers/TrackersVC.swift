@@ -9,7 +9,7 @@ import UIKit
 
 class TrackersVC: UIViewController {
     
-    private var categories: [TrackerCategory] = MockData.categories //список категорий и вложенных в них трекеров
+    private var categories: [TrackerCategory] = [] //MockData.categories //список категорий и вложенных в них трекеров
     private var completedTrackers: [TrackerRecord] = [] //трекеры, которые были «выполнены» в выбранную дату
     private var visibleCategories: [TrackerCategory] = [] //отображается при поиске и/или изменении дня недели
     private var currentDate: Int?
@@ -22,20 +22,36 @@ class TrackersVC: UIViewController {
         return formatter
     }()
     
-    private lazy var imageView: UIImageView = {
+    private lazy var imageView: UIImageView = { // первая заглушка картинка со звездой - трекеров нет
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.image = UIImage(named: "star")
         return imageView
     }()
     
-    private lazy var label: UILabel = {
+    private lazy var label: UILabel = { // текст под картинкой со звездой - трекеров нет
         let label = UILabel()
         label.textColor = .black
         label.text = "Что будем отслеживать?"
         label.font = .systemFont(ofSize: 12, weight: .medium)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
+    }()
+    
+    private lazy var emptySearch: UIImageView = { // картинка с эмодзи при поиске трекеров - совпадений не найдено
+        let emptySearch = UIImageView()
+        emptySearch.translatesAutoresizingMaskIntoConstraints = false
+        emptySearch.image = UIImage(named: "notFound")
+        return emptySearch
+    }()
+    
+    private lazy var emptySearchText: UILabel = { // текст под картинкой с эмодзи - совпадений не найдено
+        let emptySearchText = UILabel()
+        emptySearchText.translatesAutoresizingMaskIntoConstraints = false
+        emptySearchText.font = UIFont.systemFont(ofSize: 12, weight: .medium)
+        emptySearchText.text = "Ничего не найдено"
+        emptySearchText.textColor = .ypBlack
+        return emptySearchText
     }()
     
     private lazy var datePicker = UIDatePicker()
@@ -83,6 +99,7 @@ class TrackersVC: UIViewController {
         addSubviews()
         setupLayoutsearchTextFieldAndButton()
         setupLayout()
+        addTapGestureToHideKeyboard(for: UIView.appearance()) // скрытие клавиатуры по нажатию на экран
     }
     
     private func makeNavBar() {
@@ -133,6 +150,8 @@ class TrackersVC: UIViewController {
         view.addSubview(searchTextField)
         view.addSubview(cancelEditingButton)
         view.addSubview(collectionView)
+        view.addSubview(emptySearch) // нет совпадений
+        view.addSubview(emptySearchText) // текст "ничего не найдено"
     }
     
     private func setupLayoutsearchTextFieldAndButton() {
@@ -158,8 +177,18 @@ class TrackersVC: UIViewController {
             imageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             imageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 400),
             
+            // констрейнты заглушки при поиске
+            emptySearch.widthAnchor.constraint(equalToConstant: 80),
+            emptySearch.heightAnchor.constraint(equalToConstant: 80),
+            emptySearch.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            emptySearch.topAnchor.constraint(equalTo: view.topAnchor, constant: 400),
+            
             label.centerXAnchor.constraint(equalTo: imageView.centerXAnchor),
             label.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 8),
+            
+            // констрейнты текста заглушки при поиске
+            emptySearchText.centerXAnchor.constraint(equalTo: emptySearch.centerXAnchor),
+            emptySearchText.topAnchor.constraint(equalTo: emptySearch.bottomAnchor, constant: 8),
             
             collectionView.topAnchor.constraint(equalTo: searchTextField.bottomAnchor, constant: 10),
             collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
