@@ -9,7 +9,7 @@ import UIKit
 
 class TrackersVC: UIViewController {
     
-    private var categories: [TrackerCategory] = [] //MockData.categories //список категорий и вложенных в них трекеров
+    private var categories: [TrackerCategory] = MockData.categories //MockData.categories //список категорий и вложенных в них трекеров
     private var completedTrackers: [TrackerRecord] = [] //трекеры, которые были «выполнены» в выбранную дату
     private var visibleCategories: [TrackerCategory] = [] //отображается при поиске и/или изменении дня недели
     private var currentDate: Int?
@@ -150,8 +150,8 @@ class TrackersVC: UIViewController {
         view.addSubview(searchTextField)
         view.addSubview(cancelEditingButton)
         view.addSubview(collectionView)
-        view.addSubview(emptySearch) // нет совпадений
-        view.addSubview(emptySearchText) // текст "ничего не найдено"
+        //view.addSubview(emptySearch) // нет совпадений
+        //view.addSubview(emptySearchText) // текст "ничего не найдено"
     }
     
     private func setupLayoutsearchTextFieldAndButton() {
@@ -178,17 +178,21 @@ class TrackersVC: UIViewController {
             imageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 400),
             
             // констрейнты заглушки при поиске
+            /*
             emptySearch.widthAnchor.constraint(equalToConstant: 80),
             emptySearch.heightAnchor.constraint(equalToConstant: 80),
             emptySearch.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             emptySearch.topAnchor.constraint(equalTo: view.topAnchor, constant: 400),
+            */
             
             label.centerXAnchor.constraint(equalTo: imageView.centerXAnchor),
             label.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 8),
             
             // констрейнты текста заглушки при поиске
+            /*
             emptySearchText.centerXAnchor.constraint(equalTo: emptySearch.centerXAnchor),
             emptySearchText.topAnchor.constraint(equalTo: emptySearch.bottomAnchor, constant: 8),
+            */
             
             collectionView.topAnchor.constraint(equalTo: searchTextField.bottomAnchor, constant: 10),
             collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),

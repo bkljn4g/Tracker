@@ -186,7 +186,7 @@ class CreateEventVC: UIViewController {
         addSubviews()
         setupLayout()
         
-        addTapGestureToHideKeyboard(for: textField) // добавила скрытие клавиатуры по нажатию на экран
+        addTapGestureToHideKeyboard(for: textField)
     }
     
     @objc func createEventButtonAction() {
