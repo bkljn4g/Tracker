@@ -186,7 +186,7 @@ class CreateEventVC: UIViewController {
         addSubviews()
         setupLayout()
         
-        addTapGestureToHideKeyboard(for: textField)
+        addTapGestureToHideKeyboard(for: textField) // скрытие ячейки по тапу на экран
     }
     
     @objc func createEventButtonAction() {

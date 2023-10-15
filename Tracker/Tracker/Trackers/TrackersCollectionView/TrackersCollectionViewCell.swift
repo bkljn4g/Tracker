@@ -11,7 +11,7 @@ protocol TrackersCollectionViewCellDelegate: AnyObject {
     func completedTracker(id: UUID)
 }
 
-class TrackersCollectionViewCell: UICollectionViewCell {
+final class TrackersCollectionViewCell: UICollectionViewCell {
     
     static let identifier = "trackersCollectionViewCell"
     
