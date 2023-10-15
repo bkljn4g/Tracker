@@ -11,7 +11,7 @@ protocol TrackersCollectionViewCellDelegate: AnyObject {
     func completedTracker(id: UUID)
 }
 
-final class TrackersCollectionViewCell: UICollectionViewCell {
+class TrackersCollectionViewCell: UICollectionViewCell {
     
     static let identifier = "trackersCollectionViewCell"
     
@@ -20,6 +20,7 @@ final class TrackersCollectionViewCell: UICollectionViewCell {
     private var trackerId: UUID? = nil
     private let limitNumberOfCharacters = 38
     
+    // ячейка трекера
     private lazy var trackerView: UIView = {
         let trackerView = UIView()
         trackerView.layer.cornerRadius = 16
@@ -27,6 +28,7 @@ final class TrackersCollectionViewCell: UICollectionViewCell {
         return trackerView
     }()
     
+    // вью на которой лежит эмодзи
     private lazy var emojiView: UIView = {
         let emojiView = UIView()
         emojiView.backgroundColor = UIColor(white: 1, alpha: 0.5)
@@ -35,33 +37,42 @@ final class TrackersCollectionViewCell: UICollectionViewCell {
         return emojiView
     }()
     
+    // лейбл с эмодзи
     private lazy var emojiLabel: UILabel = {
         let emojiLabel = UILabel()
+        emojiLabel.clipsToBounds = true
+        emojiLabel.layer.cornerRadius = 12
+        emojiLabel.font = .systemFont(ofSize: 16)
+        emojiLabel.textAlignment = .center
         emojiLabel.translatesAutoresizingMaskIntoConstraints = false
         return emojiLabel
     }()
     
-    private lazy var trackerNameLabel: UILabel = { // лейбл названия трекера
+    // лейбл названия трекера
+    private lazy var trackerNameLabel: UILabel = {
         let trackerNameLabel = UILabel()
         trackerNameLabel.font = .systemFont(ofSize: 12, weight: .medium) // поменяла размер шрифта
-        trackerNameLabel.textColor = .white // поменяла цвет (black - white)
-        trackerNameLabel.numberOfLines = 2
-        trackerNameLabel.text = "Название трекера "
+        trackerNameLabel.textColor = .white // поменяла цвет шрифта (black - white)
+        trackerNameLabel.numberOfLines = 0
+        trackerNameLabel.text = "Название трекера"
         trackerNameLabel.translatesAutoresizingMaskIntoConstraints = false
         return trackerNameLabel
     }()
     
+    // кол-во дней выполнения привычки
     private lazy var resultLabel: UILabel = {
         let resultLabel = UILabel()
         resultLabel.text = "0 дней"
+        resultLabel.textColor = .ypBlack
         resultLabel.font = .systemFont(ofSize: 12, weight: .medium) // поменяла шрифт и его размер
         resultLabel.translatesAutoresizingMaskIntoConstraints = false
         return resultLabel
     }()
     
+    // кнопка выполнения привычки
     private lazy var checkButton: UIButton = {
         let checkButton = UIButton()
-        checkButton.setImage(UIImage(named: "plus"), for: .normal) // добавить картинку нормального размера
+        checkButton.setImage(UIImage(named: "plus"), for: .normal) // добавила картинку нормального размера
         checkButton.addTarget(self, action: #selector(didTapCheckButton), for: .touchUpInside)
         checkButton.tintColor = .white
         checkButton.layer.cornerRadius = 17
@@ -73,37 +84,47 @@ final class TrackersCollectionViewCell: UICollectionViewCell {
         super.init(frame: frame)
         
         contentView.addSubview(trackerView)
+        contentView.addSubview(resultLabel)
+        contentView.addSubview(checkButton)
         trackerView.addSubview(emojiView)
         emojiView.addSubview(emojiLabel)
         trackerView.addSubview(trackerNameLabel)
-        contentView.addSubview(resultLabel)
-        contentView.addSubview(checkButton)
         
         NSLayoutConstraint.activate([
             
+            // ячейка привычки
             trackerView.heightAnchor.constraint(equalToConstant: 90),
-            trackerView.widthAnchor.constraint(equalToConstant: 167),
+            trackerView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             trackerView.topAnchor.constraint(equalTo: contentView.topAnchor),
             trackerView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             
+            // мини-вьюшка на которой лежит эмодзи
             emojiView.heightAnchor.constraint(equalToConstant: 24),
             emojiView.widthAnchor.constraint(equalToConstant: 24),
             emojiView.topAnchor.constraint(equalTo: trackerView.topAnchor, constant: 12),
             emojiView.leadingAnchor.constraint(equalTo: trackerView.leadingAnchor, constant: 12),
             
-            emojiLabel.centerYAnchor.constraint(equalTo: emojiView.centerYAnchor) ,
+            // лейбл с эмодзи
+            emojiLabel.heightAnchor.constraint(equalToConstant: 24),
+            emojiLabel.widthAnchor.constraint(equalToConstant: 24),
+            emojiLabel.topAnchor.constraint(equalTo: trackerView.topAnchor, constant: 12),
+            emojiLabel.leadingAnchor.constraint(equalTo: trackerView.leadingAnchor, constant: 12),
+            
+            emojiLabel.centerXAnchor.constraint(equalTo: emojiView.centerXAnchor) ,
             emojiLabel.centerYAnchor.constraint(equalTo: emojiView.centerYAnchor),
             
-            trackerNameLabel.topAnchor.constraint(equalTo: trackerView.topAnchor, constant: 44),
+            // лейбл с текстом привычки в ячейке события
             trackerNameLabel.trailingAnchor.constraint(equalTo: trackerView.trailingAnchor, constant: -12),
             trackerNameLabel.leadingAnchor.constraint(equalTo: trackerView.leadingAnchor, constant: 12),
-            trackerNameLabel.heightAnchor.constraint(equalToConstant: 44), // ближе к нижнему краю
+            trackerNameLabel.bottomAnchor.constraint(equalTo: trackerView.bottomAnchor, constant: -12),
             
+            // кнопка + под ячейкой события
             checkButton.topAnchor.constraint(equalTo: trackerView.bottomAnchor, constant: 8),
-            checkButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -12),
+            checkButton.trailingAnchor.constraint(equalTo: trackerView.trailingAnchor, constant: -12),
             checkButton.heightAnchor.constraint(equalToConstant: 34),
             checkButton.widthAnchor.constraint(equalToConstant: 34 ),
             
+            // лейбл с кол-вом дней под ячейками привычек и событий
             resultLabel.centerYAnchor.constraint(equalTo: checkButton.centerYAnchor),
             resultLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 12)
         ])
