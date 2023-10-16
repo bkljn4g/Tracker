@@ -9,7 +9,7 @@ import UIKit
 
 class TrackersVC: UIViewController {
     
-    private var categories: [TrackerCategory] = MockData.categories //MockData.categories //список категорий и вложенных в них трекеров
+    private var categories: [TrackerCategory] = [] //MockData.categories //список категорий и вложенных в них трекеров
     private var completedTrackers: [TrackerRecord] = [] //трекеры, которые были «выполнены» в выбранную дату
     private var visibleCategories: [TrackerCategory] = [] //отображается при поиске и/или изменении дня недели
     private var currentDate: Int?
@@ -83,8 +83,7 @@ class TrackersVC: UIViewController {
         let collectionView = UICollectionView(
             frame: .zero,
             collectionViewLayout: UICollectionViewFlowLayout())
-        collectionView.register(TrackersCollectionViewCell.self,
-                                forCellWithReuseIdentifier: TrackersCollectionViewCell.identifier)
+        collectionView.register(TrackersCollectionViewCell.self, forCellWithReuseIdentifier: TrackersCollectionViewCell.identifier)
         collectionView.register(TrackersSupplementaryView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: TrackersSupplementaryView.identifier)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         return collectionView
