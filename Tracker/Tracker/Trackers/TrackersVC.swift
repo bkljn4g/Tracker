@@ -149,8 +149,6 @@ class TrackersVC: UIViewController {
         view.addSubview(searchTextField)
         view.addSubview(cancelEditingButton)
         view.addSubview(collectionView)
-        //view.addSubview(emptySearch) // нет совпадений
-        //view.addSubview(emptySearchText) // текст "ничего не найдено"
     }
     
     private func setupLayoutsearchTextFieldAndButton() {
@@ -176,22 +174,8 @@ class TrackersVC: UIViewController {
             imageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             imageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 400),
             
-            // констрейнты заглушки при поиске
-            /*
-            emptySearch.widthAnchor.constraint(equalToConstant: 80),
-            emptySearch.heightAnchor.constraint(equalToConstant: 80),
-            emptySearch.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            emptySearch.topAnchor.constraint(equalTo: view.topAnchor, constant: 400),
-            */
-            
             label.centerXAnchor.constraint(equalTo: imageView.centerXAnchor),
             label.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 8),
-            
-            // констрейнты текста заглушки при поиске
-            /*
-            emptySearchText.centerXAnchor.constraint(equalTo: emptySearch.centerXAnchor),
-            emptySearchText.topAnchor.constraint(equalTo: emptySearch.bottomAnchor, constant: 8),
-            */
             
             collectionView.topAnchor.constraint(equalTo: searchTextField.bottomAnchor, constant: 10),
             collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
@@ -349,6 +333,8 @@ extension TrackersVC {
     
     @objc func textFieldChanged() {
         searchText = searchTextField.text ?? ""
+        imageView.image = searchText.isEmpty ? UIImage(named: "star") : UIImage(named: "notFound") // смена заглушки при поиске
+        label.text = searchText.isEmpty ? "Что будем отслеживать?" : "Ничего не найдено"
         widthAnchor?.constant = 85
         updateCategories()
     }
