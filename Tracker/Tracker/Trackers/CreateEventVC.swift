@@ -49,7 +49,7 @@ class CreateEventVC: UIViewController {
     private var contentSize: CGSize {
         CGSize(width: view.frame.width, height: view.frame.height + 400)
     }
-  
+    
     private lazy var label: UILabel = {
         let label = UILabel()
         label.textColor = .black
@@ -209,7 +209,7 @@ class CreateEventVC: UIViewController {
         scheduleVC.delegate = self
         present(scheduleVC, animated: true)
     }
-   
+    
     private func addSubviews() {
         view.addSubview(scrollView)
         view.addSubview(label)
@@ -244,11 +244,11 @@ class CreateEventVC: UIViewController {
             textField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             textField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
             textField.heightAnchor.constraint(equalToConstant: 75),
-          
+            
             errorLabel.topAnchor.constraint(equalTo: textField.bottomAnchor, constant: 0),
             errorLabel.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
             heightAnchor!,
-           
+            
             createEventView.topAnchor.constraint(equalTo: errorLabel.bottomAnchor, constant: 16),
             createEventView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             createEventView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
