@@ -108,21 +108,16 @@ class CategoryVC: UIViewController {
 }
 
 extension CategoryVC: UITableViewDataSource {
-    func tableView(
-        _ tableView: UITableView,
-        numberOfRowsInSection section: Int
-    ) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
     
-    func tableView(
-        _ tableView: UITableView,
-        cellForRowAt indexPath: IndexPath
-    ) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let categoryCell = tableView.dequeueReusableCell(withIdentifier: CategoryTableViewCell.identifier) as? CategoryTableViewCell else {
             return UITableViewCell()
         }
-        //categoryCell.contentView.backgroundColor = .backgroundColor // убрала наложение двух слоев серого
+        //categoryCell.contentView.backgroundColor = .backgroundColor // наложение двух слоев серого
+        categoryCell.selectionStyle = .none
         categoryCell.label.text = "Важное"
         
         if indexPath.row == 0 {
