@@ -210,6 +210,20 @@ class CreateEventVC: UIViewController {
         present(scheduleVC, animated: true)
     }
     
+    // смена внешнего вида кнопки после заполнения всех категорий
+    func updateCreateEventButton() {
+            createEventButton.isEnabled = textField.text?.isEmpty == false
+            if event == .regular {
+                createEventButton.isEnabled = createEventButton.isEnabled && !schedule.isEmpty
+            }
+            
+            if createEventButton.isEnabled {
+                createEventButton.backgroundColor = .ypBlack
+            } else {
+                createEventButton.backgroundColor = .gray
+            }
+        }
+    
     private func addSubviews() {
         view.addSubview(scrollView)
         view.addSubview(label)
@@ -309,6 +323,8 @@ class CreateEventVC: UIViewController {
             ])
             scheduleButtonSubTitle.text = scheduleSubTitle
         }
+        
+        updateCreateEventButton() // смена внешнего вида кнопки после заполнения всех категорий
     }
     
     @objc func textFieldChanged() {
@@ -321,6 +337,8 @@ class CreateEventVC: UIViewController {
             errorLabel.text = "Ограничение 38 символов"
             heightAnchor?.constant = 32
         }
+        
+        updateCreateEventButton() // смена внешнего вида кнопки после заполнения всех категорий
     }
 }
 
