@@ -306,7 +306,7 @@ class CreateEventVC: UIViewController {
     }
     
     func updateScheduleButton() {
-        if scheduleSubTitle == "" {
+        if scheduleSubTitle.isEmpty {
             scheduleButton.addSubview(scheduleButtonTitle)
             NSLayoutConstraint.activate([
             scheduleButtonTitle.centerYAnchor.constraint(equalTo: scheduleButton.centerYAnchor),
