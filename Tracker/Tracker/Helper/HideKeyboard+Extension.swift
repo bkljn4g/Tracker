@@ -2,7 +2,7 @@
 //  HideKeyboard+Extension.swift
 //  Tracker
 //
-//  Created by Anka on 29.09.2023.
+//  Created by Ann Goncharova on 29.09.2023.
 //
 
 import UIKit
