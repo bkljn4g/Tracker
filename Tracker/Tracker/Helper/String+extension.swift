@@ -8,7 +8,6 @@
 import UIKit
 
 // конвертация строки с цветом в объект юайКолор
-
 extension String {
     var color: UIColor {
         var rgbValue:UInt64 = 0
