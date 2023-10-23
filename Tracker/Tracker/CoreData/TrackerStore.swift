@@ -2,7 +2,8 @@
 //  TrackerStore.swift
 //  Tracker
 //
-//  Created by Anka on 23.10.2023.
+//  Created by Ann Goncharova on 22.10.2023.
 //
 
-import Foundation
+import UIKit
+import CoreData

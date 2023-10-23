@@ -37,6 +37,10 @@
 		895054F62AE68299005C98BE /* EmojiAndColorSupplementaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 895054F52AE68299005C98BE /* EmojiAndColorSupplementaryView.swift */; };
 		895054F82AE6855D005C98BE /* EmojiAndColorCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 895054F72AE6855D005C98BE /* EmojiAndColorCollectionViewCell.swift */; };
 		895054FC2AE693D3005C98BE /* Tracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 895054FA2AE693D3005C98BE /* Tracker.xcdatamodeld */; };
+		895054FF2AE6A3CB005C98BE /* TrackerStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 895054FE2AE6A3CB005C98BE /* TrackerStore.swift */; };
+		895055012AE6A413005C98BE /* TrackerCategoryStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 895055002AE6A413005C98BE /* TrackerCategoryStore.swift */; };
+		895055032AE6A466005C98BE /* TrackerRecordStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 895055022AE6A466005C98BE /* TrackerRecordStore.swift */; };
+		895055052AE6A55B005C98BE /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 895055042AE6A55B005C98BE /* DatabaseManager.swift */; };
 		8958F5402AD994640032CA75 /* HideKeyboard+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8958F53F2AD994640032CA75 /* HideKeyboard+Extension.swift */; };
 /* End PBXBuildFile section */
 
@@ -92,6 +96,10 @@
 		895054F52AE68299005C98BE /* EmojiAndColorSupplementaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiAndColorSupplementaryView.swift; sourceTree = "<group>"; };
 		895054F72AE6855D005C98BE /* EmojiAndColorCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiAndColorCollectionViewCell.swift; sourceTree = "<group>"; };
 		895054FB2AE693D3005C98BE /* Tracker.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Tracker.xcdatamodel; sourceTree = "<group>"; };
+		895054FE2AE6A3CB005C98BE /* TrackerStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerStore.swift; sourceTree = "<group>"; };
+		895055002AE6A413005C98BE /* TrackerCategoryStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerCategoryStore.swift; sourceTree = "<group>"; };
+		895055022AE6A466005C98BE /* TrackerRecordStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerRecordStore.swift; sourceTree = "<group>"; };
+		895055042AE6A55B005C98BE /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		8958F53F2AD994640032CA75 /* HideKeyboard+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HideKeyboard+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -261,6 +269,10 @@
 			isa = PBXGroup;
 			children = (
 				895054FA2AE693D3005C98BE /* Tracker.xcdatamodeld */,
+				895054FE2AE6A3CB005C98BE /* TrackerStore.swift */,
+				895055002AE6A413005C98BE /* TrackerCategoryStore.swift */,
+				895055022AE6A466005C98BE /* TrackerRecordStore.swift */,
+				895055042AE6A55B005C98BE /* DatabaseManager.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -404,12 +416,14 @@
 				8912D75E2A94C86500ECAFBB /* Date+Extension.swift in Sources */,
 				8912D7772A94CA7600ECAFBB /* StatisticsViewController.swift in Sources */,
 				8912D75C2A94C85000ECAFBB /* Color+Extension.swift in Sources */,
+				895055052AE6A55B005C98BE /* DatabaseManager.swift in Sources */,
 				8912D7202A94C68C00ECAFBB /* TabBarController.swift in Sources */,
 				8912D7692A94C96100ECAFBB /* CategoryTableViewCell.swift in Sources */,
 				8912D7572A94C80A00ECAFBB /* TrackerCategory.swift in Sources */,
 				8912D71C2A94C68C00ECAFBB /* AppDelegate.swift in Sources */,
 				8958F5402AD994640032CA75 /* HideKeyboard+Extension.swift in Sources */,
 				895054F82AE6855D005C98BE /* EmojiAndColorCollectionViewCell.swift in Sources */,
+				895055012AE6A413005C98BE /* TrackerCategoryStore.swift in Sources */,
 				8912D7622A94C8D100ECAFBB /* TrackersCollectionViewCell.swift in Sources */,
 				8912D71E2A94C68C00ECAFBB /* SceneDelegate.swift in Sources */,
 				8912D7592A94C82600ECAFBB /* TrackerRecord.swift in Sources */,
@@ -418,8 +432,10 @@
 				8912D74F2A94C77200ECAFBB /* MockData.swift in Sources */,
 				8912D7522A94C7AC00ECAFBB /* EnumWeakday.swift in Sources */,
 				8912D7552A94C7E100ECAFBB /* Tracker.swift in Sources */,
+				895055032AE6A466005C98BE /* TrackerRecordStore.swift in Sources */,
 				895054F62AE68299005C98BE /* EmojiAndColorSupplementaryView.swift in Sources */,
 				8912D7722A94CA2600ECAFBB /* CreateTrackerVC.swift in Sources */,
+				895054FF2AE6A3CB005C98BE /* TrackerStore.swift in Sources */,
 				895054FC2AE693D3005C98BE /* Tracker.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
