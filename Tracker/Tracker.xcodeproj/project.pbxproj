@@ -34,6 +34,8 @@
 		8912D7722A94CA2600ECAFBB /* CreateTrackerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8912D7712A94CA2600ECAFBB /* CreateTrackerVC.swift */; };
 		8912D7742A94CA3E00ECAFBB /* CreateEventVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8912D7732A94CA3E00ECAFBB /* CreateEventVC.swift */; };
 		8912D7772A94CA7600ECAFBB /* StatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8912D7762A94CA7600ECAFBB /* StatisticsViewController.swift */; };
+		895054F62AE68299005C98BE /* EmojiAndColorSupplementaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 895054F52AE68299005C98BE /* EmojiAndColorSupplementaryView.swift */; };
+		895054F82AE6855D005C98BE /* EmojiAndColorCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 895054F72AE6855D005C98BE /* EmojiAndColorCollectionViewCell.swift */; };
 		8958F5402AD994640032CA75 /* HideKeyboard+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8958F53F2AD994640032CA75 /* HideKeyboard+Extension.swift */; };
 /* End PBXBuildFile section */
 
@@ -86,6 +88,8 @@
 		8912D7712A94CA2600ECAFBB /* CreateTrackerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTrackerVC.swift; sourceTree = "<group>"; };
 		8912D7732A94CA3E00ECAFBB /* CreateEventVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEventVC.swift; sourceTree = "<group>"; };
 		8912D7762A94CA7600ECAFBB /* StatisticsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsViewController.swift; sourceTree = "<group>"; };
+		895054F52AE68299005C98BE /* EmojiAndColorSupplementaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiAndColorSupplementaryView.swift; sourceTree = "<group>"; };
+		895054F72AE6855D005C98BE /* EmojiAndColorCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiAndColorCollectionViewCell.swift; sourceTree = "<group>"; };
 		8958F53F2AD994640032CA75 /* HideKeyboard+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HideKeyboard+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -236,6 +240,8 @@
 			children = (
 				8912D76B2A94C99900ECAFBB /* ScheduleVC.swift */,
 				8912D76D2A94C9BC00ECAFBB /* WeekDayTableViewCell.swift */,
+				895054F52AE68299005C98BE /* EmojiAndColorSupplementaryView.swift */,
+				895054F72AE6855D005C98BE /* EmojiAndColorCollectionViewCell.swift */,
 			);
 			path = Schedule;
 			sourceTree = "<group>";
@@ -392,6 +398,7 @@
 				8912D7572A94C80A00ECAFBB /* TrackerCategory.swift in Sources */,
 				8912D71C2A94C68C00ECAFBB /* AppDelegate.swift in Sources */,
 				8958F5402AD994640032CA75 /* HideKeyboard+Extension.swift in Sources */,
+				895054F82AE6855D005C98BE /* EmojiAndColorCollectionViewCell.swift in Sources */,
 				8912D7622A94C8D100ECAFBB /* TrackersCollectionViewCell.swift in Sources */,
 				8912D71E2A94C68C00ECAFBB /* SceneDelegate.swift in Sources */,
 				8912D7592A94C82600ECAFBB /* TrackerRecord.swift in Sources */,
@@ -400,6 +407,7 @@
 				8912D74F2A94C77200ECAFBB /* MockData.swift in Sources */,
 				8912D7522A94C7AC00ECAFBB /* EnumWeakday.swift in Sources */,
 				8912D7552A94C7E100ECAFBB /* Tracker.swift in Sources */,
+				895054F62AE68299005C98BE /* EmojiAndColorSupplementaryView.swift in Sources */,
 				8912D7722A94CA2600ECAFBB /* CreateTrackerVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
