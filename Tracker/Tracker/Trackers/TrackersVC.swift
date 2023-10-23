@@ -41,6 +41,7 @@ final class TrackersVC: UIViewController {
         return label
     }()
     
+    /*
     private lazy var emptySearch: UIImageView = { // картинка с эмодзи при поиске трекеров - совпадений не найдено
         let emptySearch = UIImageView()
         emptySearch.translatesAutoresizingMaskIntoConstraints = false
@@ -56,6 +57,7 @@ final class TrackersVC: UIViewController {
         emptySearchText.textColor = .ypBlack
         return emptySearchText
     }()
+     */
     
     private lazy var datePicker = UIDatePicker()
     
@@ -198,12 +200,13 @@ final class TrackersVC: UIViewController {
     
     private func updateCategories() {
         var newCategories: [TrackerCategory] = []
+        visibleCategories = trackerCategoryStore.trackerCategories
         for category in visibleCategories {
             var newTrackers: [Tracker] = []
             for tracker in category.visibleTrackers(filterString: searchText) {
                 guard let schedule = tracker.schedule else { return }
                 let scheduleInts = schedule.map { $0.numberOfDay }
-                if let day = currentDate, scheduleInts.contains(day) && (searchText.isEmpty || tracker.name.contains(searchText)) {
+                if let day = currentDate, scheduleInts.contains(day) {
                     newTrackers.append(tracker)
                 }
             }
