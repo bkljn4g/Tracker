@@ -8,6 +8,7 @@
 import Foundation
 
 class MockData {
+    /*
     static var categories: [TrackerCategory] = [
         TrackerCategory(name: "Важное", trackers: [
             Tracker(id: UUID(), name: "Полить цветы", color: .color15, emoji: "🏝", schedule: [.wednesday, .saturday]),
@@ -21,4 +22,5 @@ class MockData {
         Tracker(id: UUID(), name: "Бассейн", color: .color14, emoji: "🏊‍♀️", schedule: [.tuesday, .thursday, .saturday]),
             Tracker(id: UUID(), name: "Бег", color: .color17, emoji: "🏃‍♂️", schedule: [.wednesday, .saturday]),
     ])]
+     */
 }
