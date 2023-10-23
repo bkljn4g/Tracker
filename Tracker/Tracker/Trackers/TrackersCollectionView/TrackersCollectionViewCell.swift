@@ -105,11 +105,6 @@ final class TrackersCollectionViewCell: UICollectionViewCell {
             emojiView.leadingAnchor.constraint(equalTo: trackerView.leadingAnchor, constant: 12),
             
             // лейбл с эмодзи
-            emojiLabel.heightAnchor.constraint(equalToConstant: 24),
-            emojiLabel.widthAnchor.constraint(equalToConstant: 24),
-            emojiLabel.topAnchor.constraint(equalTo: trackerView.topAnchor, constant: 12),
-            emojiLabel.leadingAnchor.constraint(equalTo: trackerView.leadingAnchor, constant: 12),
-            
             emojiLabel.centerXAnchor.constraint(equalTo: emojiView.centerXAnchor) ,
             emojiLabel.centerYAnchor.constraint(equalTo: emojiView.centerYAnchor),
             

@@ -222,6 +222,12 @@ final class TrackersVC: UIViewController {
 
 extension TrackersVC: UICollectionViewDataSource {
     
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        let count = visibleCategories.count
+        collectionView.isHidden = count == 0
+        return count
+    }
+    
     func collectionView(
         _ collectionView: UICollectionView,
         numberOfItemsInSection section: Int
@@ -254,12 +260,6 @@ extension TrackersVC: UICollectionViewDataSource {
             completedCount: completedCount
         )
         return cell
-    }
-    
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        let count = visibleCategories.count
-        collectionView.isHidden = count == 0
-        return count
     }
 }
 
