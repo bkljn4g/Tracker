@@ -36,6 +36,7 @@
 		8912D7772A94CA7600ECAFBB /* StatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8912D7762A94CA7600ECAFBB /* StatisticsViewController.swift */; };
 		895054F62AE68299005C98BE /* EmojiAndColorSupplementaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 895054F52AE68299005C98BE /* EmojiAndColorSupplementaryView.swift */; };
 		895054F82AE6855D005C98BE /* EmojiAndColorCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 895054F72AE6855D005C98BE /* EmojiAndColorCollectionViewCell.swift */; };
+		895054FC2AE693D3005C98BE /* Tracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 895054FA2AE693D3005C98BE /* Tracker.xcdatamodeld */; };
 		8958F5402AD994640032CA75 /* HideKeyboard+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8958F53F2AD994640032CA75 /* HideKeyboard+Extension.swift */; };
 /* End PBXBuildFile section */
 
@@ -90,6 +91,7 @@
 		8912D7762A94CA7600ECAFBB /* StatisticsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsViewController.swift; sourceTree = "<group>"; };
 		895054F52AE68299005C98BE /* EmojiAndColorSupplementaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiAndColorSupplementaryView.swift; sourceTree = "<group>"; };
 		895054F72AE6855D005C98BE /* EmojiAndColorCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiAndColorCollectionViewCell.swift; sourceTree = "<group>"; };
+		895054FB2AE693D3005C98BE /* Tracker.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Tracker.xcdatamodel; sourceTree = "<group>"; };
 		8958F53F2AD994640032CA75 /* HideKeyboard+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HideKeyboard+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -141,6 +143,7 @@
 		8912D71A2A94C68C00ECAFBB /* Tracker */ = {
 			isa = PBXGroup;
 			children = (
+				895054F92AE69366005C98BE /* CoreData */,
 				8912D7752A94CA5900ECAFBB /* Statistics */,
 				8912D75F2A94C89E00ECAFBB /* Trackers */,
 				8912D75A2A94C83900ECAFBB /* Helper */,
@@ -252,6 +255,14 @@
 				8912D7762A94CA7600ECAFBB /* StatisticsViewController.swift */,
 			);
 			path = Statistics;
+			sourceTree = "<group>";
+		};
+		895054F92AE69366005C98BE /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				895054FA2AE693D3005C98BE /* Tracker.xcdatamodeld */,
+			);
+			path = CoreData;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -409,6 +420,7 @@
 				8912D7552A94C7E100ECAFBB /* Tracker.swift in Sources */,
 				895054F62AE68299005C98BE /* EmojiAndColorSupplementaryView.swift in Sources */,
 				8912D7722A94CA2600ECAFBB /* CreateTrackerVC.swift in Sources */,
+				895054FC2AE693D3005C98BE /* Tracker.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -766,6 +778,16 @@
 				8912D7252A94C68C00ECAFBB /* Tracker.xcdatamodel */,
 			);
 			currentVersion = 8912D7252A94C68C00ECAFBB /* Tracker.xcdatamodel */;
+			path = Tracker.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+		895054FA2AE693D3005C98BE /* Tracker.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				895054FB2AE693D3005C98BE /* Tracker.xcdatamodel */,
+			);
+			currentVersion = 895054FB2AE693D3005C98BE /* Tracker.xcdatamodel */;
 			path = Tracker.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
