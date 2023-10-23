@@ -51,6 +51,7 @@ class CreateEventVC: UIViewController {
     
     private var selectedEmojiCell: IndexPath? = nil
     private var selectedColorCell: IndexPath? = nil
+    private var selectedEmoji: String = ""
 
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
