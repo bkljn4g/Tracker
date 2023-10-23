@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CategoryVC: UIViewController {
+final class CategoryVC: UIViewController {
     
     private lazy var titleVC: UILabel = {
         let label = UILabel()
