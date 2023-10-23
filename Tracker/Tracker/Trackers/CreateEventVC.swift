@@ -89,6 +89,7 @@ class CreateEventVC: UIViewController {
     
     private lazy var textField: UITextField = { // добавление привычки или нерегулярного события
         let textField = UITextField()
+        UITextField.appearance().clearButtonMode = .whileEditing
         textField.indent(size: 10)
         textField.placeholder = "Введите название трекера"
         textField.textColor = .ypBlack
@@ -182,6 +183,7 @@ class CreateEventVC: UIViewController {
         button.backgroundColor = .gray
         button.layer.cornerRadius = 16
         button.addTarget(self, action: #selector(createEventButtonAction), for: .touchUpInside)
+        button.isEnabled = false
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -296,15 +298,15 @@ class CreateEventVC: UIViewController {
         let createEventViewHeight: CGFloat = event == .regular ? 150 : 75
         heightAnchor = errorLabel.heightAnchor.constraint(equalToConstant: 0)
         var constraints = [
-            label.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            label.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
             label.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 27),
             
-            scrollView.topAnchor.constraint(equalTo: label.bottomAnchor, constant: 24),
+            scrollView.topAnchor.constraint(equalTo: view.topAnchor),
             scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             
-            textField.topAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: 38),
+            textField.topAnchor.constraint(equalTo: label.bottomAnchor, constant: 38),
             textField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             textField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
             textField.heightAnchor.constraint(equalToConstant: 75),
