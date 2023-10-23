@@ -9,7 +9,7 @@ import UIKit
 
 final class EmojiAndColorSupplementaryView: UICollectionReusableView {
     
-    static var identifier = "header"
+    static let identifier = "header"
     
     var titleLabel: UILabel = {
         let label = UILabel()

@@ -29,7 +29,7 @@ class CreateEventVC: UIViewController {
     
     private let event: Event
     private let nameCell = ["Категория", "Расписание"]
-    private let collectionViewHeader = ["Emoji", "Цвет"]
+    private var collectionViewHeader = ["Emoji", "Цвет"]
     private let limitNumberOfCharacters = 38
     private var numberOfCharacters = 0
     private var heightAnchor: NSLayoutConstraint?
