@@ -33,10 +33,14 @@ class CreateEventVC: UIViewController {
     private let limitNumberOfCharacters = 38
     private var numberOfCharacters = 0
     private var heightAnchor: NSLayoutConstraint?
-    private var schedule: [WeekDay] = []
     private var scheduleSubTitle: String = ""
     private var dayOfWeek: [String] = []
     public weak var delegate: CreateEventVCDelegate?
+    private var schedule: [WeekDay] = [] {
+        didSet {
+            updateCreateEventButton()
+        }
+    }
     
     private let emojies = ["🙂", "😻", "🌺", "🐶", "❤️", "😱", 
                            "😇", "😡", "🥶", "🤔", "🙌", "🍒",
@@ -47,11 +51,19 @@ class CreateEventVC: UIViewController {
                                      .color11, .color12, .color13, .color14, .color15,
                                      .color16, .color17, .color18]
     
-    private var selectedColor: UIColor? = nil
+    private var selectedColor: UIColor? = nil {
+        didSet {
+            updateCreateEventButton()
+        }
+    }
     
     private var selectedEmojiCell: IndexPath? = nil
     private var selectedColorCell: IndexPath? = nil
-    private var selectedEmoji: String = ""
+    private var selectedEmoji: String = "" {
+        didSet {
+            updateCreateEventButton()
+        }
+    }
 
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
