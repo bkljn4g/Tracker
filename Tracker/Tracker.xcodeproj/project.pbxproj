@@ -41,6 +41,7 @@
 		895055012AE6A413005C98BE /* TrackerCategoryStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 895055002AE6A413005C98BE /* TrackerCategoryStore.swift */; };
 		895055032AE6A466005C98BE /* TrackerRecordStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 895055022AE6A466005C98BE /* TrackerRecordStore.swift */; };
 		895055052AE6A55B005C98BE /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 895055042AE6A55B005C98BE /* DatabaseManager.swift */; };
+		895055072AE6A916005C98BE /* String+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 895055062AE6A916005C98BE /* String+extension.swift */; };
 		8958F5402AD994640032CA75 /* HideKeyboard+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8958F53F2AD994640032CA75 /* HideKeyboard+Extension.swift */; };
 /* End PBXBuildFile section */
 
@@ -100,6 +101,7 @@
 		895055002AE6A413005C98BE /* TrackerCategoryStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerCategoryStore.swift; sourceTree = "<group>"; };
 		895055022AE6A466005C98BE /* TrackerRecordStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerRecordStore.swift; sourceTree = "<group>"; };
 		895055042AE6A55B005C98BE /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
+		895055062AE6A916005C98BE /* String+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+extension.swift"; sourceTree = "<group>"; };
 		8958F53F2AD994640032CA75 /* HideKeyboard+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HideKeyboard+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -211,6 +213,7 @@
 				8912D75B2A94C85000ECAFBB /* Color+Extension.swift */,
 				8912D75D2A94C86500ECAFBB /* Date+Extension.swift */,
 				8958F53F2AD994640032CA75 /* HideKeyboard+Extension.swift */,
+				895055062AE6A916005C98BE /* String+extension.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -434,6 +437,7 @@
 				8912D7552A94C7E100ECAFBB /* Tracker.swift in Sources */,
 				895055032AE6A466005C98BE /* TrackerRecordStore.swift in Sources */,
 				895054F62AE68299005C98BE /* EmojiAndColorSupplementaryView.swift in Sources */,
+				895055072AE6A916005C98BE /* String+extension.swift in Sources */,
 				8912D7722A94CA2600ECAFBB /* CreateTrackerVC.swift in Sources */,
 				895054FF2AE6A3CB005C98BE /* TrackerStore.swift in Sources */,
 				895054FC2AE693D3005C98BE /* Tracker.xcdatamodeld in Sources */,
