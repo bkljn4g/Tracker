@@ -99,12 +99,12 @@ final class TrackersVC: UIViewController {
         view.backgroundColor = .white
         setDayOfWeek()
         updateCategories()
+        completedTrackers = try! self.trackerRecordStore.fetchTrackerRecord()
         makeNavBar()
         addSubviews()
         setupLayoutsearchTextFieldAndButton()
         setupLayout()
         addTapGestureToHideKeyboard(for: UIView.appearance()) // скрытие клавиатуры по нажатию на экран
-        completedTrackers = try! self.trackerRecordStore.fetchTrackerRecord()
         trackerCategoryStore.delegate = self
     }
     
