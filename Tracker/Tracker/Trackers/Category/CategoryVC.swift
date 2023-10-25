@@ -50,7 +50,7 @@ final class CategoryVC: UIViewController {
     
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
-        var width = view.frame.width - 16*2
+        var width = view.frame.width - 16 * 2
         var height = 75
         tableView.register(CategoryTableViewCell.self, forCellReuseIdentifier: CategoryTableViewCell.identifier)
         tableView.layer.cornerRadius = 16
