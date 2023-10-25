@@ -235,7 +235,6 @@ class CreateEventVC: UIViewController {
         addSubviews()
         setupLayout()
         emojiAndColorCollectionView.allowsMultipleSelection = true
-        
         addTapGestureToHideKeyboard(for: textField) // скрытие ячейки по тапу на экран
     }
     
@@ -401,7 +400,6 @@ class CreateEventVC: UIViewController {
             errorLabel.text = "Ограничение 38 символов"
             heightAnchor?.constant = 32
         }
-        
         updateCreateEventButton() // смена внешнего вида кнопки после заполнения всех категорий
     }
 }
@@ -482,7 +480,7 @@ extension CreateEventVC: UICollectionViewDelegate {
                 collectionView.deselectItem(at: selectedEmojiCell!, animated: true)
                 collectionView.cellForItem(at: selectedEmojiCell!)?.backgroundColor = .white
             }
-            cell?.backgroundColor = .lightGray
+            cell?.backgroundColor = .backgroundColor // поправила цвет эмодзи при его выборе
             selectedEmoji = cell?.emojiLabel.text ?? ""
             selectedEmojiCell = indexPath
         } else if section == 1 {
