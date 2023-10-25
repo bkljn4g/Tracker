@@ -490,7 +490,7 @@ extension CreateEventVC: UICollectionViewDelegate {
             }
             cell?.layer.borderWidth = 3
             cell?.layer.cornerRadius = 8
-            cell?.layer.borderColor = UIColor.lightGray.cgColor
+            cell?.layer.borderColor = cell?.colorView.backgroundColor?.cgColor // рамка выделения цвета соответствует выбранному цвету 
             selectedColor = cell?.colorView.backgroundColor ?? nil
             selectedColorCell = indexPath
         }
