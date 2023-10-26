@@ -47,7 +47,7 @@ class ScheduleVC: UIViewController {
         tableView.register(WeekDayTableViewCell.self, forCellReuseIdentifier: WeekDayTableViewCell.identifier)
         tableView.layer.cornerRadius = 16
         tableView.separatorColor = .ypGray
-        tableView.frame = CGRect(x: 16, y: 79, width: Int(width), height: height)
+        tableView.frame = CGRect(x: 0, y: 0, width: Int(width), height: 525) // отображение всех дней недели при запуске
         tableView.dataSource = self
         tableView.delegate = self
         tableView.translatesAutoresizingMaskIntoConstraints = false
