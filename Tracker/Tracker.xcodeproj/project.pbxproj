@@ -38,6 +38,7 @@
 		895055052AE6A55B005C98BE /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 895055042AE6A55B005C98BE /* DatabaseManager.swift */; };
 		895055072AE6A916005C98BE /* String+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 895055062AE6A916005C98BE /* String+extension.swift */; };
 		8958F5402AD994640032CA75 /* HideKeyboard+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8958F53F2AD994640032CA75 /* HideKeyboard+Extension.swift */; };
+		8989DAEB2AEB262500F4F685 /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8989DAEA2AEB262500F4F685 /* Onboarding.swift */; };
 		89BDA0CB2AE738AE000B8C6B /* Tracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 89BDA0C92AE738AE000B8C6B /* Tracker.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
@@ -94,6 +95,7 @@
 		895055042AE6A55B005C98BE /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		895055062AE6A916005C98BE /* String+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+extension.swift"; sourceTree = "<group>"; };
 		8958F53F2AD994640032CA75 /* HideKeyboard+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HideKeyboard+Extension.swift"; sourceTree = "<group>"; };
+		8989DAEA2AEB262500F4F685 /* Onboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
 		89BDA0CA2AE738AE000B8C6B /* Tracker.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Tracker.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -157,6 +159,7 @@
 				8912D7292A94C68D00ECAFBB /* LaunchScreen.storyboard */,
 				8912D72C2A94C68D00ECAFBB /* Info.plist */,
 				8912D74E2A94C77200ECAFBB /* MockData.swift */,
+				8989DAEA2AEB262500F4F685 /* Onboarding.swift */,
 			);
 			path = Tracker;
 			sourceTree = "<group>";
@@ -395,6 +398,7 @@
 				8912D7692A94C96100ECAFBB /* CategoryTableViewCell.swift in Sources */,
 				8912D7572A94C80A00ECAFBB /* TrackerCategory.swift in Sources */,
 				8912D71C2A94C68C00ECAFBB /* AppDelegate.swift in Sources */,
+				8989DAEB2AEB262500F4F685 /* Onboarding.swift in Sources */,
 				8958F5402AD994640032CA75 /* HideKeyboard+Extension.swift in Sources */,
 				895054F82AE6855D005C98BE /* EmojiAndColorCollectionViewCell.swift in Sources */,
 				895055012AE6A413005C98BE /* TrackerCategoryStore.swift in Sources */,
