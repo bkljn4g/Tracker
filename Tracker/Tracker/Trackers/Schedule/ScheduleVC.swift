@@ -2,7 +2,7 @@
 //  ScheduleVC.swift
 //  Tracker
 //
-//  Created by Anka on 22.08.2023.
+//  Created by Ann Goncharova on 22.08.2023.
 //
 
 import UIKit
@@ -16,6 +16,7 @@ class ScheduleVC: UIViewController {
     public weak var delegate: ScheduleVCDelegate?
     private var schedule: [WeekDay] = []
     
+    // лейбл "Расписание"
     private lazy var label: UILabel = {
         let label = UILabel()
         label.textColor = .ypBlack
@@ -25,6 +26,7 @@ class ScheduleVC: UIViewController {
         return label
     }()
     
+    // кнопка "Готово"
     private lazy var enterButton: UIButton = {
         let button = UIButton(type: .custom)
         button.setTitle("Готово", for: .normal)
@@ -37,18 +39,39 @@ class ScheduleVC: UIViewController {
         return button
     }()
     
+    // таблица с днями недели
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
-        var width = view.frame.width - 16*2
-        var height = 7*75
+        var width = view.frame.width - 16 * 2
+        var height = 7 * 75
         tableView.register(WeekDayTableViewCell.self, forCellReuseIdentifier: WeekDayTableViewCell.identifier)
         tableView.layer.cornerRadius = 16
         tableView.separatorColor = .ypGray
-        tableView.frame = CGRect(x: 16, y: 79, width: Int(width), height: height)
+        tableView.frame = CGRect(x: 0, y: 0, width: Int(width), height: 525) // отображение всех дней недели при запуске
         tableView.dataSource = self
         tableView.delegate = self
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
+    }()
+    
+    private var contentSize: CGSize {
+        CGSize(width: view.frame.width, height: view.frame.height)
+    }
+    
+    private lazy var scrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        scrollView.backgroundColor = .white
+        scrollView.frame = view.bounds
+        scrollView.contentSize = contentSize
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        return scrollView
+    }()
+    
+    private lazy var buttonBackgroundView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .white
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
     }()
     
     override func viewDidLoad() {
@@ -60,8 +83,10 @@ class ScheduleVC: UIViewController {
     
     private func addSubviews() {
         view.addSubview(label)
-        view.addSubview(enterButton)
-        view.addSubview(tableView)
+        view.addSubview(scrollView)
+        scrollView.addSubview(tableView)
+        scrollView.addSubview(buttonBackgroundView)
+        buttonBackgroundView.addSubview(enterButton)
     }
     
     private func setupLayout() {
@@ -69,10 +94,20 @@ class ScheduleVC: UIViewController {
             label.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             label.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 27),
             
-            enterButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -50),
+            enterButton.bottomAnchor.constraint(equalTo: buttonBackgroundView.bottomAnchor, constant: -50),
             enterButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            enterButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            enterButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
             enterButton.heightAnchor.constraint(equalToConstant: 60),
+            
+            scrollView.topAnchor.constraint(equalTo: label.bottomAnchor, constant: 30),
+            scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            
+            buttonBackgroundView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            buttonBackgroundView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            buttonBackgroundView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            buttonBackgroundView.heightAnchor.constraint(equalToConstant: 80)
         ])
     }
     
@@ -113,7 +148,9 @@ extension ScheduleVC: UITableViewDelegate {
         return 75
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) { }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
 }
 
 extension ScheduleVC: WeekDayTableViewCellDelegate {

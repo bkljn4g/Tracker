@@ -2,12 +2,12 @@
 //  CategoryVC.swift
 //  Tracker
 //
-//  Created by Anka on 22.08.2023.
+//  Created by Ann Goncharova on 22.08.2023.
 //
 
 import UIKit
 
-class CategoryVC: UIViewController {
+final class CategoryVC: UIViewController {
     
     private lazy var titleVC: UILabel = {
         let label = UILabel()
@@ -50,7 +50,7 @@ class CategoryVC: UIViewController {
     
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
-        var width = view.frame.width - 16*2
+        var width = view.frame.width - 16 * 2
         var height = 75
         tableView.register(CategoryTableViewCell.self, forCellReuseIdentifier: CategoryTableViewCell.identifier)
         tableView.layer.cornerRadius = 16
