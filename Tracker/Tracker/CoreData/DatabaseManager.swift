@@ -20,7 +20,7 @@ final class DatabaseManager {
         persistentContainer.viewContext
     }
 
-    init() {
+    private init() {
         _ = persistentContainer
     }
     
