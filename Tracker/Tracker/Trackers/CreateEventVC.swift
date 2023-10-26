@@ -57,6 +57,8 @@ class CreateEventVC: UIViewController {
         }
     }
     
+    var category: TrackerCategory?
+    
     private var selectedEmojiCell: IndexPath? = nil
     private var selectedColorCell: IndexPath? = nil
     private var selectedEmoji: String = "" {
@@ -238,9 +240,17 @@ class CreateEventVC: UIViewController {
         addTapGestureToHideKeyboard(for: textField) // скрытие ячейки по тапу на экран
     }
     
+    // Нерегулярные события отображаются в списке трекеров
     @objc func createEventButtonAction() {
-        let tracker = Tracker(id: UUID(), name: textField.text ?? "", color: selectedColor, emoji: selectedEmoji, schedule: schedule)
-        delegate?.createTracker(tracker, categoryName: "Важное")
+        var tracker: Tracker?
+        if event == .regular {
+            tracker = Tracker(id: UUID(), name: textField.text ?? "", color: selectedColor, emoji: selectedEmoji, schedule: schedule)
+        } else {
+            schedule = WeekDay.allCases
+            tracker = Tracker(id: UUID(), name: textField.text ?? "", color: selectedColor, emoji: selectedEmoji, schedule: schedule)
+        }
+        guard let tracker = tracker else { return }
+        delegate?.createTracker(tracker, categoryName: category?.name ?? "Без категории")
         dismiss(animated: true)
     }
     
