@@ -2,7 +2,7 @@
 //  Color+Extension.swift
 //  Tracker
 //
-//  Created by Anka on 22.08.2023.
+//  Created by Ann Goncharova on 22.08.2023.
 //
 
 import UIKit
@@ -34,4 +34,17 @@ extension UIColor {
     static var color17: UIColor { UIColor(named: "Color17") ?? UIColor.red }
     static var color18: UIColor { UIColor(named: "Color18") ?? UIColor.red }
     static var switchColor: UIColor { ypBlue }
+    
+    var hexString: String {
+        let components = self.cgColor.components
+        let r: CGFloat = components?[0] ?? 0.0
+        let g: CGFloat = components?[1] ?? 0.0
+        let b: CGFloat = components?[2] ?? 0.0
+        return String.init(
+            format: "%02lX%02lX%02lX",
+            lroundf(Float(r * 255)),
+            lroundf(Float(g * 255)),
+            lroundf(Float(b * 255))
+        )
+    }
 }

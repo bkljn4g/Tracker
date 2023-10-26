@@ -2,12 +2,12 @@
 //  Tracker.swift
 //  Tracker
 //
-//  Created by Anka on 22.08.2023.
+//  Created by Ann Goncharova on 22.08.2023.
 //
 
 import UIKit
 
-struct Tracker {
+struct Tracker: Hashable {
     
     let id: UUID
     let name: String
