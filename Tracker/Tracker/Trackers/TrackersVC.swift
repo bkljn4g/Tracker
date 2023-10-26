@@ -213,10 +213,13 @@ final class TrackersVC: UIViewController {
             if newTrackers.count > 0 {
                 let newCategory = TrackerCategory(name: category.name, trackers: newTrackers)
                 newCategories.append(newCategory)
+                //print("Visible Categories: \(visibleCategories)")
             }
         }
         visibleCategories = newCategories
+        //print("Visible Categories: \(visibleCategories)")
         collectionView.reloadData()
+        //print("Visible Categories: \(visibleCategories)")
     }
 }
 
@@ -361,6 +364,8 @@ extension TrackersVC: TrackersCollectionViewCellDelegate {
             try? trackerRecordStore.addNewTrackerRecord(TrackerRecord(idTracker: id, date: datePicker.date))
         }
         collectionView.reloadData()
+        //print("completedTrackers: \(completedTrackers)")
+        //print("datePicker.date: \(datePicker.date)")
     }
 }
 
