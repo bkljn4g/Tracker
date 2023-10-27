@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class CategoryVC: UIViewController {
+final class CategoryListView: UIViewController {
     
     private lazy var titleVC: UILabel = {
         let label = UILabel()
@@ -107,7 +107,7 @@ final class CategoryVC: UIViewController {
     }
 }
 
-extension CategoryVC: UITableViewDataSource {
+extension CategoryListView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
@@ -130,7 +130,7 @@ extension CategoryVC: UITableViewDataSource {
     }
 }
 
-extension CategoryVC: UITableViewDelegate {
+extension CategoryListView: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 75
     }

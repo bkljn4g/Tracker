@@ -259,7 +259,7 @@ class CreateEventVC: UIViewController {
     }
     
     @objc private func categoryButtonAction() {
-        let categoryVC = CategoryVC()
+        let categoryVC = CategoryListView()
         present(categoryVC, animated: true)
     }
     
