@@ -32,7 +32,6 @@ protocol TrackerCategoryStoreDelegate: AnyObject {
 
 class TrackerCategoryStore: NSObject {
     
-    static let shared = TrackerCategoryStore()
     private let trackerStore = TrackerStore()
     private let context: NSManagedObjectContext
     private var fetchedResultsController: NSFetchedResultsController<TrackerCategoryCoreData>!
@@ -77,6 +76,14 @@ class TrackerCategoryStore: NSObject {
     func addNewTrackerCategory(_ trackerCategory: TrackerCategoryModel) throws {
         let trackerCategoryCoreData = TrackerCategoryCoreData(context: context)
         updateExistingTrackerCategory(trackerCategoryCoreData, with: trackerCategory)
+        try context.save()
+    }
+    
+    func updateCategoryName(_ newCategoryName: String, _ editableCategory: TrackerCategoryModel) throws {
+        let category = fetchedResultsController.fetchedObjects?.first {
+            $0.nameCategory == editableCategory.name
+        }
+        category?.nameCategory = newCategoryName
         try context.save()
     }
     
