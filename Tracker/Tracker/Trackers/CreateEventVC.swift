@@ -57,7 +57,7 @@ class CreateEventVC: UIViewController {
         }
     }
     
-    var category: TrackerCategory?
+    var category: TrackerCategoryModel?
     
     private var selectedEmojiCell: IndexPath? = nil
     private var selectedColorCell: IndexPath? = nil
