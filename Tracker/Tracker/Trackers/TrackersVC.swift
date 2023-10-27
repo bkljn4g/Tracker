@@ -80,7 +80,7 @@ final class TrackersVC: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         setDayOfWeek()
-        updateCategories()
+        updateCategories(with: trackerCategoryStore.trackerCategories)
         completedTrackers = try! self.trackerRecordStore.fetchTrackerRecord()
         makeNavBar()
         addSubviews()
@@ -114,7 +114,7 @@ final class TrackersVC: UIViewController {
         let components = Calendar.current.dateComponents([.weekday], from: sender.date)
         if let day = components.weekday {
             currentDate = day
-            updateCategories()
+            updateCategories(with: trackerCategoryStore.trackerCategories)
         }
     }
     
@@ -129,7 +129,6 @@ final class TrackersVC: UIViewController {
         widthAnchor?.constant = 0
         setupLayout()
         searchText = ""
-        updateCategories()
     }
     
     private func addSubviews() {
@@ -180,10 +179,10 @@ final class TrackersVC: UIViewController {
         currentDate = components.weekday
     }
     
-    private func updateCategories() {
+    private func updateCategories(with categories: [TrackerCategoryModel]) {
         var newCategories: [TrackerCategoryModel] = []
         visibleCategories = trackerCategoryStore.trackerCategories
-        for category in visibleCategories {
+        for category in categories {
             var newTrackers: [Tracker] = []
             for tracker in category.visibleTrackers(filterString: searchText) {
                 guard let schedule = tracker.schedule else { return }
@@ -315,7 +314,6 @@ extension TrackersVC: RegularOrIrregularEventVCDelegate {
                     categoryToUpdate = newCategory
                     try? trackerCategoryStore.addNewTrackerCategory(categoryToUpdate!)
                 }
-                updateCategories()
                 dismiss(animated: true)
     }
 }
@@ -327,7 +325,7 @@ extension TrackersVC {
         imageView.image = searchText.isEmpty ? UIImage(named: "star") : UIImage(named: "notFound") // смена заглушки при поиске
         label.text = searchText.isEmpty ? "Что будем отслеживать?" : "Ничего не найдено"
         widthAnchor?.constant = 85
-        visibleCategories = trackerCategoryStore.predicateFetch(nameTracker: searchText)
+        updateCategories(with: trackerCategoryStore.predicateFetch(nameTracker: searchText))
         collectionView.reloadData()
     }
 }
@@ -340,7 +338,7 @@ extension TrackersVC: TrackersCollectionViewCellDelegate {
             record.date.yearMonthDayComponents == datePicker.date.yearMonthDayComponents
         }) {
             completedTrackers.remove(at: index)
-            try? trackerRecordStore.deleteTrackerRecord(TrackerRecord(idTracker: id, date: datePicker.date))
+            try? trackerRecordStore.deleteTrackerRecord(with: id)
         } else {
             completedTrackers.append(TrackerRecord(idTracker: id, date: datePicker.date))
             try? trackerRecordStore.addNewTrackerRecord(TrackerRecord(idTracker: id, date: datePicker.date))
@@ -364,7 +362,7 @@ extension TrackersVC: UITextFieldDelegate {
 
 extension TrackersVC: TrackerCategoryStoreDelegate {
     func store(_ store: TrackerCategoryStore, didUpdate update: TrackerCategoryStoreUpdate) {
-        visibleCategories = trackerCategoryStore.trackerCategories
+        updateCategories(with: trackerCategoryStore.trackerCategories)
         collectionView.reloadData()
     }
 }
