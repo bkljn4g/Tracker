@@ -12,9 +12,9 @@ final class TrackersVC: UIViewController {
     private let trackerCategoryStore = TrackerCategoryStore()
     private let trackerRecordStore = TrackerRecordStore()
     
-    private var categories: [TrackerCategoryModel] = [] // MockData.categories
-    private var completedTrackers: [TrackerRecord] = [] //трекеры, которые были «выполнены» в выбранную дату
-    private var visibleCategories: [TrackerCategoryModel] = [] //отображается при поиске и/или изменении дня недели
+    private var categories: [TrackerCategoryModel] = [] // категории и трекеры в них
+    private var completedTrackers: [TrackerRecord] = [] // трекеры, которые были «выполнены» в выбранную дату
+    private var visibleCategories: [TrackerCategoryModel] = [] // отображается при поиске и/или изменении дня недели
     private var currentDate: Int?
     private var searchText: String = ""
     private var widthAnchor: NSLayoutConstraint?
@@ -40,24 +40,6 @@ final class TrackersVC: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-    
-    /*
-    private lazy var emptySearch: UIImageView = { // картинка с эмодзи при поиске трекеров - совпадений не найдено
-        let emptySearch = UIImageView()
-        emptySearch.translatesAutoresizingMaskIntoConstraints = false
-        emptySearch.image = UIImage(named: "notFound")
-        return emptySearch
-    }()
-    
-    private lazy var emptySearchText: UILabel = { // текст под картинкой с эмодзи - совпадений не найдено
-        let emptySearchText = UILabel()
-        emptySearchText.translatesAutoresizingMaskIntoConstraints = false
-        emptySearchText.font = UIFont.systemFont(ofSize: 12, weight: .medium)
-        emptySearchText.text = "Ничего не найдено"
-        emptySearchText.textColor = .ypBlack
-        return emptySearchText
-    }()
-     */
     
     private lazy var datePicker = UIDatePicker()
     
@@ -137,7 +119,7 @@ final class TrackersVC: UIViewController {
     }
     
     @objc func addTracker() {
-        let trackersVC = CreateTrackerVC()
+        let trackersVC = RegularOrIrregularEventVC()
         trackersVC.delegate = self
         present(trackersVC, animated: true)
     }
@@ -315,7 +297,7 @@ extension TrackersVC: UICollectionViewDelegateFlowLayout {
     }
 }
 
-extension TrackersVC: CreateTrackerVCDelegate {
+extension TrackersVC: RegularOrIrregularEventVCDelegate {
     
     func createTracker(_ tracker: Tracker, categoryName: String) {
         var categoryToUpdate: TrackerCategoryModel?

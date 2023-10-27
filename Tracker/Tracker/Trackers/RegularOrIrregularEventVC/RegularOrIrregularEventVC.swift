@@ -7,13 +7,13 @@
 
 import UIKit
 
-protocol CreateTrackerVCDelegate: AnyObject {
+protocol RegularOrIrregularEventVCDelegate: AnyObject {
     func createTracker(_ tracker: Tracker, categoryName: String)
 }
 
-class CreateTrackerVC: UIViewController {
+class RegularOrIrregularEventVC: UIViewController {
    
-    public weak var delegate: CreateTrackerVCDelegate?
+    public weak var delegate: RegularOrIrregularEventVCDelegate?
     
     private lazy var label: UILabel = {
         let label = UILabel()
@@ -91,7 +91,7 @@ class CreateTrackerVC: UIViewController {
     }
 }
 
-extension CreateTrackerVC: CreateEventVCDelegate {
+extension RegularOrIrregularEventVC: CreateEventVCDelegate {
     
     func createTracker(_ tracker: Tracker, categoryName: String) {
         delegate?.createTracker(tracker, categoryName: categoryName)
