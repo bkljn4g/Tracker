@@ -128,11 +128,13 @@ extension ScheduleVC: UITableViewDataSource {
         guard let weekDayCell = tableView.dequeueReusableCell(withIdentifier: WeekDayTableViewCell.identifier) as? WeekDayTableViewCell else {
             return UITableViewCell()
         }
+        let weekDay = WeekDay.allCases[indexPath.row]
         weekDayCell.delegate = self
         //weekDayCell.contentView.backgroundColor = .backgroundColor
         weekDayCell.selectionStyle = .none // убрала выделение ячеек серым при нажатии
         weekDayCell.label.text = WeekDay.allCases[indexPath.row].rawValue
-        weekDayCell.weekDay = WeekDay.allCases[indexPath.row]
+        weekDayCell.weekDay = weekDay
+        weekDayCell.switchCell.isOn = schedule.contains(weekDay)
         if indexPath.row == 6 {
             weekDayCell.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: .greatestFiniteMagnitude)
         } else {
