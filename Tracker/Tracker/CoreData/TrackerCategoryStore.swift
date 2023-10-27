@@ -87,6 +87,16 @@ class TrackerCategoryStore: NSObject {
         try context.save()
     }
     
+    func deleteCategory(_ categoryToDelete: TrackerCategoryModel) throws {
+            let category = fetchedResultsController.fetchedObjects?.first {
+                $0.nameCategory == categoryToDelete.name
+            }
+            if let category = category {
+                context.delete(category)
+                try context.save()
+            }
+        }
+    
     func updateExistingTrackerCategory(
         _ trackerCategoryCoreData: TrackerCategoryCoreData,
         with category: TrackerCategoryModel)
