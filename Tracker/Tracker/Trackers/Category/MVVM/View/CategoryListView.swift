@@ -61,9 +61,20 @@ final class CategoryListView: UIViewController {
         tableView.frame = CGRect(x: 16, y: 79, width: Int(width), height: height)
         tableView.dataSource = self
         tableView.delegate = self
+        tableView.allowsMultipleSelection = false
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
+    
+    init(delegate: CategoryListViewModelDelegate?, selectedCategory: TrackerCategoryModel?) {
+            viewModel = CategoryListViewModel(delegate: delegate, selectedCategory: selectedCategory)
+            super.init(nibName: nil, bundle: nil)
+            viewModel.onChange = self.tableView.reloadData
+        }
+        
+        required init?(coder: NSCoder) {
+            fatalError("init(coder:) has not been implemented")
+        }
     
     override func viewDidLoad() {
         super.viewDidLoad()
