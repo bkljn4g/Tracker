@@ -9,6 +9,8 @@ import UIKit
 
 final class CategoryListView: UIViewController {
     
+    private let viewModel: 
+    
     private lazy var titleVC: UILabel = {
         let label = UILabel()
         label.textColor = .black
