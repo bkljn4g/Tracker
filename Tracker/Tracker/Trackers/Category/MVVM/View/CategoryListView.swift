@@ -9,7 +9,7 @@ import UIKit
 
 final class CategoryListView: UIViewController {
     
-    private let viewModel: 
+    private let viewModel: CategoryListViewModel
     
     private lazy var titleVC: UILabel = {
         let label = UILabel()
