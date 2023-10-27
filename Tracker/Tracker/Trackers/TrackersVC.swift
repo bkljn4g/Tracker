@@ -12,9 +12,9 @@ final class TrackersVC: UIViewController {
     private let trackerCategoryStore = TrackerCategoryStore()
     private let trackerRecordStore = TrackerRecordStore()
     
-    private var categories: [TrackerCategory] = [] // MockData.categories
+    private var categories: [TrackerCategoryModel] = [] // MockData.categories
     private var completedTrackers: [TrackerRecord] = [] //трекеры, которые были «выполнены» в выбранную дату
-    private var visibleCategories: [TrackerCategory] = [] //отображается при поиске и/или изменении дня недели
+    private var visibleCategories: [TrackerCategoryModel] = [] //отображается при поиске и/или изменении дня недели
     private var currentDate: Int?
     private var searchText: String = ""
     private var widthAnchor: NSLayoutConstraint?
@@ -199,7 +199,7 @@ final class TrackersVC: UIViewController {
     }
     
     private func updateCategories() {
-        var newCategories: [TrackerCategory] = []
+        var newCategories: [TrackerCategoryModel] = []
         visibleCategories = trackerCategoryStore.trackerCategories
         for category in visibleCategories {
             var newTrackers: [Tracker] = []
@@ -211,7 +211,7 @@ final class TrackersVC: UIViewController {
                 }
             }
             if newTrackers.count > 0 {
-                let newCategory = TrackerCategory(name: category.name, trackers: newTrackers)
+                let newCategory = TrackerCategoryModel(name: category.name, trackers: newTrackers)
                 newCategories.append(newCategory)
                 //print("Visible Categories: \(visibleCategories)")
             }
@@ -318,8 +318,8 @@ extension TrackersVC: UICollectionViewDelegateFlowLayout {
 extension TrackersVC: CreateTrackerVCDelegate {
     
     func createTracker(_ tracker: Tracker, categoryName: String) {
-        var categoryToUpdate: TrackerCategory?
-        let categories: [TrackerCategory] = trackerCategoryStore.trackerCategories
+        var categoryToUpdate: TrackerCategoryModel?
+        let categories: [TrackerCategoryModel] = trackerCategoryStore.trackerCategories
         
         for i in 0..<categories.count {
             if categories[i].name == categoryName {
@@ -329,7 +329,7 @@ extension TrackersVC: CreateTrackerVCDelegate {
         if categoryToUpdate != nil {
                     try? trackerCategoryStore.addTracker(tracker, to: categoryToUpdate!)
                 } else {
-                    let newCategory = TrackerCategory(name: categoryName, trackers: [tracker])
+                    let newCategory = TrackerCategoryModel(name: categoryName, trackers: [tracker])
                     categoryToUpdate = newCategory
                     try? trackerCategoryStore.addNewTrackerCategory(categoryToUpdate!)
                 }
