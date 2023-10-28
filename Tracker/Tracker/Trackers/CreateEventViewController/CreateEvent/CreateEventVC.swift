@@ -36,7 +36,7 @@ class CreateEventVC: UIViewController {
     private var scheduleSubTitle: String = ""
     private var dayOfWeek: [String] = []
     public weak var delegate: CreateEventVCDelegate?
-    var schedule: [WeekDay] = [] {
+    private var schedule: [WeekDay] = [] {
         didSet {
             updateCreateEventButton()
         }
