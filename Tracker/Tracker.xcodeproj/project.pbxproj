@@ -209,9 +209,8 @@
 		8912D7652A94C90F00ECAFBB /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				89F008632AEC8F010072E626 /* CreateAndEditViewController */,
 				8989DAF52AEC740E00F4F685 /* MVVM */,
-				8989DAF12AEC6DA800F4F685 /* CreateCategoryVC.swift */,
-				8989DAF32AEC713800F4F685 /* EditCategoryVC.swift */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -323,6 +322,15 @@
 				8989DAF82AEC768100F4F685 /* CategoryListViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		89F008632AEC8F010072E626 /* CreateAndEditViewController */ = {
+			isa = PBXGroup;
+			children = (
+				8989DAF12AEC6DA800F4F685 /* CreateCategoryVC.swift */,
+				8989DAF32AEC713800F4F685 /* EditCategoryVC.swift */,
+			);
+			path = CreateAndEditViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
