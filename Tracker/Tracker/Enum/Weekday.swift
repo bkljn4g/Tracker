@@ -5,7 +5,7 @@
 //  Created by Ann Goncharova on 22.08.2023.
 //
 
-import Foundation
+import UIKit
 
 enum WeekDay: String, CaseIterable {
     case monday = "Понедельник"
