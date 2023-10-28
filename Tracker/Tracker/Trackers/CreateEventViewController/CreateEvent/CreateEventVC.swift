@@ -332,6 +332,8 @@ class CreateEventVC: UIViewController {
         var constraints = [
             label.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
             label.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 27),
+            label.heightAnchor.constraint(equalToConstant: 25),
+            label.widthAnchor.constraint(equalToConstant: 250),
             
             scrollView.topAnchor.constraint(equalTo: view.topAnchor),
             scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
