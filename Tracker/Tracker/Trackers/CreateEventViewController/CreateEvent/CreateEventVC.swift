@@ -36,13 +36,13 @@ class CreateEventVC: UIViewController {
     private var scheduleSubTitle: String = ""
     private var dayOfWeek: [String] = []
     public weak var delegate: CreateEventVCDelegate?
-    private var schedule: [WeekDay] = [] {
+    var schedule: [WeekDay] = [] {
         didSet {
             updateCreateEventButton()
         }
     }
     
-    private let emojies = ["🙂", "😻", "🌺", "🐶", "❤️", "😱", 
+    private let emojies = ["🙂", "😻", "🌺", "🐶", "❤️", "😱",
                            "😇", "😡", "🥶", "🤔", "🙌", "🍒",
                            "🍔", "🥦", "🏓", "🥇", "🎸", "🏝"]
     
@@ -73,7 +73,7 @@ class CreateEventVC: UIViewController {
     
     var selectedCategory: TrackerCategoryModel?
     var categorySubTitle: String = ""
-
+    
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.backgroundColor = .white
@@ -293,17 +293,17 @@ class CreateEventVC: UIViewController {
     
     // смена внешнего вида кнопки после заполнения всех категорий
     func updateCreateEventButton() {
-            createEventButton.isEnabled = textField.text?.isEmpty == false && selectedColor != nil && !selectedEmoji.isEmpty
-            if event == .regular {
-                createEventButton.isEnabled = createEventButton.isEnabled && !schedule.isEmpty
-            }
-            
-            if createEventButton.isEnabled {
-                createEventButton.backgroundColor = .ypBlack
-            } else {
-                createEventButton.backgroundColor = .gray
-            }
+        createEventButton.isEnabled = textField.text?.isEmpty == false && selectedColor != nil && !selectedEmoji.isEmpty
+        if event == .regular {
+            createEventButton.isEnabled = createEventButton.isEnabled && !schedule.isEmpty
         }
+        
+        if createEventButton.isEnabled {
+            createEventButton.backgroundColor = .ypBlack
+        } else {
+            createEventButton.backgroundColor = .gray
+        }
+    }
     
     private func addSubviews() {
         view.addSubview(scrollView)
@@ -405,41 +405,42 @@ class CreateEventVC: UIViewController {
         if scheduleSubTitle.isEmpty {
             scheduleButton.addSubview(scheduleButtonTitle)
             NSLayoutConstraint.activate([
-            scheduleButtonTitle.centerYAnchor.constraint(equalTo: scheduleButton.centerYAnchor),
-            scheduleButtonTitle.leadingAnchor.constraint(equalTo: scheduleButton.leadingAnchor, constant: 16)
+                scheduleButtonTitle.centerYAnchor.constraint(equalTo: scheduleButton.centerYAnchor),
+                scheduleButtonTitle.leadingAnchor.constraint(equalTo: scheduleButton.leadingAnchor, constant: 16)
             ])
             scheduleButtonSubTitle.isHidden = true
         } else {
             scheduleButton.addSubview(scheduleButtonTitle)
             scheduleButton.addSubview(scheduleButtonSubTitle)
             NSLayoutConstraint.activate([
-            scheduleButtonTitle.leadingAnchor.constraint(equalTo: scheduleButton.leadingAnchor, constant: 16),
-            scheduleButtonTitle.topAnchor.constraint(equalTo: scheduleButton.topAnchor, constant: 15),
-            scheduleButtonSubTitle.leadingAnchor.constraint(equalTo: scheduleButton.leadingAnchor, constant: 16),
-            scheduleButtonSubTitle.bottomAnchor.constraint(equalTo: scheduleButton.bottomAnchor, constant: -13)
+                scheduleButtonTitle.leadingAnchor.constraint(equalTo: scheduleButton.leadingAnchor, constant: 16),
+                scheduleButtonTitle.topAnchor.constraint(equalTo: scheduleButton.topAnchor, constant: 15),
+                scheduleButtonSubTitle.leadingAnchor.constraint(equalTo: scheduleButton.leadingAnchor, constant: 16),
+                scheduleButtonSubTitle.bottomAnchor.constraint(equalTo: scheduleButton.bottomAnchor, constant: -13)
             ])
             scheduleButtonSubTitle.text = scheduleSubTitle
             scheduleButtonSubTitle.isHidden = false
         }
-        
+    }
+    
     func updateCategoryButton() {
         if categorySubTitle.isEmpty {
             categoryButton.addSubview(categoryButtonTitle)
             NSLayoutConstraint.activate([
                 categoryButtonTitle.centerYAnchor.constraint(equalTo: categoryButton.centerYAnchor),
                 categoryButtonTitle.leadingAnchor.constraint(equalTo: categoryButton.leadingAnchor, constant: 16)])
-            } else {
-                categoryButton.addSubview(categoryButtonTitle)
-                categoryButton.addSubview(categoryButtonSubTitle)
+        } else {
+            categoryButton.addSubview(categoryButtonTitle)
+            categoryButton.addSubview(categoryButtonSubTitle)
             NSLayoutConstraint.activate([
                 categoryButtonTitle.leadingAnchor.constraint(equalTo: categoryButton.leadingAnchor, constant: 16),
                 categoryButtonTitle.topAnchor.constraint(equalTo: categoryButton.topAnchor, constant: 15),
                 categoryButtonSubTitle.leadingAnchor.constraint(equalTo: categoryButton.leadingAnchor, constant: 16),
                 categoryButtonSubTitle.bottomAnchor.constraint(equalTo: categoryButton.bottomAnchor, constant: -13)])
-                categoryButtonSubTitle.text = categorySubTitle
-            }
+            categoryButtonSubTitle.text = categorySubTitle
         }
     }
+    
     
     @objc func textFieldChanged() {
         updateCreateEventButton()

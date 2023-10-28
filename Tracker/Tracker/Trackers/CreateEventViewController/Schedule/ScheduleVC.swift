@@ -14,7 +14,7 @@ protocol ScheduleVCDelegate: AnyObject {
 class ScheduleVC: UIViewController {
     
     public weak var delegate: ScheduleVCDelegate?
-    private var schedule: [WeekDay] = []
+    var schedule: [WeekDay] = []
     
     // лейбл "Расписание"
     private lazy var label: UILabel = {
