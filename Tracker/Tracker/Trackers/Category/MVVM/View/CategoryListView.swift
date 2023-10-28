@@ -54,7 +54,8 @@ class CategoryListView: UIViewController {
         let tableView = UITableView()
         tableView.register(CategoryTableViewCell.self, forCellReuseIdentifier: CategoryTableViewCell.identifier)
         tableView.separatorColor = .ypGray
-        tableView.backgroundColor = .backgroundColor
+        tableView.backgroundColor = .white
+        tableView.layer.cornerRadius = 16
         tableView.dataSource = self
         tableView.delegate = self
         tableView.allowsMultipleSelection = false

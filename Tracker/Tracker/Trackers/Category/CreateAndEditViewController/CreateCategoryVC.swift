@@ -76,6 +76,7 @@ class CreateCategoryVC: UIViewController {
         view.backgroundColor = .white
         addSubviews()
         setupLayout()
+        addTapGestureToHideKeyboard(for: view)
     }
     
     private func addSubviews() {
