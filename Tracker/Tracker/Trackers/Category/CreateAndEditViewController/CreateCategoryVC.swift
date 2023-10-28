@@ -42,6 +42,7 @@ class CreateCategoryVC: UIViewController {
         let button = UIButton(type: .custom)
         button.setTitle("Готово", for: .normal)
         button.titleLabel?.textColor = .white
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .medium)
         button.backgroundColor = .ypGray
         button.isEnabled = true
         button.layer.cornerRadius = 16
