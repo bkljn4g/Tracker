@@ -12,9 +12,9 @@ final class TrackersVC: UIViewController {
     private let trackerCategoryStore = TrackerCategoryStore()
     private let trackerRecordStore = TrackerRecordStore()
     
-    private var categories: [TrackerCategory] = [] // MockData.categories
-    private var completedTrackers: [TrackerRecord] = [] //трекеры, которые были «выполнены» в выбранную дату
-    private var visibleCategories: [TrackerCategory] = [] //отображается при поиске и/или изменении дня недели
+    private var categories: [TrackerCategoryModel] = [] // категории и трекеры в них
+    private var completedTrackers: [TrackerRecord] = [] // трекеры, которые были «выполнены» в выбранную дату
+    private var visibleCategories: [TrackerCategoryModel] = [] // отображается при поиске и/или изменении дня недели
     private var currentDate: Int?
     private var searchText: String = ""
     private var widthAnchor: NSLayoutConstraint?
@@ -40,24 +40,6 @@ final class TrackersVC: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-    
-    /*
-    private lazy var emptySearch: UIImageView = { // картинка с эмодзи при поиске трекеров - совпадений не найдено
-        let emptySearch = UIImageView()
-        emptySearch.translatesAutoresizingMaskIntoConstraints = false
-        emptySearch.image = UIImage(named: "notFound")
-        return emptySearch
-    }()
-    
-    private lazy var emptySearchText: UILabel = { // текст под картинкой с эмодзи - совпадений не найдено
-        let emptySearchText = UILabel()
-        emptySearchText.translatesAutoresizingMaskIntoConstraints = false
-        emptySearchText.font = UIFont.systemFont(ofSize: 12, weight: .medium)
-        emptySearchText.text = "Ничего не найдено"
-        emptySearchText.textColor = .ypBlack
-        return emptySearchText
-    }()
-     */
     
     private lazy var datePicker = UIDatePicker()
     
@@ -98,13 +80,13 @@ final class TrackersVC: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         setDayOfWeek()
-        updateCategories()
+        updateCategories(with: trackerCategoryStore.trackerCategories)
         completedTrackers = try! self.trackerRecordStore.fetchTrackerRecord()
         makeNavBar()
         addSubviews()
         setupLayoutsearchTextFieldAndButton()
         setupLayout()
-        addTapGestureToHideKeyboard(for: UIView.appearance()) // скрытие клавиатуры по нажатию на экран
+        addTapGestureToHideKeyboard(for: view)
         trackerCategoryStore.delegate = self
     }
     
@@ -132,12 +114,12 @@ final class TrackersVC: UIViewController {
         let components = Calendar.current.dateComponents([.weekday], from: sender.date)
         if let day = components.weekday {
             currentDate = day
-            updateCategories()
+            updateCategories(with: trackerCategoryStore.trackerCategories)
         }
     }
     
     @objc func addTracker() {
-        let trackersVC = CreateTrackerVC()
+        let trackersVC = RegularOrIrregularEventVC()
         trackersVC.delegate = self
         present(trackersVC, animated: true)
     }
@@ -147,7 +129,6 @@ final class TrackersVC: UIViewController {
         widthAnchor?.constant = 0
         setupLayout()
         searchText = ""
-        updateCategories()
     }
     
     private func addSubviews() {
@@ -198,10 +179,10 @@ final class TrackersVC: UIViewController {
         currentDate = components.weekday
     }
     
-    private func updateCategories() {
-        var newCategories: [TrackerCategory] = []
+    private func updateCategories(with categories: [TrackerCategoryModel]) {
+        var newCategories: [TrackerCategoryModel] = []
         visibleCategories = trackerCategoryStore.trackerCategories
-        for category in visibleCategories {
+        for category in categories {
             var newTrackers: [Tracker] = []
             for tracker in category.visibleTrackers(filterString: searchText) {
                 guard let schedule = tracker.schedule else { return }
@@ -211,7 +192,7 @@ final class TrackersVC: UIViewController {
                 }
             }
             if newTrackers.count > 0 {
-                let newCategory = TrackerCategory(name: category.name, trackers: newTrackers)
+                let newCategory = TrackerCategoryModel(name: category.name, trackers: newTrackers)
                 newCategories.append(newCategory)
                 //print("Visible Categories: \(visibleCategories)")
             }
@@ -315,11 +296,11 @@ extension TrackersVC: UICollectionViewDelegateFlowLayout {
     }
 }
 
-extension TrackersVC: CreateTrackerVCDelegate {
+extension TrackersVC: RegularOrIrregularEventVCDelegate {
     
     func createTracker(_ tracker: Tracker, categoryName: String) {
-        var categoryToUpdate: TrackerCategory?
-        let categories: [TrackerCategory] = trackerCategoryStore.trackerCategories
+        var categoryToUpdate: TrackerCategoryModel?
+        let categories: [TrackerCategoryModel] = trackerCategoryStore.trackerCategories
         
         for i in 0..<categories.count {
             if categories[i].name == categoryName {
@@ -329,11 +310,10 @@ extension TrackersVC: CreateTrackerVCDelegate {
         if categoryToUpdate != nil {
                     try? trackerCategoryStore.addTracker(tracker, to: categoryToUpdate!)
                 } else {
-                    let newCategory = TrackerCategory(name: categoryName, trackers: [tracker])
+                    let newCategory = TrackerCategoryModel(name: categoryName, trackers: [tracker])
                     categoryToUpdate = newCategory
                     try? trackerCategoryStore.addNewTrackerCategory(categoryToUpdate!)
                 }
-                updateCategories()
                 dismiss(animated: true)
     }
 }
@@ -345,7 +325,7 @@ extension TrackersVC {
         imageView.image = searchText.isEmpty ? UIImage(named: "star") : UIImage(named: "notFound") // смена заглушки при поиске
         label.text = searchText.isEmpty ? "Что будем отслеживать?" : "Ничего не найдено"
         widthAnchor?.constant = 85
-        visibleCategories = trackerCategoryStore.predicateFetch(nameTracker: searchText)
+        updateCategories(with: trackerCategoryStore.predicateFetch(nameTracker: searchText))
         collectionView.reloadData()
     }
 }
@@ -358,7 +338,7 @@ extension TrackersVC: TrackersCollectionViewCellDelegate {
             record.date.yearMonthDayComponents == datePicker.date.yearMonthDayComponents
         }) {
             completedTrackers.remove(at: index)
-            try? trackerRecordStore.deleteTrackerRecord(TrackerRecord(idTracker: id, date: datePicker.date))
+            try? trackerRecordStore.deleteTrackerRecord(with: id)
         } else {
             completedTrackers.append(TrackerRecord(idTracker: id, date: datePicker.date))
             try? trackerRecordStore.addNewTrackerRecord(TrackerRecord(idTracker: id, date: datePicker.date))
@@ -382,7 +362,7 @@ extension TrackersVC: UITextFieldDelegate {
 
 extension TrackersVC: TrackerCategoryStoreDelegate {
     func store(_ store: TrackerCategoryStore, didUpdate update: TrackerCategoryStoreUpdate) {
-        visibleCategories = trackerCategoryStore.trackerCategories
+        updateCategories(with: trackerCategoryStore.trackerCategories)
         collectionView.reloadData()
     }
 }
