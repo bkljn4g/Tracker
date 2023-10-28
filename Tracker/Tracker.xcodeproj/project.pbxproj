@@ -42,6 +42,7 @@
 		8989DAF42AEC713800F4F685 /* EditCategoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8989DAF32AEC713800F4F685 /* EditCategoryVC.swift */; };
 		8989DAF92AEC768100F4F685 /* CategoryListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8989DAF82AEC768100F4F685 /* CategoryListViewModel.swift */; };
 		89BDA0CB2AE738AE000B8C6B /* Tracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 89BDA0C92AE738AE000B8C6B /* Tracker.xcdatamodeld */; };
+		89D760EB2AEDB5ED00ED4704 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89D760EA2AEDB5ED00ED4704 /* UIView+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,6 +102,7 @@
 		8989DAF32AEC713800F4F685 /* EditCategoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCategoryVC.swift; sourceTree = "<group>"; };
 		8989DAF82AEC768100F4F685 /* CategoryListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryListViewModel.swift; sourceTree = "<group>"; };
 		89BDA0CA2AE738AE000B8C6B /* Tracker.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Tracker.xcdatamodel; sourceTree = "<group>"; };
+		89D760EA2AEDB5ED00ED4704 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -191,6 +193,7 @@
 				8912D75D2A94C86500ECAFBB /* Date+Extension.swift */,
 				8958F53F2AD994640032CA75 /* HideKeyboard+Extension.swift */,
 				895055062AE6A916005C98BE /* String+extension.swift */,
+				89D760EA2AEDB5ED00ED4704 /* UIView+Extension.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -464,6 +467,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				89D760EB2AEDB5ED00ED4704 /* UIView+Extension.swift in Sources */,
 				8912D7672A94C92D00ECAFBB /* CategoryListView.swift in Sources */,
 				8912D7742A94CA3E00ECAFBB /* CreateEventVC.swift in Sources */,
 				8912D76C2A94C99900ECAFBB /* ScheduleVC.swift in Sources */,

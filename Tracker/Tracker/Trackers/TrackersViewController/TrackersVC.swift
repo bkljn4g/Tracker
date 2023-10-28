@@ -110,13 +110,14 @@ final class TrackersVC: UIViewController {
         }
     }
     
-    @objc func dateChanged(_ sender: UIDatePicker) {
-        let components = Calendar.current.dateComponents([.weekday], from: sender.date)
-        if let day = components.weekday {
-            currentDate = day
-            updateCategories(with: trackerCategoryStore.trackerCategories)
+    @objc func dateChanged(
+        _ sender: UIDatePicker) {
+            let components = Calendar.current.dateComponents([.weekday], from: sender.date)
+            if let day = components.weekday {
+                currentDate = day
+                updateCategories(with: trackerCategoryStore.trackerCategories)
+            }
         }
-    }
     
     @objc func addTracker() {
         let trackersVC = RegularOrIrregularEventVC()
@@ -194,13 +195,10 @@ final class TrackersVC: UIViewController {
             if newTrackers.count > 0 {
                 let newCategory = TrackerCategoryModel(name: category.name, trackers: newTrackers)
                 newCategories.append(newCategory)
-                //print("Visible Categories: \(visibleCategories)")
             }
         }
         visibleCategories = newCategories
-        //print("Visible Categories: \(visibleCategories)")
         collectionView.reloadData()
-        //print("Visible Categories: \(visibleCategories)")
     }
 }
 
@@ -223,7 +221,8 @@ extension TrackersVC: UICollectionViewDataSource {
         _ collectionView: UICollectionView,
         cellForItemAt indexPath: IndexPath
     ) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TrackersCollectionViewCell.identifier, for: indexPath) as? TrackersCollectionViewCell else { return UICollectionViewCell() }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TrackersCollectionViewCell.identifier, for: indexPath) as? TrackersCollectionViewCell else {
+            return UICollectionViewCell() }
         cell.delegate = self
         let tracker = visibleCategories[indexPath.section].visibleTrackers(filterString: searchText)[indexPath.row]
         let isCompleted = completedTrackers.contains(where: { record in
@@ -247,25 +246,25 @@ extension TrackersVC: UICollectionViewDataSource {
     }
 }
 
-// поправила расстояние между ячейками 
+// поправила расстояние между ячейками
 extension TrackersVC: UICollectionViewDelegateFlowLayout {
     
-    func collectionView(_ collectionView: UICollectionView, 
+    func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-                        return CGSize(width: collectionView.bounds.width / 2 - 5, height: (collectionView.bounds.width / 2 - 5) * 0.88)
+        return CGSize(width: collectionView.bounds.width / 2 - 5, height: (collectionView.bounds.width / 2 - 5) * 0.88)
     }
     
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-                        return 0
+        return 0
     }
     
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-                        return 9
+        return 9
     }
     
     func collectionView(_ collectionView: UICollectionView,
@@ -273,12 +272,12 @@ extension TrackersVC: UICollectionViewDelegateFlowLayout {
                         at indexPath: IndexPath) -> UICollectionReusableView {
         var id: String
         switch kind {
-        case UICollectionView.elementKindSectionHeader:
-            id = "header"
-        case UICollectionView.elementKindSectionFooter:
-            id = "footer"
-        default:
-            id = ""
+            case UICollectionView.elementKindSectionHeader:
+                id = "header"
+            case UICollectionView.elementKindSectionFooter:
+                id = "footer"
+            default:
+                id = ""
         }
         
         guard let view = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: id, for: indexPath) as? TrackersSupplementaryView else { return UICollectionReusableView() }
@@ -298,24 +297,26 @@ extension TrackersVC: UICollectionViewDelegateFlowLayout {
 
 extension TrackersVC: RegularOrIrregularEventVCDelegate {
     
-    func createTracker(_ tracker: Tracker, categoryName: String) {
-        var categoryToUpdate: TrackerCategoryModel?
-        let categories: [TrackerCategoryModel] = trackerCategoryStore.trackerCategories
-        
-        for i in 0..<categories.count {
-            if categories[i].name == categoryName {
-                categoryToUpdate = categories[i]
-            }
-        }
-        if categoryToUpdate != nil {
-                    try? trackerCategoryStore.addTracker(tracker, to: categoryToUpdate!)
-                } else {
-                    let newCategory = TrackerCategoryModel(name: categoryName, trackers: [tracker])
-                    categoryToUpdate = newCategory
-                    try? trackerCategoryStore.addNewTrackerCategory(categoryToUpdate!)
+    func createTracker(
+        _ tracker: Tracker,
+        categoryName: String) {
+            var categoryToUpdate: TrackerCategoryModel?
+            let categories: [TrackerCategoryModel] = trackerCategoryStore.trackerCategories
+            
+            for i in 0..<categories.count {
+                if categories[i].name == categoryName {
+                    categoryToUpdate = categories[i]
                 }
-                dismiss(animated: true)
-    }
+            }
+            if categoryToUpdate != nil {
+                try? trackerCategoryStore.addTracker(tracker, to: categoryToUpdate!)
+            } else {
+                let newCategory = TrackerCategoryModel(name: categoryName, trackers: [tracker])
+                categoryToUpdate = newCategory
+                try? trackerCategoryStore.addNewTrackerCategory(categoryToUpdate!)
+            }
+            dismiss(animated: true)
+        }
 }
 
 extension TrackersVC {
@@ -344,25 +345,27 @@ extension TrackersVC: TrackersCollectionViewCellDelegate {
             try? trackerRecordStore.addNewTrackerRecord(TrackerRecord(idTracker: id, date: datePicker.date))
         }
         collectionView.reloadData()
-        //print("completedTrackers: \(completedTrackers)")
-        //print("datePicker.date: \(datePicker.date)")
     }
 }
 
 extension TrackersVC: UITextFieldDelegate {
     
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        widthAnchor?.constant = 85
-    }
+    func textFieldDidBeginEditing(
+        _ textField: UITextField) {
+            widthAnchor?.constant = 85
+        }
     
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        setupLayoutsearchTextFieldAndButton()
-    }
+    func textFieldDidEndEditing(
+        _ textField: UITextField) {
+            setupLayoutsearchTextFieldAndButton()
+        }
 }
 
 extension TrackersVC: TrackerCategoryStoreDelegate {
-    func store(_ store: TrackerCategoryStore, didUpdate update: TrackerCategoryStoreUpdate) {
-        updateCategories(with: trackerCategoryStore.trackerCategories)
-        collectionView.reloadData()
-    }
+    func store(
+        _ store: TrackerCategoryStore,
+        didUpdate update: TrackerCategoryStoreUpdate) {
+            updateCategories(with: trackerCategoryStore.trackerCategories)
+            collectionView.reloadData()
+        }
 }

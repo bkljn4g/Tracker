@@ -21,7 +21,9 @@ class TrackerRecordStore {
         self.context = context
     }
     
-    func addNewTrackerRecord(_ trackerRecord: TrackerRecord) throws {
+    func addNewTrackerRecord(
+        _ trackerRecord: TrackerRecord)
+    throws {
         let trackerRecordCoreData = TrackerRecordCoreData(context: context)
         updateExistingTrackerRecord(trackerRecordCoreData, with: trackerRecord)
         try context.save()
@@ -39,10 +41,12 @@ class TrackerRecordStore {
         }
     }
     
-    func updateExistingTrackerRecord(_ trackerRecordCoreData: TrackerRecordCoreData, with record: TrackerRecord) {
-        trackerRecordCoreData.idTracker = record.idTracker
-        trackerRecordCoreData.date = record.date
-    }
+    func updateExistingTrackerRecord(
+        _ trackerRecordCoreData: TrackerRecordCoreData,
+        with record: TrackerRecord) {
+            trackerRecordCoreData.idTracker = record.idTracker
+            trackerRecordCoreData.date = record.date
+        }
     
     func fetchTrackerRecord() throws -> [TrackerRecord] {
         let fetchRequest = TrackerRecordCoreData.fetchRequest()

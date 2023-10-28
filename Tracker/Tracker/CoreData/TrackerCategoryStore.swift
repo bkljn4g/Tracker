@@ -73,13 +73,17 @@ class TrackerCategoryStore: NSObject {
         try controller.performFetch()
     }
     
-    func addNewTrackerCategory(_ trackerCategory: TrackerCategoryModel) throws {
+    func addNewTrackerCategory(
+        _ trackerCategory: TrackerCategoryModel)
+    throws {
         let trackerCategoryCoreData = TrackerCategoryCoreData(context: context)
         updateExistingTrackerCategory(trackerCategoryCoreData, with: trackerCategory)
         try context.save()
     }
     
-    func updateCategoryName(_ newCategoryName: String, _ editableCategory: TrackerCategoryModel) throws {
+    func updateCategoryName(
+        _ newCategoryName: String, _ editableCategory: TrackerCategoryModel)
+    throws {
         let category = fetchedResultsController.fetchedObjects?.first {
             $0.nameCategory == editableCategory.name
         }
@@ -87,15 +91,17 @@ class TrackerCategoryStore: NSObject {
         try context.save()
     }
     
-    func deleteCategory(_ categoryToDelete: TrackerCategoryModel) throws {
-            let category = fetchedResultsController.fetchedObjects?.first {
-                $0.nameCategory == categoryToDelete.name
-            }
-            if let category = category {
-                context.delete(category)
-                try context.save()
-            }
+    func deleteCategory(
+        _ categoryToDelete: TrackerCategoryModel)
+    throws {
+        let category = fetchedResultsController.fetchedObjects?.first {
+            $0.nameCategory == categoryToDelete.name
         }
+        if let category = category {
+            context.delete(category)
+            try context.save()
+        }
+    }
     
     func updateExistingTrackerCategory(
         _ trackerCategoryCoreData: TrackerCategoryCoreData,
@@ -113,7 +119,10 @@ class TrackerCategoryStore: NSObject {
         }
     }
     
-    func addTracker(_ tracker: Tracker, to trackerCategory: TrackerCategoryModel) throws {
+    func addTracker(
+        _ tracker: Tracker,
+        to trackerCategory: TrackerCategoryModel)
+    throws {
         let category = fetchedResultsController.fetchedObjects?.first {
             $0.nameCategory == trackerCategory.name
         }
@@ -207,20 +216,20 @@ extension TrackerCategoryStore: NSFetchedResultsControllerDelegate {
         newIndexPath: IndexPath?
     ) {
         switch type {
-        case .insert:
-            guard let indexPath = newIndexPath else { fatalError() }
-            insertedIndexes?.insert(indexPath.item)
-        case .delete:
-            guard let indexPath = indexPath else { fatalError() }
-            deletedIndexes?.insert(indexPath.item)
-        case .update:
-            guard let indexPath = indexPath else { fatalError() }
-            updatedIndexes?.insert(indexPath.item)
-        case .move:
-            guard let oldIndexPath = indexPath, let newIndexPath = newIndexPath else { fatalError() }
-            movedIndexes?.insert(.init(oldIndex: oldIndexPath.item, newIndex: newIndexPath.item))
-        @unknown default:
-            fatalError()
+            case .insert:
+                guard let indexPath = newIndexPath else { fatalError() }
+                insertedIndexes?.insert(indexPath.item)
+            case .delete:
+                guard let indexPath = indexPath else { fatalError() }
+                deletedIndexes?.insert(indexPath.item)
+            case .update:
+                guard let indexPath = indexPath else { fatalError() }
+                updatedIndexes?.insert(indexPath.item)
+            case .move:
+                guard let oldIndexPath = indexPath, let newIndexPath = newIndexPath else { fatalError() }
+                movedIndexes?.insert(.init(oldIndex: oldIndexPath.item, newIndex: newIndexPath.item))
+            @unknown default:
+                fatalError()
         }
     }
 }

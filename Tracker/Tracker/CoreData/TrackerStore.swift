@@ -21,19 +21,21 @@ class TrackerStore {
         self.context = context
     }
     
-    func addNewTracker(_ tracker: Tracker) throws {
-        let trackerCoreData = TrackerCoreData(context: context)
-        updateExistingTracker(trackerCoreData, with: tracker)
-        try context.save()
-    }
+    func addNewTracker(
+        _ tracker: Tracker) throws {
+            let trackerCoreData = TrackerCoreData(context: context)
+            updateExistingTracker(trackerCoreData, with: tracker)
+            try context.save()
+        }
     
-    func updateExistingTracker(_ trackerCoreData: TrackerCoreData, with tracker: Tracker) {
-        trackerCoreData.nameTracker = tracker.name
-        trackerCoreData.id = tracker.id
-        trackerCoreData.emoji = tracker.emoji
-        trackerCoreData.schedule = tracker.schedule?.compactMap { $0.rawValue }
-        trackerCoreData.color = tracker.color?.hexString
-    }
+    func updateExistingTracker(
+        _ trackerCoreData: TrackerCoreData, with tracker: Tracker) {
+            trackerCoreData.nameTracker = tracker.name
+            trackerCoreData.id = tracker.id
+            trackerCoreData.emoji = tracker.emoji
+            trackerCoreData.schedule = tracker.schedule?.compactMap { $0.rawValue }
+            trackerCoreData.color = tracker.color?.hexString
+        }
     
     func fetchTrackers() throws -> [Tracker] {
         let fetchRequest = TrackerCoreData.fetchRequest()

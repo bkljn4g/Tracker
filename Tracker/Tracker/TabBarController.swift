@@ -31,7 +31,7 @@ class TabBarController: UITabBarController {
         let tabBarController = TabBarController()
         tabBarController.viewControllers = [trackersViewController, statisticsViewController]
         
-       return tabBarController
+        return tabBarController
     }
 }
 

@@ -154,7 +154,9 @@ final class OnboardingVC: UIPageViewController, UIPageViewControllerDelegate, UI
     // MARK: - UIPageViewControllerDataSource
     
     // определяет предыдущую страницу которая должна отображаться при пролистывании
-    func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
+    func pageViewController(
+        _ pageViewController: UIPageViewController,
+        viewControllerBefore viewController: UIViewController) -> UIViewController? {
         guard let viewControllerIndex = pages.firstIndex(of: viewController) else {
             return nil
         }
@@ -167,7 +169,9 @@ final class OnboardingVC: UIPageViewController, UIPageViewControllerDelegate, UI
     }
     
     // определяет следующую страницу которая должна отображаться при пролистывании
-    func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
+    func pageViewController(
+        _ pageViewController: UIPageViewController,
+        viewControllerAfter viewController: UIViewController) -> UIViewController? {
         guard let viewControllerIndex = pages.firstIndex(of: viewController) else {
             return nil
         }
@@ -182,24 +186,14 @@ final class OnboardingVC: UIPageViewController, UIPageViewControllerDelegate, UI
     // MARK: - UIPageViewControllerDelegate
     
     // обновление индикатора текущей страницы
-    func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
+    func pageViewController(
+        _ pageViewController: UIPageViewController,
+        didFinishAnimating finished: Bool,
+        previousViewControllers: [UIViewController],
+        transitionCompleted completed: Bool) {
         if let currentViewController = pageViewController.viewControllers?.first,
            let currentIndex = pages.firstIndex(of: currentViewController) {
             pageControl.currentPage = currentIndex
         }
-    }
-}
-
-// установка фонового изображения на всю область экрана
-extension UIView {
-    
-    func addBackground(image: String) {
-        let width = UIScreen.main.bounds.size.width
-        let height = UIScreen.main.bounds.size.height
-        let imageViewBackground = UIImageView(frame: CGRectMake(0, 0, width, height))
-        imageViewBackground.image = UIImage(named: image)
-        imageViewBackground.contentMode = UIView.ContentMode.scaleAspectFill
-        self.addSubview(imageViewBackground)
-        self.sendSubviewToBack(imageViewBackground)
     }
 }

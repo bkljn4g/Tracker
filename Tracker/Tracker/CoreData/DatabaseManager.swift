@@ -19,7 +19,7 @@ final class DatabaseManager {
     var context: NSManagedObjectContext {
         persistentContainer.viewContext
     }
-
+    
     private init() {
         _ = persistentContainer
     }
@@ -27,9 +27,9 @@ final class DatabaseManager {
     static let shared = DatabaseManager()
     
     // MARK: - Core Data stack
-
+    
     private lazy var persistentContainer: NSPersistentContainer = {
-      
+        
         let container = NSPersistentContainer(name: modelName)
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
@@ -38,9 +38,9 @@ final class DatabaseManager {
         })
         return container
     }()
-
+    
     // MARK: - Core Data Saving support
-
+    
     func saveContext () {
         let context = persistentContainer.viewContext
         if context.hasChanges {
@@ -52,6 +52,6 @@ final class DatabaseManager {
             }
         }
     }
-  
-   
+    
+    
 }
