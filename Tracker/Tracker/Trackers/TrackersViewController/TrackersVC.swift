@@ -86,7 +86,7 @@ final class TrackersVC: UIViewController {
         addSubviews()
         setupLayoutsearchTextFieldAndButton()
         setupLayout()
-        addTapGestureToHideKeyboard(for: UIView.appearance()) // скрытие клавиатуры по нажатию на экран
+        addTapGestureToHideKeyboard(for: view)
         trackerCategoryStore.delegate = self
     }
     

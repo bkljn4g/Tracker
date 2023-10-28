@@ -15,7 +15,7 @@ class CategoryListView: UIViewController {
         let label = UILabel()
         label.textColor = .black
         label.text = "Категория"
-        label.font = .systemFont(ofSize: 16, weight: .medium) // поправила шрифт верхнего тайтла
+        label.font = .systemFont(ofSize: 16, weight: .medium)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -30,10 +30,10 @@ class CategoryListView: UIViewController {
     private lazy var label: UILabel = {
         let label = UILabel()
         label.textColor = .black
-        label.text = "Привычки и события можно объединить по смыслу" // поправила опечатку согласно макету
+        label.text = "Привычки и события можно объединить по смыслу"
         label.numberOfLines = 2
         label.textAlignment = .center
-        label.font = .systemFont(ofSize: 12)
+        label.font = UIFont.systemFont(ofSize: 12, weight: .medium)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -41,7 +41,7 @@ class CategoryListView: UIViewController {
     private lazy var addCategoryButton: UIButton = {
         let button = UIButton(type: .custom)
         button.setTitle("Добавить категорию", for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .medium) // поправила шрифт на кнопке
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .medium)
         button.titleLabel?.textColor = .white
         button.backgroundColor = .ypBlack
         button.layer.cornerRadius = 16
