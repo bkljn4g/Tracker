@@ -156,7 +156,8 @@ final class OnboardingVC: UIPageViewController, UIPageViewControllerDelegate, UI
     // определяет предыдущую страницу которая должна отображаться при пролистывании
     func pageViewController(
         _ pageViewController: UIPageViewController,
-        viewControllerBefore viewController: UIViewController) -> UIViewController? {
+        viewControllerBefore viewController: UIViewController
+    ) -> UIViewController? {
         guard let viewControllerIndex = pages.firstIndex(of: viewController) else {
             return nil
         }
@@ -171,7 +172,8 @@ final class OnboardingVC: UIPageViewController, UIPageViewControllerDelegate, UI
     // определяет следующую страницу которая должна отображаться при пролистывании
     func pageViewController(
         _ pageViewController: UIPageViewController,
-        viewControllerAfter viewController: UIViewController) -> UIViewController? {
+        viewControllerAfter viewController: UIViewController
+    ) -> UIViewController? {
         guard let viewControllerIndex = pages.firstIndex(of: viewController) else {
             return nil
         }
@@ -182,7 +184,7 @@ final class OnboardingVC: UIPageViewController, UIPageViewControllerDelegate, UI
         }
         return pages[nextIndex]
     }
-
+    
     // MARK: - UIPageViewControllerDelegate
     
     // обновление индикатора текущей страницы
@@ -191,9 +193,9 @@ final class OnboardingVC: UIPageViewController, UIPageViewControllerDelegate, UI
         didFinishAnimating finished: Bool,
         previousViewControllers: [UIViewController],
         transitionCompleted completed: Bool) {
-        if let currentViewController = pageViewController.viewControllers?.first,
-           let currentIndex = pages.firstIndex(of: currentViewController) {
-            pageControl.currentPage = currentIndex
+            if let currentViewController = pageViewController.viewControllers?.first,
+               let currentIndex = pages.firstIndex(of: currentViewController) {
+                pageControl.currentPage = currentIndex
+            }
         }
-    }
 }
