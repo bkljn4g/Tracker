@@ -159,7 +159,7 @@ final class TrackersCollectionViewCell: UICollectionViewCell {
         emojiLabel.text = emoji
         isCompletedToday = isCompleted
         checkButton.setImage(isCompletedToday ? UIImage(systemName: "checkmark")! : UIImage(systemName: "plus")!, for: .normal)
-
+        
         // если кнопка события нажата, делаем полупрозрачной
         if isCompletedToday == true {
             checkButton.alpha = 0.5

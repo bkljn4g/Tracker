@@ -13,16 +13,18 @@ enum Event {
     
     var titleText: String {
         switch self {
-        case .regular:
-            return "Новая привычка"
-        case .irregular:
-            return "Новое нерегулярное событие"
+            case .regular:
+                return "Новая привычка"
+            case .irregular:
+                return "Новое нерегулярное событие"
         }
     }
 }
 
 protocol CreateEventVCDelegate: AnyObject {
-    func createTracker(_ tracker: Tracker, categoryName: String)
+    func createTracker(
+        _ tracker: Tracker,
+        categoryName: String)
 }
 
 class CreateEventVC: UIViewController {
@@ -467,7 +469,7 @@ extension UITextField {
 }
 
 extension CreateEventVC: UITextFieldDelegate {
-
+    
     func textField(
         _ textField: UITextField,
         shouldChangeCharactersIn range: NSRange,
@@ -476,7 +478,7 @@ extension CreateEventVC: UITextFieldDelegate {
         let maxLenght = limitNumberOfCharacters
         let currentString = (textField.text ?? "") as NSString
         let newString = currentString.replacingCharacters(in: range, with: string)
-
+        
         return newString.count <= maxLenght
     }
 }
@@ -501,33 +503,37 @@ extension CreateEventVC: CategoryListViewModelDelegate {
 }
 
 extension CreateEventVC: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        var returnValue = Int()
-        if section == 0 {
-            returnValue = emojies.count
-        } else if section == 1 {
-            returnValue = colors.count
+    func collectionView(
+        _ collectionView: UICollectionView,
+        numberOfItemsInSection section: Int) -> Int {
+            var returnValue = Int()
+            if section == 0 {
+                returnValue = emojies.count
+            } else if section == 1 {
+                returnValue = colors.count
+            }
+            return returnValue
         }
-        return returnValue
-    }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let section = indexPath.section
-        
-        guard let cell = emojiAndColorCollectionView.dequeueReusableCell(withReuseIdentifier: "emojiAndColorCollectionViewCell", for: indexPath) as? EmojiAndColorCollectionViewCell
-        else {
-            return UICollectionViewCell()
+    func collectionView(
+        _ collectionView: UICollectionView,
+        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+            let section = indexPath.section
+            
+            guard let cell = emojiAndColorCollectionView.dequeueReusableCell(withReuseIdentifier: "emojiAndColorCollectionViewCell", for: indexPath) as? EmojiAndColorCollectionViewCell
+            else {
+                return UICollectionViewCell()
+            }
+            cell.layer.cornerRadius = 16
+            
+            if section == 0 {
+                cell.emojiLabel.text = emojies[indexPath.row]
+            } else if section == 1 {
+                cell.colorView.backgroundColor = colors[indexPath.row]
+                cell.colorView.layer.cornerRadius = 8
+            }
+            return cell
         }
-        cell.layer.cornerRadius = 16
-        
-        if section == 0 {
-            cell.emojiLabel.text = emojies[indexPath.row]
-        } else if section == 1 {
-            cell.colorView.backgroundColor = colors[indexPath.row]
-            cell.colorView.layer.cornerRadius = 8
-        }
-        return cell
-    }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         2
@@ -535,43 +541,47 @@ extension CreateEventVC: UICollectionViewDataSource {
 }
 
 extension CreateEventVC: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let section = indexPath.section
-        let cell = collectionView.cellForItem(at: indexPath) as? EmojiAndColorCollectionViewCell
-        if section == 0 {
-            if selectedEmojiCell != nil {
-                collectionView.deselectItem(at: selectedEmojiCell!, animated: true)
-                collectionView.cellForItem(at: selectedEmojiCell!)?.backgroundColor = .white
+    func collectionView(
+        _ collectionView: UICollectionView,
+        didSelectItemAt indexPath: IndexPath) {
+            let section = indexPath.section
+            let cell = collectionView.cellForItem(at: indexPath) as? EmojiAndColorCollectionViewCell
+            if section == 0 {
+                if selectedEmojiCell != nil {
+                    collectionView.deselectItem(at: selectedEmojiCell!, animated: true)
+                    collectionView.cellForItem(at: selectedEmojiCell!)?.backgroundColor = .white
+                }
+                cell?.backgroundColor = .backgroundColor // поправила цвет эмодзи при его выборе
+                selectedEmoji = cell?.emojiLabel.text ?? ""
+                selectedEmojiCell = indexPath
+            } else if section == 1 {
+                if selectedColorCell != nil {
+                    collectionView.deselectItem(at: selectedColorCell!, animated: true)
+                    collectionView.cellForItem(at: selectedColorCell!)?.layer.borderWidth = 0
+                }
+                cell?.layer.borderWidth = 3
+                cell?.layer.cornerRadius = 8
+                cell?.layer.borderColor = cell?.colorView.backgroundColor?.withAlphaComponent(0.3).cgColor // рамка выделения цвета соответствует выбранному цвету 
+                selectedColor = cell?.colorView.backgroundColor ?? nil
+                selectedColorCell = indexPath
             }
-            cell?.backgroundColor = .backgroundColor // поправила цвет эмодзи при его выборе
-            selectedEmoji = cell?.emojiLabel.text ?? ""
-            selectedEmojiCell = indexPath
-        } else if section == 1 {
-            if selectedColorCell != nil {
-                collectionView.deselectItem(at: selectedColorCell!, animated: true)
-                collectionView.cellForItem(at: selectedColorCell!)?.layer.borderWidth = 0
-            }
-            cell?.layer.borderWidth = 3
-            cell?.layer.cornerRadius = 8
-            cell?.layer.borderColor = cell?.colorView.backgroundColor?.withAlphaComponent(0.3).cgColor // рамка выделения цвета соответствует выбранному цвету 
-            selectedColor = cell?.colorView.backgroundColor ?? nil
-            selectedColorCell = indexPath
         }
-    }
     
-    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        let cell = collectionView.cellForItem(at: indexPath) as? EmojiAndColorCollectionViewCell
-        collectionView.deselectItem(at: indexPath, animated: true)
-        cell?.backgroundColor = .white
-        cell?.layer.borderWidth = 0
-        if indexPath.section == 0 {
-            selectedEmoji = ""
-            selectedEmojiCell = nil
-        } else {
-            selectedColor = nil
-            selectedColorCell = nil
+    func collectionView(
+        _ collectionView: UICollectionView,
+        didDeselectItemAt indexPath: IndexPath) {
+            let cell = collectionView.cellForItem(at: indexPath) as? EmojiAndColorCollectionViewCell
+            collectionView.deselectItem(at: indexPath, animated: true)
+            cell?.backgroundColor = .white
+            cell?.layer.borderWidth = 0
+            if indexPath.section == 0 {
+                selectedEmoji = ""
+                selectedEmojiCell = nil
+            } else {
+                selectedColor = nil
+                selectedColorCell = nil
+            }
         }
-    }
 }
 
 extension CreateEventVC: UICollectionViewDelegateFlowLayout {
@@ -608,12 +618,12 @@ extension CreateEventVC: UICollectionViewDelegateFlowLayout {
         
         var id: String
         switch kind {
-        case UICollectionView.elementKindSectionHeader:
-            id = "header"
-        case UICollectionView.elementKindSectionFooter:
-            id = "footer"
-        default:
-            id = ""
+            case UICollectionView.elementKindSectionHeader:
+                id = "header"
+            case UICollectionView.elementKindSectionFooter:
+                id = "footer"
+            default:
+                id = ""
         }
         
         guard let view = emojiAndColorCollectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: id, for: indexPath) as? EmojiAndColorSupplementaryView else { return UICollectionReusableView() }

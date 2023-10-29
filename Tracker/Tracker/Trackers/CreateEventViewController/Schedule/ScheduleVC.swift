@@ -120,39 +120,47 @@ class ScheduleVC: UIViewController {
 
 extension ScheduleVC: UITableViewDataSource {
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return WeekDay.allCases.count
-    }
+    func tableView(
+        _ tableView: UITableView,
+        numberOfRowsInSection section: Int) -> Int {
+            return WeekDay.allCases.count
+        }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let weekDayCell = tableView.dequeueReusableCell(withIdentifier: WeekDayTableViewCell.identifier) as? WeekDayTableViewCell else {
-            return UITableViewCell()
+    func tableView(
+        _ tableView: UITableView,
+        cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+            guard let weekDayCell = tableView.dequeueReusableCell(withIdentifier: WeekDayTableViewCell.identifier) as? WeekDayTableViewCell else {
+                return UITableViewCell()
+            }
+            let weekDay = WeekDay.allCases[indexPath.row]
+            weekDayCell.delegate = self
+            //weekDayCell.contentView.backgroundColor = .backgroundColor
+            weekDayCell.selectionStyle = .none // убрала выделение ячеек серым при нажатии
+            weekDayCell.label.text = WeekDay.allCases[indexPath.row].rawValue
+            weekDayCell.weekDay = weekDay
+            weekDayCell.switchCell.isOn = schedule.contains(weekDay)
+            if indexPath.row == 6 {
+                weekDayCell.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: .greatestFiniteMagnitude)
+            } else {
+                weekDayCell.separatorInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
+            }
+            return weekDayCell
         }
-        let weekDay = WeekDay.allCases[indexPath.row]
-        weekDayCell.delegate = self
-        //weekDayCell.contentView.backgroundColor = .backgroundColor
-        weekDayCell.selectionStyle = .none // убрала выделение ячеек серым при нажатии
-        weekDayCell.label.text = WeekDay.allCases[indexPath.row].rawValue
-        weekDayCell.weekDay = weekDay
-        weekDayCell.switchCell.isOn = schedule.contains(weekDay)
-        if indexPath.row == 6 {
-            weekDayCell.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: .greatestFiniteMagnitude)
-        } else {
-            weekDayCell.separatorInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
-        }
-        return weekDayCell
-    }
 }
 
 extension ScheduleVC: UITableViewDelegate {
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 75
-    }
+    func tableView(
+        _ tableView: UITableView,
+        heightForRowAt indexPath: IndexPath) -> CGFloat {
+            return 75
+        }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-    }
+    func tableView(
+        _ tableView: UITableView,
+        didSelectRowAt indexPath: IndexPath) {
+            tableView.deselectRow(at: indexPath, animated: true)
+        }
 }
 
 extension ScheduleVC: WeekDayTableViewCellDelegate {

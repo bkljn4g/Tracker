@@ -46,11 +46,11 @@ final class WeekDayTableViewCell: UITableViewCell {
     
     private func setupLayout() {
         NSLayoutConstraint.activate([
-        label.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-        label.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-        
-        switchCell.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-        switchCell.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+            label.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            label.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+            
+            switchCell.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            switchCell.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
         ])
     }
     

@@ -8,11 +8,13 @@
 import UIKit
 
 protocol RegularOrIrregularEventVCDelegate: AnyObject {
-    func createTracker(_ tracker: Tracker, categoryName: String)
+    func createTracker(
+        _ tracker: Tracker,
+        categoryName: String)
 }
 
 class RegularOrIrregularEventVC: UIViewController {
-   
+    
     public weak var delegate: RegularOrIrregularEventVCDelegate?
     
     private lazy var label: UILabel = {
@@ -93,7 +95,9 @@ class RegularOrIrregularEventVC: UIViewController {
 
 extension RegularOrIrregularEventVC: CreateEventVCDelegate {
     
-    func createTracker(_ tracker: Tracker, categoryName: String) {
-        delegate?.createTracker(tracker, categoryName: categoryName)
-    }
+    func createTracker(
+        _ tracker: Tracker,
+        categoryName: String) {
+            delegate?.createTracker(tracker, categoryName: categoryName)
+        }
 }
