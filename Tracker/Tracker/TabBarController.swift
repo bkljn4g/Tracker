@@ -24,7 +24,7 @@ class TabBarController: UITabBarController {
         let trackersViewController = UINavigationController(rootViewController: TrackersVC())
         trackersViewController.tabBarItem.image = UIImage(named: "recordCircle")
         
-        let statisticsViewController = UINavigationController(rootViewController: StatisticsViewController())
+        let statisticsViewController = UINavigationController(rootViewController: StatisticsVC())
         statisticsViewController.tabBarItem.image = UIImage(named: "hare")
         statisticsViewController.title = NSLocalizedString("statistics", tableName: "LocalizableString", comment: "statistics")
         
