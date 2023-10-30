@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class OnboardingVC: UIPageViewController, UIPageViewControllerDelegate, UIPageViewControllerDataSource {
+final class OnboardingVC: UIPageViewController {
     
     private lazy var pages: [UIViewController] = {
         return[blueVC, redVC]
@@ -17,7 +17,9 @@ final class OnboardingVC: UIPageViewController, UIPageViewControllerDelegate, UI
     private lazy var redVC: UIViewController = {
         let redVC = UIViewController()
         let image = "onboardingRed"
-        redVC.view.addBackground(image: image)
+        let imageView = UIImageView(frame: redVC.view.frame)
+        imageView.image = UIImage(named: image)
+        redVC.view.addSubview(imageView)
         return redVC
     }()
     
@@ -25,7 +27,9 @@ final class OnboardingVC: UIPageViewController, UIPageViewControllerDelegate, UI
     private lazy var blueVC: UIViewController = {
         let blueVC = UIViewController()
         let image = "onboardingBlue"
-        blueVC.view.addBackground(image: image)
+        let imageView = UIImageView(frame: blueVC.view.frame)
+        imageView.image = UIImage(named: image)
+        blueVC.view.addSubview(imageView)
         return blueVC
     }()
     
@@ -93,6 +97,8 @@ final class OnboardingVC: UIPageViewController, UIPageViewControllerDelegate, UI
         super.viewDidLoad()
         dataSource = self
         delegate = self
+        blueVC.overrideUserInterfaceStyle = .light
+        redVC.overrideUserInterfaceStyle = .light
         
         if let first = pages.first { setViewControllers([first], direction: .forward, animated: true, completion: nil)
         }
@@ -150,9 +156,11 @@ final class OnboardingVC: UIPageViewController, UIPageViewControllerDelegate, UI
         
         UserDefaults.standard.set(true, forKey: "isOnbordingShown") // отслеживает показ нажатия экрана Онбординга, ставит флаг в юзер дефолтс (экран был показан)
     }
-    
-    // MARK: - UIPageViewControllerDataSource
-    
+}
+
+// MARK: - UIPageViewControllerDataSource
+
+extension OnboardingVC: UIPageViewControllerDataSource {
     // определяет предыдущую страницу которая должна отображаться при пролистывании
     func pageViewController(
         _ pageViewController: UIPageViewController,
@@ -184,9 +192,11 @@ final class OnboardingVC: UIPageViewController, UIPageViewControllerDelegate, UI
         }
         return pages[nextIndex]
     }
-    
-    // MARK: - UIPageViewControllerDelegate
-    
+}
+
+// MARK: - UIPageViewControllerDelegate
+
+extension OnboardingVC: UIPageViewControllerDelegate {
     // обновление индикатора текущей страницы
     func pageViewController(
         _ pageViewController: UIPageViewController,
@@ -198,4 +208,4 @@ final class OnboardingVC: UIPageViewController, UIPageViewControllerDelegate, UI
                 pageControl.currentPage = currentIndex
             }
         }
-}
+    }
