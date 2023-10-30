@@ -130,12 +130,13 @@ final class TrackersCollectionViewCell: UICollectionViewCell {
             emojiLabel.centerYAnchor.constraint(equalTo: emojiView.centerYAnchor),
             
             // лейбл с текстом привычки в ячейке события
+            trackerNameLabel.topAnchor.constraint(equalTo: trackerView.topAnchor, constant: 44),
             trackerNameLabel.trailingAnchor.constraint(equalTo: trackerView.trailingAnchor, constant: -12),
             trackerNameLabel.leadingAnchor.constraint(equalTo: trackerView.leadingAnchor, constant: 12),
-            trackerNameLabel.bottomAnchor.constraint(equalTo: trackerView.bottomAnchor, constant: -12),
+            trackerNameLabel.heightAnchor.constraint(equalToConstant: 34),
             
             // кнопка + под ячейкой события
-            checkButton.topAnchor.constraint(equalTo: trackerView.bottomAnchor, constant: 8),
+            checkButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -16),
             checkButton.trailingAnchor.constraint(equalTo: trackerView.trailingAnchor, constant: -12),
             checkButton.heightAnchor.constraint(equalToConstant: 34),
             checkButton.widthAnchor.constraint(equalToConstant: 34 ),
