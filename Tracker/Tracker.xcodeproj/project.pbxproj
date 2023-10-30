@@ -45,6 +45,11 @@
 		89D760EB2AEDB5ED00ED4704 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89D760EA2AEDB5ED00ED4704 /* UIView+Extension.swift */; };
 		89D761012AF0050C00ED4704 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 89D761032AF0050C00ED4704 /* Localizable.strings */; };
 		89D761072AF0089100ED4704 /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = 89D761092AF0089100ED4704 /* Localizable.stringsdict */; };
+		89D7610C2AF0372700ED4704 /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89D7610B2AF0372700ED4704 /* View+Extension.swift */; };
+		89D7610E2AF0439100ED4704 /* FiltersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89D7610D2AF0439000ED4704 /* FiltersVC.swift */; };
+		89D761102AF0442200ED4704 /* Filters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89D7610F2AF0442200ED4704 /* Filters.swift */; };
+		89D761122AF0449300ED4704 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89D761112AF0449300ED4704 /* Event.swift */; };
+		89D761142AF044BC00ED4704 /* Items.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89D761132AF044BC00ED4704 /* Items.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -90,6 +95,11 @@
 		89D761042AF0052400ED4704 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		89D761082AF0089100ED4704 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = en; path = en.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
 		89D7610A2AF0089500ED4704 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = ru; path = ru.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
+		89D7610B2AF0372700ED4704 /* View+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
+		89D7610D2AF0439000ED4704 /* FiltersVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersVC.swift; sourceTree = "<group>"; };
+		89D7610F2AF0442200ED4704 /* Filters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filters.swift; sourceTree = "<group>"; };
+		89D761112AF0449300ED4704 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		89D761132AF044BC00ED4704 /* Items.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Items.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +155,9 @@
 			isa = PBXGroup;
 			children = (
 				8912D7512A94C7AC00ECAFBB /* Weekday.swift */,
+				89D7610F2AF0442200ED4704 /* Filters.swift */,
+				89D761112AF0449300ED4704 /* Event.swift */,
+				89D761132AF044BC00ED4704 /* Items.swift */,
 			);
 			path = Enum;
 			sourceTree = "<group>";
@@ -166,6 +179,7 @@
 				8958F53F2AD994640032CA75 /* HideKeyboard+Extension.swift */,
 				895055062AE6A916005C98BE /* String+extension.swift */,
 				89D760EA2AEDB5ED00ED4704 /* UIView+Extension.swift */,
+				89D7610B2AF0372700ED4704 /* View+Extension.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -241,6 +255,7 @@
 				8912D76F2A94C9FD00ECAFBB /* TrackersVC.swift */,
 				8912D7612A94C8D100ECAFBB /* TrackersCollectionViewCell.swift */,
 				8912D7632A94C8EE00ECAFBB /* TrackersSupplementaryView.swift */,
+				89D7610D2AF0439000ED4704 /* FiltersVC.swift */,
 			);
 			path = TrackersViewController;
 			sourceTree = "<group>";
@@ -399,6 +414,7 @@
 				8912D75E2A94C86500ECAFBB /* Date+Extension.swift in Sources */,
 				8912D7772A94CA7600ECAFBB /* StatisticsVC.swift in Sources */,
 				8912D75C2A94C85000ECAFBB /* Color+Extension.swift in Sources */,
+				89D7610E2AF0439100ED4704 /* FiltersVC.swift in Sources */,
 				895055052AE6A55B005C98BE /* DatabaseManager.swift in Sources */,
 				8912D7202A94C68C00ECAFBB /* TabBarController.swift in Sources */,
 				8912D7692A94C96100ECAFBB /* CategoryTableViewCell.swift in Sources */,
@@ -406,22 +422,26 @@
 				8989DAF22AEC6DA800F4F685 /* CreateCategoryVC.swift in Sources */,
 				8912D71C2A94C68C00ECAFBB /* AppDelegate.swift in Sources */,
 				8989DAEB2AEB262500F4F685 /* OnboardingVC.swift in Sources */,
+				89D761122AF0449300ED4704 /* Event.swift in Sources */,
 				8958F5402AD994640032CA75 /* HideKeyboard+Extension.swift in Sources */,
 				895054F82AE6855D005C98BE /* EmojiAndColorCollectionViewCell.swift in Sources */,
 				895055012AE6A413005C98BE /* TrackerCategoryStore.swift in Sources */,
 				8912D7622A94C8D100ECAFBB /* TrackersCollectionViewCell.swift in Sources */,
 				8912D71E2A94C68C00ECAFBB /* SceneDelegate.swift in Sources */,
+				89D7610C2AF0372700ED4704 /* View+Extension.swift in Sources */,
 				8912D7592A94C82600ECAFBB /* TrackerRecord.swift in Sources */,
 				8912D7702A94C9FD00ECAFBB /* TrackersVC.swift in Sources */,
 				89BDA0CB2AE738AE000B8C6B /* Tracker.xcdatamodeld in Sources */,
 				8912D7642A94C8EE00ECAFBB /* TrackersSupplementaryView.swift in Sources */,
 				8912D7522A94C7AC00ECAFBB /* Weekday.swift in Sources */,
+				89D761142AF044BC00ED4704 /* Items.swift in Sources */,
 				8912D7552A94C7E100ECAFBB /* Tracker.swift in Sources */,
 				895055032AE6A466005C98BE /* TrackerRecordStore.swift in Sources */,
 				895054F62AE68299005C98BE /* EmojiAndColorSupplementaryView.swift in Sources */,
 				895055072AE6A916005C98BE /* String+extension.swift in Sources */,
 				8989DAF92AEC768100F4F685 /* CategoryListViewModel.swift in Sources */,
 				8912D7722A94CA2600ECAFBB /* RegularOrIrregularEventVC.swift in Sources */,
+				89D761102AF0442200ED4704 /* Filters.swift in Sources */,
 				895054FF2AE6A3CB005C98BE /* TrackerStore.swift in Sources */,
 				8989DAF42AEC713800F4F685 /* EditCategoryVC.swift in Sources */,
 			);
