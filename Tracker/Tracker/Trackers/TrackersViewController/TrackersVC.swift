@@ -434,7 +434,7 @@ extension TrackersVC: UICollectionViewDelegateFlowLayout {
         if indexPath.section == 0 {
             view.titleLabel.text = "Закрепленные"
         } else {
-            view.titleLabel.text = visibleCategories[indexPath.section].name
+            view.titleLabel.text = visibleCategories[indexPath.section - 1].name
         }
         return view
     }
