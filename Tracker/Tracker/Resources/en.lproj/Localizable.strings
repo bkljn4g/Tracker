@@ -1,0 +1,15 @@
+/* 
+  Localizable.strings
+  Tracker
+
+  Created by Anka on 30.10.2023.
+  
+*/
+
+"trackersTitle" = "Trackers";
+"statistics" = "Statistics";
+"filters" = "Filters";
+"stubTitle" = "What will we track?";
+"nothingFound" = "Nothing found";
+"search" = "Search";
+"cancel" = "Cancel";

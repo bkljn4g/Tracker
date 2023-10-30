@@ -1,0 +1,15 @@
+/* 
+  Localizable.strings
+  Tracker
+
+  Created by Anka on 30.10.2023.
+  
+*/
+
+"trackersTitle" = "Трекеры";
+"statistics" = "Статистика";
+"filters" = "Фильтры";
+"stubTitle" = "Что будем отслеживать?";
+"nothingFound" = "Ничего не найдено";
+"search" = "Поиск";
+"cancel" = "Отмена";
