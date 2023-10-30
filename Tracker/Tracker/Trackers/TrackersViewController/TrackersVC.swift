@@ -11,13 +11,20 @@ final class TrackersVC: UIViewController {
     
     private let trackerCategoryStore = TrackerCategoryStore()
     private let trackerRecordStore = TrackerRecordStore()
-    
+    private let trackerStore = TrackerStore()
     private var categories: [TrackerCategoryModel] = [] // категории и трекеры в них
     private var completedTrackers: [TrackerRecord] = [] // трекеры, которые были «выполнены» в выбранную дату
     private var visibleCategories: [TrackerCategoryModel] = [] // отображается при поиске и/или изменении дня недели
+
     private var currentDate: Int?
     private var searchText: String = ""
     private var widthAnchor: NSLayoutConstraint?
+    private let titleTrackers = NSLocalizedString("trackersTitle", tableName: "LocalizableString", comment: "Title Trackers")
+    private let filtersButtonTitle = NSLocalizedString("filters", tableName: "LocalizableString", comment: "Title Trackers")
+    private let stubTitle = NSLocalizedString("stubTitle", tableName: "LocalizableString", comment: "stubTitle")
+    private let nothingFound = NSLocalizedString("nothingFound", tableName: "LocalizableString", comment: "nothingFound")
+    private let search = NSLocalizedString("search", tableName: "LocalizableString", comment: "search")
+    private let cancel = NSLocalizedString("cancel", tableName: "LocalizableString", comment: "cancel")
     
     private lazy var dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
