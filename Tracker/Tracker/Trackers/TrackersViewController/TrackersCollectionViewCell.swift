@@ -16,6 +16,9 @@ final class TrackersCollectionViewCell: UICollectionViewCell {
     static let identifier = "trackersCollectionViewCell"
     
     public weak var delegate: TrackersCollectionViewCellDelegate?
+    public var menuView: UIView {
+        return trackerView
+    }
     private var isCompletedToday: Bool = false
     private var trackerId: UUID? = nil
     private let limitNumberOfCharacters = 38
@@ -26,6 +29,14 @@ final class TrackersCollectionViewCell: UICollectionViewCell {
         trackerView.layer.cornerRadius = 16
         trackerView.translatesAutoresizingMaskIntoConstraints = false
         return trackerView
+    }()
+    
+    private lazy var pinImageView: UIImageView = {
+        let image = UIImageView()
+        image.image = UIImage(named: "pinSquare")
+        image.isHidden = false
+        image.translatesAutoresizingMaskIntoConstraints = false
+        return image
     }()
     
     // вью на которой лежит эмодзи
@@ -51,9 +62,9 @@ final class TrackersCollectionViewCell: UICollectionViewCell {
     // лейбл названия трекера
     private lazy var trackerNameLabel: UILabel = {
         let trackerNameLabel = UILabel()
-        trackerNameLabel.font = .systemFont(ofSize: 12, weight: .medium) // поменяла размер шрифта
-        trackerNameLabel.textColor = .white // поменяла цвет шрифта (black - white)
-        trackerNameLabel.numberOfLines = 0
+        trackerNameLabel.font = .systemFont(ofSize: 12, weight: .medium)
+        trackerNameLabel.textColor = .ypWhite
+        trackerNameLabel.numberOfLines = 2
         trackerNameLabel.text = "Название трекера"
         trackerNameLabel.translatesAutoresizingMaskIntoConstraints = false
         return trackerNameLabel
@@ -64,7 +75,7 @@ final class TrackersCollectionViewCell: UICollectionViewCell {
         let resultLabel = UILabel()
         resultLabel.text = "0 дней"
         resultLabel.textColor = .ypBlack
-        resultLabel.font = .systemFont(ofSize: 12, weight: .medium) // поменяла шрифт и его размер
+        resultLabel.font = .systemFont(ofSize: 12, weight: .medium)
         resultLabel.translatesAutoresizingMaskIntoConstraints = false
         return resultLabel
     }()
@@ -72,10 +83,10 @@ final class TrackersCollectionViewCell: UICollectionViewCell {
     // кнопка выполнения привычки
     private lazy var checkButton: UIButton = {
         let checkButton = UIButton()
-        checkButton.setImage(UIImage(named: "plus"), for: .normal) // добавила картинку нормального размера
+        checkButton.setImage(UIImage(named: "plus"), for: .normal)
         checkButton.addTarget(self, action: #selector(didTapCheckButton), for: .touchUpInside)
-        checkButton.tintColor = .white
-        checkButton.backgroundColor = .white
+        checkButton.tintColor = .ypWhite
+        checkButton.backgroundColor = .ypWhite
         checkButton.layer.cornerRadius = 17
         checkButton.translatesAutoresizingMaskIntoConstraints = false
         return checkButton
@@ -85,6 +96,7 @@ final class TrackersCollectionViewCell: UICollectionViewCell {
         super.init(frame: frame)
         
         contentView.addSubview(trackerView)
+        trackerView.addSubview(pinImageView)
         contentView.addSubview(resultLabel)
         contentView.addSubview(checkButton)
         trackerView.addSubview(emojiView)
@@ -98,6 +110,14 @@ final class TrackersCollectionViewCell: UICollectionViewCell {
             trackerView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             trackerView.topAnchor.constraint(equalTo: contentView.topAnchor),
             trackerView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            trackerView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -58),
+            trackerView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            
+            // пин
+            pinImageView.heightAnchor.constraint(equalToConstant: 12),
+            pinImageView.widthAnchor.constraint(equalToConstant: 8),
+            pinImageView.topAnchor.constraint(equalTo: trackerView.topAnchor, constant: 18),
+            pinImageView.trailingAnchor.constraint(equalTo: trackerView.trailingAnchor, constant: -12),
             
             // мини-вьюшка на которой лежит эмодзи
             emojiView.heightAnchor.constraint(equalToConstant: 24),
@@ -146,7 +166,8 @@ final class TrackersCollectionViewCell: UICollectionViewCell {
         emoji: String,
         isCompleted: Bool,
         isEnabled: Bool,
-        completedCount: Int
+        completedCount: Int,
+        pinned: Bool
     ) {
         
         trackerId = id
@@ -154,6 +175,7 @@ final class TrackersCollectionViewCell: UICollectionViewCell {
         trackerView.backgroundColor = color
         checkButton.backgroundColor = color
         emojiLabel.text = emoji
+        pinImageView.isHidden = !pinned
         isCompletedToday = isCompleted
         checkButton.setImage(isCompletedToday ? UIImage(systemName: "checkmark")! : UIImage(systemName: "plus")!, for: .normal)
         

@@ -321,8 +321,6 @@ final class TrackersVC: UIViewController {
             try? self?.trackerStore.togglePinTracker(tracker)
         }
         let rename = UIAction(title: "Редактировать", image: nil) { [weak self] action in
-            self?.analyticsService.report(event: .click, params: ["Screen" : "Main", "Item" : Items.edit.rawValue])
-            print("Event: edit")
             let editTrackerVC = CreateEventVC(.regular)
             editTrackerVC.editTracker = tracker
             editTrackerVC.editTrackerDate = self?.datePicker.date ?? Date()
@@ -331,8 +329,6 @@ final class TrackersVC: UIViewController {
         }
         let delete = UIAction(title: "Удалить", image: nil, attributes: .destructive) { [weak self] action in
             self?.actionSheet(trackerToDelete: tracker)
-            self?.analyticsService.report(event: .click, params: ["Screen" : "Main", "Item" : Items.delete.rawValue])
-            print("Event: delete")
         }
         return UIMenu(children: [pin, rename, delete])
     }
@@ -439,8 +435,8 @@ extension TrackersVC: UICollectionViewDelegateFlowLayout {
             view.titleLabel.text = "Закрепленные"
         } else {
             view.titleLabel.text = visibleCategories[indexPath.section].name
-            return view
         }
+        return view
     }
     
     func collectionView(_ collectionView: UICollectionView,
