@@ -21,7 +21,7 @@ final class TrackersVC: UIViewController {
     private var searchText: String = ""
     private var widthAnchor: NSLayoutConstraint?
     private var selectedFilter: Filter?
-    
+    private let colors = Colors()
     
     private let titleTrackers = NSLocalizedString("trackersTitle", tableName: "LocalizableString", comment: "Title Trackers")
     private let filtersButtonTitle = NSLocalizedString("filters", tableName: "LocalizableString", comment: "Title Trackers")
@@ -177,6 +177,13 @@ final class TrackersVC: UIViewController {
         widthAnchor?.constant = 0
         setupLayout()
         searchText = ""
+    }
+    
+    @objc private func filtersButtonAction() {
+        let filtersVC = FiltersVC()
+        filtersVC.delegate = self
+        filtersVC.selectedFilter = selectedFilter
+        present(filtersVC, animated: true)
     }
     
     private func addSubviews() {
