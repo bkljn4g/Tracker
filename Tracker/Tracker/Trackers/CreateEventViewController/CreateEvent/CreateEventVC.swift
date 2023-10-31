@@ -92,7 +92,7 @@ class CreateEventVC: UIViewController {
     
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
-        scrollView.backgroundColor = .white
+        scrollView.backgroundColor = .ypWhite
         scrollView.frame = view.bounds
         scrollView.contentSize = contentSize
         scrollView.translatesAutoresizingMaskIntoConstraints = false
@@ -100,7 +100,7 @@ class CreateEventVC: UIViewController {
     }()
     
     private var contentSize: CGSize {
-        CGSize(width: view.frame.width, height: view.frame.height + 400)
+        CGSize(width: view.frame.width, height: view.frame.height + 450)
     }
     
     private lazy var titleBackgroundView: UIView = {
@@ -394,7 +394,6 @@ class CreateEventVC: UIViewController {
             }
             guard let tracker = tracker else { return }
             delegate?.createTracker(tracker, categoryName: category?.name ?? "Без категории")
-            dismiss(animated: true)
         } else {
             guard let editTracker = editTracker else { return }
             
@@ -407,6 +406,7 @@ class CreateEventVC: UIViewController {
                 editableTracker: editTracker
             )
         }
+        dismiss(animated: true)
     }
     
     @objc private func cancelButtonAction() {
@@ -443,7 +443,7 @@ class CreateEventVC: UIViewController {
         view.addSubview(scrollView)
         view.addSubview(titleBackgroundView)
         titleBackgroundView.addSubview(label)
-        scrollView.addSubview(completedDaysLabel)
+        scrollView.addSubview(completedDaysBackgroundView)
         completedDaysBackgroundView.addSubview(plusButton)
         completedDaysBackgroundView.addSubview(minusButton)
         completedDaysBackgroundView.addSubview(completedDaysLabel)
@@ -480,8 +480,8 @@ class CreateEventVC: UIViewController {
             label.heightAnchor.constraint(equalToConstant: 25),
             label.widthAnchor.constraint(equalToConstant: 250),
             
-            scrollView.topAnchor.constraint(equalTo: titleBackgroundView.topAnchor),
-            scrollView.bottomAnchor.constraint(equalTo: buttonBackgroundView.bottomAnchor),
+            scrollView.topAnchor.constraint(equalTo: titleBackgroundView.bottomAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: buttonBackgroundView.topAnchor),
             scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             
@@ -513,8 +513,8 @@ class CreateEventVC: UIViewController {
             heightAnchor!,
             
             createEventView.topAnchor.constraint(equalTo: errorLabel.bottomAnchor, constant: 16),
-            createEventView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            createEventView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+            createEventView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 16),
+            createEventView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -16),
             createEventView.heightAnchor.constraint(equalToConstant: createEventViewHeight),
             
             categoryButton.topAnchor.constraint(equalTo: createEventView.topAnchor),
@@ -523,11 +523,11 @@ class CreateEventVC: UIViewController {
             categoryButton.leadingAnchor.constraint(equalTo: createEventView.leadingAnchor),
             
             emojiAndColorCollectionView.topAnchor.constraint(equalTo: createEventView.bottomAnchor, constant: 22),
-            emojiAndColorCollectionView.bottomAnchor.constraint(equalTo: buttonBackgroundView.topAnchor),
+            emojiAndColorCollectionView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
             emojiAndColorCollectionView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 16),
             emojiAndColorCollectionView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -16),
             emojiAndColorCollectionView.widthAnchor.constraint(equalToConstant: scrollView.bounds.width - 32),
-            emojiAndColorCollectionView.heightAnchor.constraint(equalToConstant: 400),
+            emojiAndColorCollectionView.heightAnchor.constraint(equalToConstant: 450),
             
             buttonBackgroundView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             buttonBackgroundView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
@@ -537,14 +537,14 @@ class CreateEventVC: UIViewController {
             forwardImage1.trailingAnchor.constraint(equalTo: categoryButton.trailingAnchor, constant: -24),
             forwardImage1.centerYAnchor.constraint(equalTo: categoryButton.centerYAnchor),
             
-            cancelButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            cancelButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -34),
-            cancelButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -(view.frame.width/2) - 4),
+            cancelButton.leadingAnchor.constraint(equalTo: buttonBackgroundView.leadingAnchor, constant: 20),
+            cancelButton.bottomAnchor.constraint(equalTo: buttonBackgroundView.safeAreaLayoutGuide.bottomAnchor, constant: -10),
+            cancelButton.widthAnchor.constraint(equalToConstant: 161),
             cancelButton.heightAnchor.constraint(equalToConstant: 60),
             
-            createEventButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            createEventButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -34),
-            createEventButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: (view.frame.width/2) + 4),
+            createEventButton.trailingAnchor.constraint(equalTo: buttonBackgroundView.trailingAnchor, constant: -20),
+            createEventButton.bottomAnchor.constraint(equalTo: buttonBackgroundView.safeAreaLayoutGuide.bottomAnchor, constant: -10),
+            createEventButton.widthAnchor.constraint(equalToConstant: 161),
             createEventButton.heightAnchor.constraint(equalToConstant: 60)
         ]
         
@@ -553,7 +553,7 @@ class CreateEventVC: UIViewController {
                 separatorView.centerYAnchor.constraint(equalTo: createEventView.centerYAnchor),
                 separatorView.trailingAnchor.constraint(equalTo: createEventView.trailingAnchor, constant: -10),
                 separatorView.leadingAnchor.constraint(equalTo: createEventView.leadingAnchor, constant: 10),
-                separatorView.heightAnchor.constraint(equalToConstant: 1),
+                separatorView.heightAnchor.constraint(equalToConstant: 0.5),
                 
                 scheduleButton.topAnchor.constraint(equalTo: separatorView.bottomAnchor),
                 scheduleButton.bottomAnchor.constraint(equalTo: createEventView.bottomAnchor),
