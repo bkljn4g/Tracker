@@ -30,7 +30,7 @@ class ScheduleVC: UIViewController {
     private lazy var enterButton: UIButton = {
         let button = UIButton(type: .custom)
         button.setTitle("Готово", for: .normal)
-        button.titleLabel?.textColor = .ypWhite
+        button.setTitleColor(.ypWhite, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .medium)
         button.backgroundColor = .ypBlack
         button.layer.cornerRadius = 16
@@ -38,6 +38,13 @@ class ScheduleVC: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
+    
+    private lazy var buttonBackgroundView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .ypWhite
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+        }()
     
     // таблица с днями недели
     private lazy var tableView: UITableView = {
@@ -48,7 +55,7 @@ class ScheduleVC: UIViewController {
         tableView.layer.cornerRadius = 16
         tableView.separatorColor = .ypGray
         tableView.backgroundColor = .ypWhite
-        tableView.frame = CGRect(x: 16, y: 16, width: Int(width), height: Int(height)) // отображение всех дней недели при запуске
+        tableView.frame = CGRect(x: 16, y: 16, width: Int(width), height: Int(height))
         tableView.dataSource = self
         tableView.delegate = self
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -66,13 +73,6 @@ class ScheduleVC: UIViewController {
         scrollView.contentSize = contentSize
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         return scrollView
-    }()
-    
-    private lazy var buttonBackgroundView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .ypWhite
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
     }()
     
     override func viewDidLoad() {
@@ -135,8 +135,8 @@ extension ScheduleVC: UITableViewDataSource {
             }
             let weekDay = WeekDay.allCases[indexPath.row]
             weekDayCell.delegate = self
-            //weekDayCell.contentView.backgroundColor = .backgroundColor
-            weekDayCell.selectionStyle = .none // убрала выделение ячеек серым при нажатии
+            weekDayCell.contentView.backgroundColor = .backgroundColor
+            weekDayCell.selectionStyle = .none
             weekDayCell.label.text = WeekDay.allCases[indexPath.row].rawValue
             weekDayCell.weekDay = weekDay
             weekDayCell.switchCell.isOn = schedule.contains(weekDay)
