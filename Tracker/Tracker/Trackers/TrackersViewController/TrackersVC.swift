@@ -23,12 +23,12 @@ final class TrackersVC: UIViewController {
     private var selectedFilter: Filter?
     private let colors = Colors()
     
-    private let titleTrackers = NSLocalizedString("trackersTitle", tableName: "LocalizableString", comment: "Title Trackers")
-    private let filtersButtonTitle = NSLocalizedString("filters", tableName: "LocalizableString", comment: "Title Trackers")
-    private let stubTitle = NSLocalizedString("stubTitle", tableName: "LocalizableString", comment: "stubTitle")
-    private let nothingFound = NSLocalizedString("nothingFound", tableName: "LocalizableString", comment: "nothingFound")
-    private let search = NSLocalizedString("search", tableName: "LocalizableString", comment: "search")
-    private let cancel = NSLocalizedString("cancel", tableName: "LocalizableString", comment: "cancel")
+    private let titleTrackers = NSLocalizedString("trackersTitle", comment: "")
+    private let filtersButtonTitle = NSLocalizedString("filters", comment: "")
+    private let stubTitle = NSLocalizedString("stubTitle", comment: "")
+    private let nothingFound = NSLocalizedString("nothingFound", comment: "")
+    private let search = NSLocalizedString("search", comment: "")
+    private let cancel = NSLocalizedString("cancel", comment: "")
     
     private lazy var dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
@@ -495,7 +495,7 @@ extension TrackersVC {
     
     @objc func textFieldChanged() {
         searchText = searchTextField.text ?? ""
-        imageView.image = searchText.isEmpty ? UIImage(named: "star") : UIImage(named: "notFound") // смена заглушки при поиске
+        imageView.image = searchText.isEmpty ? UIImage(named: "star") : UIImage(named: "notFound")
         label.text = searchText.isEmpty ? stubTitle : nothingFound
         widthAnchor?.constant = 85
         updateCategories(with: trackerCategoryStore.predicateFetch(nameTracker: searchText))

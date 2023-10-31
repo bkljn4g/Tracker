@@ -26,7 +26,7 @@ class TabBarController: UITabBarController {
         
         let statisticsViewController = UINavigationController(rootViewController: StatisticsVC())
         statisticsViewController.tabBarItem.image = UIImage(named: "hare")
-        statisticsViewController.title = NSLocalizedString("statistics", tableName: "LocalizableString", comment: "statistics")
+        statisticsViewController.title = NSLocalizedString("statistics", comment: "")
         
         let tabBarController = TabBarController()
         tabBarController.viewControllers = [trackersViewController, statisticsViewController]

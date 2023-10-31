@@ -6,10 +6,10 @@
   
 */
 
-"trackersTitle" = "Trackers";
-"statistics" = "Statistics";
-"filters" = "Filters";
-"stubTitle" = "What will we track?";
-"nothingFound" = "Nothing found";
-"search" = "Search";
-"cancel" = "Cancel";
+trackersTitle = "Trackers";
+statistics = "Statistics";
+filters = "Filters";
+stubTitle = "What will we track?";
+nothingFound = "Nothing found";
+search = "Search";
+cancel = "Cancel";

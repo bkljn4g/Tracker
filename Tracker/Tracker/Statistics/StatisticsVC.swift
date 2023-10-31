@@ -16,7 +16,7 @@ class StatisticsVC: UIViewController {
     private lazy var titleStatistics: UILabel = {
         let label = UILabel()
         label.textColor = .ypBlack
-        label.text = NSLocalizedString("statistics", tableName: "LocalizableString", comment: "statistics")
+        label.text = NSLocalizedString("statistics", comment: "")
         label.font = UIFont.systemFont(ofSize: 34, weight: .bold)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
