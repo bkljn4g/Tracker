@@ -9,6 +9,7 @@ import UIKit
 
 final class OnboardingVC: UIPageViewController {
     
+    let analyticsService = AnalyticsService()
     private lazy var pages: [UIViewController] = {
         return[blueVC, redVC]
     }()

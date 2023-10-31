@@ -15,6 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
     ) -> Bool {
+        AnalyticsService.activate()
         return true
     }
     
@@ -34,4 +35,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
 }
 
+// API-key Yandex Metrica 7f7a93fc-44bc-4a98-a962-12afc2009d81
 
