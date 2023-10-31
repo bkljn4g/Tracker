@@ -50,6 +50,7 @@
 		89D761102AF0442200ED4704 /* Filters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89D7610F2AF0442200ED4704 /* Filters.swift */; };
 		89D761122AF0449300ED4704 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89D761112AF0449300ED4704 /* Event.swift */; };
 		89D761142AF044BC00ED4704 /* Items.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89D761132AF044BC00ED4704 /* Items.swift */; };
+		89D761182AF120D500ED4704 /* TextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89D761172AF120D500ED4704 /* TextField+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -100,6 +101,7 @@
 		89D7610F2AF0442200ED4704 /* Filters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filters.swift; sourceTree = "<group>"; };
 		89D761112AF0449300ED4704 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		89D761132AF044BC00ED4704 /* Items.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Items.swift; sourceTree = "<group>"; };
+		89D761172AF120D500ED4704 /* TextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "TextField+Extension.swift"; path = "../../../../../../../баги/Tracker/Helper/TextField+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -180,6 +182,7 @@
 				895055062AE6A916005C98BE /* String+extension.swift */,
 				89D760EA2AEDB5ED00ED4704 /* UIView+Extension.swift */,
 				89D7610B2AF0372700ED4704 /* View+Extension.swift */,
+				89D761172AF120D500ED4704 /* TextField+Extension.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -418,6 +421,7 @@
 				895055052AE6A55B005C98BE /* DatabaseManager.swift in Sources */,
 				8912D7202A94C68C00ECAFBB /* TabBarController.swift in Sources */,
 				8912D7692A94C96100ECAFBB /* CategoryTableViewCell.swift in Sources */,
+				89D761182AF120D500ED4704 /* TextField+Extension.swift in Sources */,
 				8912D7572A94C80A00ECAFBB /* TrackerCategoryModel.swift in Sources */,
 				8989DAF22AEC6DA800F4F685 /* CreateCategoryVC.swift in Sources */,
 				8912D71C2A94C68C00ECAFBB /* AppDelegate.swift in Sources */,

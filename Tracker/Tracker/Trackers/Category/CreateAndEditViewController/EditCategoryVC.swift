@@ -73,6 +73,7 @@ final class EditCategoryVC: UIViewController {
         textField.becomeFirstResponder()
         addSubviews()
         setupLayout()
+        addTapGestureToHideKeyboard(for: view)
     }
     
     private func addSubviews() {

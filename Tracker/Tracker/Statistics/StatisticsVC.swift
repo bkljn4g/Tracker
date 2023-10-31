@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class StatisticsVC: UIViewController {
+class StatisticsVC: UIViewController {
     
     private let colors = Colors()
     private let trackerRecordStore = TrackerRecordStore()
