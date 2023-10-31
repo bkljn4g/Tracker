@@ -12,7 +12,7 @@ protocol ScheduleVCDelegate: AnyObject {
 }
 
 class ScheduleVC: UIViewController {
-    
+    private let colors = Colors()
     public weak var delegate: ScheduleVCDelegate?
     var schedule: [WeekDay] = []
     
@@ -21,7 +21,7 @@ class ScheduleVC: UIViewController {
         let label = UILabel()
         label.textColor = .ypBlack
         label.text = "Расписание"
-        label.font = .systemFont(ofSize: 16, weight: .medium) // поменяла шрифт на .medium
+        label.font = .systemFont(ofSize: 16, weight: .medium)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -30,8 +30,8 @@ class ScheduleVC: UIViewController {
     private lazy var enterButton: UIButton = {
         let button = UIButton(type: .custom)
         button.setTitle("Готово", for: .normal)
-        button.titleLabel?.textColor = .white
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .medium) // поменяла шрифт на .medium
+        button.titleLabel?.textColor = .ypWhite
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .medium)
         button.backgroundColor = .ypBlack
         button.layer.cornerRadius = 16
         button.addTarget(self, action: #selector(enterButtonAction), for: .touchUpInside)
@@ -47,7 +47,8 @@ class ScheduleVC: UIViewController {
         tableView.register(WeekDayTableViewCell.self, forCellReuseIdentifier: WeekDayTableViewCell.identifier)
         tableView.layer.cornerRadius = 16
         tableView.separatorColor = .ypGray
-        tableView.frame = CGRect(x: 0, y: 0, width: Int(width), height: 525) // отображение всех дней недели при запуске
+        tableView.backgroundColor = .ypWhite
+        tableView.frame = CGRect(x: 16, y: 16, width: Int(width), height: Int(height)) // отображение всех дней недели при запуске
         tableView.dataSource = self
         tableView.delegate = self
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -60,7 +61,7 @@ class ScheduleVC: UIViewController {
     
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
-        scrollView.backgroundColor = .white
+        scrollView.backgroundColor = .ypWhite
         scrollView.frame = view.bounds
         scrollView.contentSize = contentSize
         scrollView.translatesAutoresizingMaskIntoConstraints = false
@@ -69,14 +70,14 @@ class ScheduleVC: UIViewController {
     
     private lazy var buttonBackgroundView: UIView = {
         let view = UIView()
-        view.backgroundColor = .white
+        view.backgroundColor = .ypWhite
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        view.backgroundColor = colors.viewBackgroundColor
         addSubviews()
         setupLayout()
     }
