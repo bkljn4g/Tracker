@@ -12,11 +12,12 @@ protocol CreateCategoryVCDelegate {
 }
 
 class CreateCategoryVC: UIViewController {
+    private let colors = Colors()
     var delegate: CreateCategoryVCDelegate?
     
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .black
+        label.textColor = .ypBlack
         label.text = "Новая категория"
         label.font = UIFont.systemFont(ofSize: 16, weight: .medium)
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -41,7 +42,7 @@ class CreateCategoryVC: UIViewController {
     private lazy var addCategoryButton: UIButton = {
         let button = UIButton(type: .custom)
         button.setTitle("Готово", for: .normal)
-        button.titleLabel?.textColor = .white
+        button.titleLabel?.textColor = .ypWhite
         button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .medium)
         button.backgroundColor = .ypGray
         button.isEnabled = true
@@ -74,7 +75,7 @@ class CreateCategoryVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        view.backgroundColor = colors.viewBackgroundColor
         addSubviews()
         setupLayout()
         addTapGestureToHideKeyboard(for: view)
