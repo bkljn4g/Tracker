@@ -43,7 +43,7 @@ class CategoryListView: UIViewController {
         let button = UIButton(type: .custom)
         button.setTitle("Добавить категорию", for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .medium)
-        button.titleLabel?.textColor = .white
+        button.titleLabel?.textColor = .ypWhite
         button.backgroundColor = .ypBlack
         button.layer.cornerRadius = 16
         button.addTarget(self, action: #selector(addCategoryButtonAction), for: .touchUpInside)
@@ -89,7 +89,7 @@ class CategoryListView: UIViewController {
         view.addSubview(tableView)
     }
     
-    private func setupLayout() {
+    func setupLayout() {
         NSLayoutConstraint.activate([
             titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 27),

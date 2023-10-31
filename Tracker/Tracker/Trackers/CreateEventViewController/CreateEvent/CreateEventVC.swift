@@ -580,7 +580,7 @@ class CreateEventVC: UIViewController {
             scheduleButton.addSubview(scheduleButtonSubTitle)
             NSLayoutConstraint.activate([
                 scheduleButtonTitle.leadingAnchor.constraint(equalTo: scheduleButton.leadingAnchor, constant: 16),
-                scheduleButtonTitle.topAnchor.constraint(equalTo: scheduleButton.topAnchor, constant: 15),
+                scheduleButtonTitle.topAnchor.constraint(equalTo: scheduleButton.topAnchor, constant: 16),
                 scheduleButtonSubTitle.leadingAnchor.constraint(equalTo: scheduleButton.leadingAnchor, constant: 16),
                 scheduleButtonSubTitle.bottomAnchor.constraint(equalTo: scheduleButton.bottomAnchor, constant: -13)
             ])
@@ -600,10 +600,10 @@ class CreateEventVC: UIViewController {
             categoryButton.addSubview(categoryButtonSubTitle)
             NSLayoutConstraint.activate([
                 categoryButtonTitle.leadingAnchor.constraint(equalTo: categoryButton.leadingAnchor, constant: 16),
-                categoryButtonTitle.topAnchor.constraint(equalTo: categoryButton.topAnchor, constant: 15),
+                categoryButtonTitle.topAnchor.constraint(equalTo: categoryButton.topAnchor, constant: 16),
                 categoryButtonSubTitle.leadingAnchor.constraint(equalTo: categoryButton.leadingAnchor, constant: 16),
                 categoryButtonSubTitle.bottomAnchor.constraint(equalTo: categoryButton.bottomAnchor, constant: -13)])
-            categoryButtonSubTitle.text = categorySubTitle
+                categoryButtonSubTitle.text = categorySubTitle
         }
     }
     
