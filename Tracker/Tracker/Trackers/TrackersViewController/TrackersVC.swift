@@ -85,6 +85,13 @@ final class TrackersVC: UIViewController {
         return searchTextField
     }()
     
+    private lazy var loupeImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.image = UIImage(named: "loupe")
+        return imageView
+    }()
+    
     private lazy var cancelEditingButton: UIButton = {
         let button = UIButton()
         button.setTitle(search, for: .normal)
@@ -190,6 +197,7 @@ final class TrackersVC: UIViewController {
         view.addSubview(imageView)
         view.addSubview(label)
         view.addSubview(searchTextField)
+        searchTextField.addSubview(loupeImageView)
         view.addSubview(cancelEditingButton)
         view.addSubview(collectionView)
         collectionView.addSubview(activityIndicator)
@@ -204,6 +212,11 @@ final class TrackersVC: UIViewController {
             searchTextField.trailingAnchor.constraint(equalTo: cancelEditingButton.leadingAnchor, constant: -5),
             searchTextField.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 7),
             searchTextField.heightAnchor.constraint(equalToConstant: 36),
+            
+            loupeImageView.heightAnchor.constraint(equalToConstant: 16),
+            loupeImageView.widthAnchor.constraint(equalToConstant: 16),
+            loupeImageView.leadingAnchor.constraint(equalTo: searchTextField.leadingAnchor, constant: 8),
+            loupeImageView.centerYAnchor.constraint(equalTo: searchTextField.centerYAnchor),
             
             cancelEditingButton.centerXAnchor.constraint(equalTo: searchTextField.centerXAnchor),
             cancelEditingButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
