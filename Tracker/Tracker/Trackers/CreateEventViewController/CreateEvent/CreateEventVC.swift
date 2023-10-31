@@ -299,6 +299,7 @@ class CreateEventVC: UIViewController {
         collectionView.register(EmojiAndColorCollectionViewCell.self, forCellWithReuseIdentifier: EmojiAndColorCollectionViewCell.identifier)
         collectionView.register(EmojiAndColorSupplementaryView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: EmojiAndColorSupplementaryView.identifier)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.backgroundColor = .ypWhite
         collectionView.delegate = self
         collectionView.dataSource = self
         return collectionView
@@ -306,7 +307,7 @@ class CreateEventVC: UIViewController {
     
     private lazy var buttonBackgroundView: UIView = {
         let view = UIView()
-        view.backgroundColor = .white
+        view.backgroundColor = .ypWhite
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -735,7 +736,7 @@ extension CreateEventVC: UICollectionViewDelegate {
                     collectionView.deselectItem(at: selectedEmojiCell!, animated: true)
                     collectionView.cellForItem(at: selectedEmojiCell!)?.backgroundColor = .white
                 }
-                cell?.backgroundColor = .backgroundColor // поправила цвет эмодзи при его выборе
+                cell?.backgroundColor = .lightGray
                 selectedEmoji = cell?.emojiLabel.text ?? ""
                 selectedEmojiCell = indexPath
             } else if section == 1 {
@@ -745,7 +746,7 @@ extension CreateEventVC: UICollectionViewDelegate {
                 }
                 cell?.layer.borderWidth = 3
                 cell?.layer.cornerRadius = 8
-                cell?.layer.borderColor = cell?.colorView.backgroundColor?.withAlphaComponent(0.3).cgColor // рамка выделения цвета соответствует выбранному цвету
+                cell?.layer.borderColor = cell?.colorView.backgroundColor?.withAlphaComponent(0.3).cgColor
                 selectedColor = cell?.colorView.backgroundColor ?? nil
                 selectedColorCell = indexPath
             }

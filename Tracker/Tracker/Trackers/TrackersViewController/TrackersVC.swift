@@ -54,7 +54,7 @@ final class TrackersVC: UIViewController {
     // текст под картинкой со звездой - трекеров нет
     private lazy var label: UILabel = {
         let label = UILabel()
-        label.textColor = .black
+        label.textColor = .ypBlack
         label.text = stubTitle
         label.font = .systemFont(ofSize: 12, weight: .medium)
         label.translatesAutoresizingMaskIntoConstraints = false

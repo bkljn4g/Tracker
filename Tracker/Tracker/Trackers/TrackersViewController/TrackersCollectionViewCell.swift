@@ -137,7 +137,7 @@ final class TrackersCollectionViewCell: UICollectionViewCell {
             
             // кнопка + под ячейкой события
             checkButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -16),
-            checkButton.trailingAnchor.constraint(equalTo: trackerView.trailingAnchor, constant: -12),
+            checkButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -12),
             checkButton.heightAnchor.constraint(equalToConstant: 34),
             checkButton.widthAnchor.constraint(equalToConstant: 34 ),
             
