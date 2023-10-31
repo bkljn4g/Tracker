@@ -78,6 +78,7 @@ final class TrackersVC: UIViewController {
         searchTextField.font = .systemFont(ofSize: 17)
         searchTextField.backgroundColor = .searchTextFieldColor
         searchTextField.layer.cornerRadius = 10
+        searchTextField.indent(size: 30)
         searchTextField.translatesAutoresizingMaskIntoConstraints = false
         searchTextField.addTarget(self, action: #selector(textFieldChanged), for: .editingChanged)
         searchTextField.delegate = self
