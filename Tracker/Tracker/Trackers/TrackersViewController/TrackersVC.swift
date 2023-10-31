@@ -339,6 +339,7 @@ extension TrackersVC: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         let count = visibleCategories.count
         collectionView.isHidden = count == 0 && pinnedTrackers.count == 0
+        filtersButton.isHidden = collectionView.isHidden && selectedFilter == nil
         return count + 1
     }
     
@@ -396,7 +397,7 @@ extension TrackersVC: UICollectionViewDelegateFlowLayout {
         layout collectionViewLayout: UICollectionViewLayout,
         sizeForItemAt indexPath: IndexPath
     ) -> CGSize {
-        return CGSize(width: collectionView.bounds.width / 2 - 5, height: (collectionView.bounds.width / 2 - 5) * 0.88)
+        return CGSize(width: (self.collectionView.bounds.width - 7) / 2, height: 148)
     }
     
     func collectionView(
@@ -412,7 +413,7 @@ extension TrackersVC: UICollectionViewDelegateFlowLayout {
         layout collectionViewLayout: UICollectionViewLayout,
         minimumInteritemSpacingForSectionAt section: Int
     ) -> CGFloat {
-        return 9
+        return 7
     }
     
     func collectionView(
