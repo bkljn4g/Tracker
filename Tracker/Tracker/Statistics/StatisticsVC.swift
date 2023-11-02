@@ -62,6 +62,7 @@ class StatisticsVC: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = colors.viewBackgroundColor
