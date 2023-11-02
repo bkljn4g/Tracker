@@ -8,7 +8,7 @@
 import UIKit
 
 class StatisticsVC: UIViewController {
-    
+    var trackerRecordIdentifiers = (Any).self
     private let colors = Colors()
     private let trackerRecordStore = TrackerRecordStore()
     private var completedTrackers: [TrackerRecord] = []
@@ -139,7 +139,11 @@ class StatisticsVC: UIViewController {
     }
     
     func updateCompletedTrackers() {
-        completedTrackers = trackerRecordStore.trackerRecords
+        trackerRecordStore.updateTrackerRecordIdentifiers() // обновление идентификаторов трекеров
+        let currentTrackerRecords = trackerRecordStore.trackerRecords
+        completedTrackers = currentTrackerRecords.filter { tracker in
+            return true
+        }
         resultTitle.text = "\(completedTrackers.count)"
         resultSubTitle.text = String.localizedStringWithFormat(NSLocalizedString("trackerCompleted", comment: "Число дней"), completedTrackers.count)
         imageNoStatistics.isHidden = completedTrackers.count > 0
@@ -147,6 +151,7 @@ class StatisticsVC: UIViewController {
         completedTrackerView.isHidden = completedTrackers.count == 0
     }
 }
+
 
 extension StatisticsVC: TrackerRecordStoreDelegate {
     func store(_ store: TrackerRecordStore, didUpdate update: TrackerRecordStoreUpdate) {

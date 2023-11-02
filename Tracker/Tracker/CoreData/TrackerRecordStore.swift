@@ -31,7 +31,8 @@ protocol TrackerRecordStoreDelegate: AnyObject {
 }
 
 class TrackerRecordStore: NSObject {
-    
+
+    var trackerRecordIdentifiers: [UUID] = []
     weak var delegate: TrackerRecordStoreDelegate?
     private let context: NSManagedObjectContext
     private var fetchedResultsController: NSFetchedResultsController<TrackerRecordCoreData>!
@@ -54,7 +55,6 @@ class TrackerRecordStore: NSObject {
         guard let objects = self.fetchedResultsController.fetchedObjects, let trackerRecords = try? objects.map({ try self.trackerRecord(from: $0)})
         else { return [] }
         return trackerRecords
-        
     }
     
     init(context: NSManagedObjectContext) {
@@ -81,6 +81,9 @@ class TrackerRecordStore: NSObject {
         let trackerRecordCoreData = TrackerRecordCoreData(context: context)
         updateExistingTrackerRecord(trackerRecordCoreData, with: trackerRecord)
         try context.save()
+        
+        // добавляем идентификатор внутри класса для отслеживания
+        trackerRecordIdentifiers.append(trackerRecord.idTracker)
     }
     
     func deleteTrackerRecord(with id: UUID, date: Date) throws {
@@ -100,6 +103,10 @@ class TrackerRecordStore: NSObject {
             trackerRecordCoreData.idTracker = record.idTracker
             trackerRecordCoreData.date = record.date
         }
+    
+    func updateTrackerRecordIdentifiers() {
+        trackerRecordIdentifiers = trackerRecords.map { $0.idTracker }
+    }
     
     func trackerRecord(from data: TrackerRecordCoreData) throws -> TrackerRecord {
         guard let id = data.idTracker else {
