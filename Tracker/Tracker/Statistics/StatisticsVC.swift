@@ -139,12 +139,20 @@ class StatisticsVC: UIViewController {
     }
     
     func updateCompletedTrackers() {
+        let previousCount = completedTrackers.count
         completedTrackers = trackerRecordStore.trackerRecords
-        resultTitle.text = "\(completedTrackers.count)"
-        resultSubTitle.text = String.localizedStringWithFormat(NSLocalizedString("trackerCompleted", comment: "Число дней"), completedTrackers.count)
-        imageNoStatistics.isHidden = completedTrackers.count > 0
-        titleImageNoStatistics.isHidden = completedTrackers.count > 0
-        completedTrackerView.isHidden = completedTrackers.count == 0
+        
+        let currentCount = completedTrackers.count
+        let deletedTrackersCount = previousCount - currentCount
+        
+        if deletedTrackersCount > 0 {
+            let newCount = currentCount
+            resultTitle.text = "\(newCount)"
+            resultSubTitle.text = String.localizedStringWithFormat(NSLocalizedString("trackerCompleted", comment: "Число дней"), newCount)
+            imageNoStatistics.isHidden = newCount > 0
+            titleImageNoStatistics.isHidden = newCount > 0
+            completedTrackerView.isHidden = newCount == 0
+        }
     }
 }
 

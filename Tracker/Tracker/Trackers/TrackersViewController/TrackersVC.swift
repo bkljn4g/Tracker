@@ -418,7 +418,6 @@ extension TrackersVC: UICollectionViewDataSource {
     }
 }
 
-// поправила расстояние между ячейками
 extension TrackersVC: UICollectionViewDelegateFlowLayout {
     
     func collectionView(
