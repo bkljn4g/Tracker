@@ -6,9 +6,15 @@
 //
 
 import UIKit
-
-final class TrackersVC: UIViewController {
+protocol StatisticsUpdateDelegate: AnyObject {
+    func updateStatistics()
+}
+final class TrackersVC: UIViewController, StatisticsUpdateDelegate {
+    func updateStatistics() {
+        return
+    }
     
+    weak var statisticsDelegate: StatisticsUpdateDelegate?
     private let analyticsService = AnalyticsService()
     private let trackerCategoryStore = TrackerCategoryStore()
     private let trackerRecordStore = TrackerRecordStore()
@@ -182,9 +188,12 @@ final class TrackersVC: UIViewController {
         }
     
     @objc func addTracker() {
+        let statisticsVC = StatisticsVC()
+        statisticsVC.statisticsDelegate = self
         let trackersVC = RegularOrIrregularEventVC()
         trackersVC.delegate = self
         present(trackersVC, animated: true)
+        present(statisticsVC, animated: true)
         analyticsService.report(event: .click, params: ["Screen" : "Main", "Item" : Items.add_track.rawValue])
         print("Event: add_track")
     }
@@ -318,6 +327,26 @@ final class TrackersVC: UIViewController {
     
     func deleteTracker(_ tracker: Tracker) {
         try? self.trackerStore.deleteTracker(tracker)
+        trackerRecordStore.refresh()
+        updateStatistics()
+        // удаление трекера из TrackerStore
+        do {
+            try trackerStore.deleteTracker(tracker)
+        } catch {
+            // обработка ошибки
+            print("Ошибка при удалении трекера: \(error)")
+        }
+        
+        // удаление связанных записей
+        do {
+            try trackerRecordStore.deleteRecords(forTrackerWithID: tracker.id)
+        } catch {
+            // обработка ошибки
+            print("Ошибка при удалении записей: \(error)")
+        }
+        
+        // Обновление статистики
+        updateStatistics()
     }
     
     private func actionSheet(trackerToDelete: Tracker) {
@@ -538,6 +567,8 @@ extension TrackersVC: TrackersCollectionViewCellDelegate {
             print("Event: track")
         }
         updateCategories(with: trackerCategoryStore.trackerCategories)
+        statisticsDelegate?.updateStatistics()
+        trackerRecordStore.refresh()
     }
 }
 

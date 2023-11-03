@@ -90,6 +90,31 @@ class TrackerRecordStore: NSObject {
             context.delete(trackerRecord)
             try context.save()
         }
+        refresh()
+    }
+    
+    func deleteRecords(forTrackerWithID trackerID: UUID) throws {
+        let fetchRequest = NSFetchRequest<TrackerRecordCoreData>(entityName: "TrackerRecordCoreData")
+        fetchRequest.predicate = NSPredicate(format: "idTracker == %@", trackerID as CVarArg)
+        do {
+            let recordsToDelete = try context.fetch(fetchRequest)
+            for record in recordsToDelete {
+                context.delete(record)
+            }
+            try context.save()
+        } catch {
+            throw error
+        }
+    }
+    
+    
+    func refresh() {
+        do {
+            try fetchedResultsController.performFetch()
+        } catch {
+            // обработка ошибки, если не удается обновить данные
+            print("Не удалось обновить данные в хранилище: \(error)")
+        }
     }
     
     func updateExistingTrackerRecord(

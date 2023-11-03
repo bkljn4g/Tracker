@@ -11,6 +11,7 @@ class StatisticsVC: UIViewController {
     private let colors = Colors()
     private let trackerRecordStore = TrackerRecordStore()
     private var completedTrackers: [TrackerRecord] = []
+    weak var statisticsDelegate: StatisticsUpdateDelegate?
     
     private lazy var titleStatistics: UILabel = {
         let label = UILabel()
@@ -145,12 +146,25 @@ class StatisticsVC: UIViewController {
         imageNoStatistics.isHidden = completedTrackers.count > 0
         titleImageNoStatistics.isHidden = completedTrackers.count > 0
         completedTrackerView.isHidden = completedTrackers.count == 0
+        statisticsDelegate?.updateStatistics()
+        trackerRecordStore.refresh()
+        updateStatistics()
     }
 }
 
 
 extension StatisticsVC: TrackerRecordStoreDelegate {
     func store(_ store: TrackerRecordStore, didUpdate update: TrackerRecordStoreUpdate) {
-        updateCompletedTrackers()
+        DispatchQueue.main.async{
+            self.updateCompletedTrackers()
+        }
+    }
+}
+
+extension StatisticsVC: StatisticsUpdateDelegate {
+    func updateStatistics() {
+        DispatchQueue.main.async{
+            self.updateCompletedTrackers()
+        }
     }
 }
