@@ -19,11 +19,7 @@ final class DatabaseManager {
     var context: NSManagedObjectContext {
         persistentContainer.viewContext
     }
-<<<<<<< HEAD
-
-=======
     
->>>>>>> sprint_17
     private init() {
         _ = persistentContainer
     }
@@ -31,15 +27,9 @@ final class DatabaseManager {
     static let shared = DatabaseManager()
     
     // MARK: - Core Data stack
-<<<<<<< HEAD
-
-    private lazy var persistentContainer: NSPersistentContainer = {
-      
-=======
     
     private lazy var persistentContainer: NSPersistentContainer = {
         
->>>>>>> sprint_17
         let container = NSPersistentContainer(name: modelName)
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
@@ -48,15 +38,9 @@ final class DatabaseManager {
         })
         return container
     }()
-<<<<<<< HEAD
-
-    // MARK: - Core Data Saving support
-
-=======
     
     // MARK: - Core Data Saving support
     
->>>>>>> sprint_17
     func saveContext () {
         let context = persistentContainer.viewContext
         if context.hasChanges {
@@ -68,9 +52,4 @@ final class DatabaseManager {
             }
         }
     }
-<<<<<<< HEAD
-  
-   
-=======
->>>>>>> sprint_17
 }

@@ -12,19 +12,12 @@ protocol CreateCategoryVCDelegate {
 }
 
 class CreateCategoryVC: UIViewController {
-<<<<<<< HEAD
-=======
     private let colors = Colors()
->>>>>>> sprint_17
     var delegate: CreateCategoryVCDelegate?
     
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
-<<<<<<< HEAD
-        label.textColor = .black
-=======
         label.textColor = .ypBlack
->>>>>>> sprint_17
         label.text = "Новая категория"
         label.font = UIFont.systemFont(ofSize: 16, weight: .medium)
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -49,11 +42,7 @@ class CreateCategoryVC: UIViewController {
     private lazy var addCategoryButton: UIButton = {
         let button = UIButton(type: .custom)
         button.setTitle("Готово", for: .normal)
-<<<<<<< HEAD
-        button.titleLabel?.textColor = .white
-=======
         button.titleLabel?.textColor = .ypWhite
->>>>>>> sprint_17
         button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .medium)
         button.backgroundColor = .ypGray
         button.isEnabled = true
@@ -86,11 +75,7 @@ class CreateCategoryVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-<<<<<<< HEAD
-        view.backgroundColor = .white
-=======
         view.backgroundColor = colors.viewBackgroundColor
->>>>>>> sprint_17
         addSubviews()
         setupLayout()
         addTapGestureToHideKeyboard(for: view)
@@ -116,10 +101,6 @@ class CreateCategoryVC: UIViewController {
             addCategoryButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             addCategoryButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             addCategoryButton.heightAnchor.constraint(equalToConstant: 60),
-<<<<<<< HEAD
-       ])
-=======
         ])
->>>>>>> sprint_17
     }
 }

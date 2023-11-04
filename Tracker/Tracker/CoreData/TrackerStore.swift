@@ -8,15 +8,6 @@
 import UIKit
 import CoreData
 
-<<<<<<< HEAD
-class TrackerStore {
-    
-    private let context: NSManagedObjectContext
-    
-    convenience init() {
-        let context = DatabaseManager.shared.context
-        self.init(context: context)
-=======
 enum TrackerStoreError: Error {
     case decodingErrorInvalidName
 }
@@ -64,29 +55,10 @@ class TrackerStore: NSObject {
         guard let objects = self.fetchedResultsController.fetchedObjects, let trackers = try? objects.map({ try self.tracker(from: $0)})
         else { return [] }
         return trackers
->>>>>>> sprint_17
     }
     
     init(context: NSManagedObjectContext) {
         self.context = context
-<<<<<<< HEAD
-    }
-    
-    func addNewTracker(_ tracker: Tracker) throws {
-        let trackerCoreData = TrackerCoreData(context: context)
-        updateExistingTracker(trackerCoreData, with: tracker)
-        try context.save()
-    }
-    
-    func updateExistingTracker(_ trackerCoreData: TrackerCoreData, with tracker: Tracker) {
-        trackerCoreData.nameTracker = tracker.name
-        trackerCoreData.id = tracker.id
-        trackerCoreData.emoji = tracker.emoji
-        trackerCoreData.schedule = tracker.schedule?.compactMap { $0.rawValue }
-        trackerCoreData.color = tracker.color?.hexString
-    }
-    
-=======
         super.init()
         
         let fetchRequest = TrackerCoreData.fetchRequest()
@@ -158,7 +130,6 @@ class TrackerStore: NSObject {
             trackerCoreData.color = tracker.color?.hexString
         }
     
->>>>>>> sprint_17
     func fetchTrackers() throws -> [Tracker] {
         let fetchRequest = TrackerCoreData.fetchRequest()
         let trackersFromCoreData = try context.fetch(fetchRequest)
@@ -181,22 +152,13 @@ class TrackerStore: NSObject {
         guard let color = data.color else {
             throw DatabaseError.someError
         }
-<<<<<<< HEAD
-=======
         let pinned = data.pinned
         
->>>>>>> sprint_17
         return Tracker(
             id: uuid,
             name: name,
             color: color.color,
             emoji: emoji,
-<<<<<<< HEAD
-            schedule: schedule.compactMap { WeekDay(rawValue: $0) }
-        )
-    }
-}
-=======
             schedule: schedule.compactMap { WeekDay(rawValue: $0) },
             pinned: pinned
         )
@@ -267,4 +229,3 @@ extension TrackerStore: NSFetchedResultsControllerDelegate {
     }
 }
 
->>>>>>> sprint_17
