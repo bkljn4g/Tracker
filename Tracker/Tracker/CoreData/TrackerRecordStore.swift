@@ -8,15 +8,6 @@
 import UIKit
 import CoreData
 
-<<<<<<< HEAD
-class TrackerRecordStore {
-    
-    private let context: NSManagedObjectContext
-    
-    convenience init() {
-        let context = DatabaseManager.shared.context
-        self.init(context: context)
-=======
 enum TrackerRecordStoreError: Error {
     case decodingErrorInvalidName
 }
@@ -62,16 +53,10 @@ class TrackerRecordStore: NSObject {
         guard let objects = self.fetchedResultsController.fetchedObjects, let trackerRecords = try? objects.map({ try self.trackerRecord(from: $0)})
         else { return [] }
         return trackerRecords
->>>>>>> sprint_17
     }
     
     init(context: NSManagedObjectContext) {
         self.context = context
-<<<<<<< HEAD
-    }
-    
-    func addNewTrackerRecord(_ trackerRecord: TrackerRecord) throws {
-=======
         super.init()
         
         let fetchRequest = TrackerRecordCoreData.fetchRequest()
@@ -91,37 +76,11 @@ class TrackerRecordStore: NSObject {
     func addNewTrackerRecord(
         _ trackerRecord: TrackerRecord)
     throws {
->>>>>>> sprint_17
         let trackerRecordCoreData = TrackerRecordCoreData(context: context)
         updateExistingTrackerRecord(trackerRecordCoreData, with: trackerRecord)
         try context.save()
     }
     
-<<<<<<< HEAD
-    func deleteTrackerRecord(with id: UUID) throws {
-        let fetchRequest = TrackerRecordCoreData.fetchRequest()
-        let trackerRecordFromCoreData = try context.fetch(fetchRequest)
-        let record = trackerRecordFromCoreData.first {
-            $0.idTracker == id
-        }
-        if let record = record {
-            context.delete(record)
-            try context.save()
-        }
-    }
-    
-    func updateExistingTrackerRecord(_ trackerRecordCoreData: TrackerRecordCoreData, with record: TrackerRecord) {
-        trackerRecordCoreData.idTracker = record.idTracker
-        trackerRecordCoreData.date = record.date
-    }
-    
-    func fetchTrackerRecord() throws -> [TrackerRecord] {
-        let fetchRequest = TrackerRecordCoreData.fetchRequest()
-        let trackerRecordFromCoreData = try context.fetch(fetchRequest)
-        return try trackerRecordFromCoreData.map { try self.trackerRecord(from: $0) }
-    }
-    
-=======
     func deleteTrackerRecord(with id: UUID, date: Date) throws {
         let trackerRecord = fetchedResultsController.fetchedObjects?.first {
             $0.idTracker == id &&
@@ -165,7 +124,6 @@ class TrackerRecordStore: NSObject {
             trackerRecordCoreData.date = record.date
         }
     
->>>>>>> sprint_17
     func trackerRecord(from data: TrackerRecordCoreData) throws -> TrackerRecord {
         guard let id = data.idTracker else {
             throw DatabaseError.someError
@@ -179,8 +137,6 @@ class TrackerRecordStore: NSObject {
         )
     }
 }
-<<<<<<< HEAD
-=======
 
 extension TrackerRecordStore: NSFetchedResultsControllerDelegate {
     func controllerWillChangeContent(
@@ -245,4 +201,3 @@ extension TrackerRecordStore: NSFetchedResultsControllerDelegate {
         }
     }
 }
->>>>>>> sprint_17

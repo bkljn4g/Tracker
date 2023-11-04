@@ -20,19 +20,11 @@ final class CategoryListViewModel: NSObject {
             onChange?()
         }
     }
-<<<<<<< HEAD
-
-    private let trackerCategoryStore = TrackerCategoryStore()
-    private(set) var selectedCategory: TrackerCategoryModel?
-    private weak var delegate: CategoryListViewModelDelegate?
-
-=======
     
     private let trackerCategoryStore = TrackerCategoryStore()
     private(set) var selectedCategory: TrackerCategoryModel?
     private weak var delegate: CategoryListViewModelDelegate?
     
->>>>>>> sprint_17
     init(delegate: CategoryListViewModelDelegate?, selectedCategory: TrackerCategoryModel?) {
         self.selectedCategory = selectedCategory
         self.delegate = delegate

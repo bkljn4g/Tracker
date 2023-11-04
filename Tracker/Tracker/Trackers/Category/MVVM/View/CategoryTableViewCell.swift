@@ -13,11 +13,7 @@ final class CategoryTableViewCell: UITableViewCell {
     
     lazy var label: UILabel = {
         let label = UILabel()
-<<<<<<< HEAD
-        label.textColor = .black
-=======
         label.textColor = .ypBlack
->>>>>>> sprint_17
         label.font = .systemFont(ofSize: 17)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -28,26 +24,16 @@ final class CategoryTableViewCell: UITableViewCell {
         view.backgroundColor = .backgroundColor
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
-<<<<<<< HEAD
-        }()
-        
-=======
     }()
     
->>>>>>> sprint_17
     lazy var checkmarkImage: UIImageView = {
         let checkmarkImage = UIImageView()
         checkmarkImage.image = UIImage(named: "checkmark")
         checkmarkImage.isHidden = true
         checkmarkImage.translatesAutoresizingMaskIntoConstraints = false
         return checkmarkImage
-<<<<<<< HEAD
-        }()
-
-=======
     }()
     
->>>>>>> sprint_17
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: .default, reuseIdentifier: CategoryTableViewCell.identifier)
@@ -67,30 +53,18 @@ final class CategoryTableViewCell: UITableViewCell {
             view.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
             view.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 0),
             view.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 0),
-<<<<<<< HEAD
-                        
-            label.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            label.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            label.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
-                        
-=======
             
             label.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             label.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             label.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
             
->>>>>>> sprint_17
             checkmarkImage.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             checkmarkImage.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -21),
             checkmarkImage.heightAnchor.constraint(equalToConstant: 14),
             checkmarkImage.widthAnchor.constraint(equalToConstant: 14)
         ])
     }
-<<<<<<< HEAD
-
-=======
     
->>>>>>> sprint_17
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

@@ -10,18 +10,11 @@ import UIKit
 class CategoryListView: UIViewController {
     
     private let viewModel: CategoryListViewModel
-<<<<<<< HEAD
-    
-    private lazy var titleLabel: UILabel = {
-        let label = UILabel()
-        label.textColor = .black
-=======
     private let colors = Colors()
     
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.textColor = .ypBlack
->>>>>>> sprint_17
         label.text = "Категория"
         label.font = .systemFont(ofSize: 16, weight: .medium)
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -37,11 +30,7 @@ class CategoryListView: UIViewController {
     
     private lazy var label: UILabel = {
         let label = UILabel()
-<<<<<<< HEAD
-        label.textColor = .black
-=======
         label.textColor = .ypBlack
->>>>>>> sprint_17
         label.text = "Привычки и события можно объединить по смыслу"
         label.numberOfLines = 2
         label.textAlignment = .center
@@ -54,11 +43,7 @@ class CategoryListView: UIViewController {
         let button = UIButton(type: .custom)
         button.setTitle("Добавить категорию", for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .medium)
-<<<<<<< HEAD
-        button.titleLabel?.textColor = .white
-=======
         button.titleLabel?.textColor = .ypWhite
->>>>>>> sprint_17
         button.backgroundColor = .ypBlack
         button.layer.cornerRadius = 16
         button.addTarget(self, action: #selector(addCategoryButtonAction), for: .touchUpInside)
@@ -70,11 +55,7 @@ class CategoryListView: UIViewController {
         let tableView = UITableView()
         tableView.register(CategoryTableViewCell.self, forCellReuseIdentifier: CategoryTableViewCell.identifier)
         tableView.separatorColor = .ypGray
-<<<<<<< HEAD
-        tableView.backgroundColor = .white
-=======
         tableView.backgroundColor = .ypWhite
->>>>>>> sprint_17
         tableView.layer.cornerRadius = 16
         tableView.dataSource = self
         tableView.delegate = self
@@ -95,11 +76,7 @@ class CategoryListView: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-<<<<<<< HEAD
-        view.backgroundColor = .white
-=======
         view.backgroundColor = colors.viewBackgroundColor
->>>>>>> sprint_17
         addSubviews()
         setupLayout()
     }
@@ -112,11 +89,7 @@ class CategoryListView: UIViewController {
         view.addSubview(tableView)
     }
     
-<<<<<<< HEAD
-    private func setupLayout() {
-=======
     func setupLayout() {
->>>>>>> sprint_17
         NSLayoutConstraint.activate([
             titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 27),
@@ -181,12 +154,8 @@ class CategoryListView: UIViewController {
     
     func tableView(_ tableView: UITableView,
                    contextMenuConfigurationForRowAt indexPath: IndexPath,
-<<<<<<< HEAD
-                   point: CGPoint) -> UIContextMenuConfiguration? {
-=======
                    point: CGPoint
     ) -> UIContextMenuConfiguration? {
->>>>>>> sprint_17
         return UIContextMenuConfiguration(identifier: nil, previewProvider: nil, actionProvider: { suggestedActions in
             return self.makeContextMenu(indexPath)
         })
@@ -207,65 +176,6 @@ extension CategoryListView: UITableViewDataSource {
         1
     }
     
-<<<<<<< HEAD
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let categoryCell = tableView.dequeueReusableCell(withIdentifier: CategoryTableViewCell.identifier) as? CategoryTableViewCell else {
-            return UITableViewCell()
-        }
-
-        
-        let categoryName = viewModel.categories[indexPath.row].name
-                categoryCell.label.text = categoryName
-                if indexPath.row == viewModel.categories.count - 1 {
-                    categoryCell.separatorInset = UIEdgeInsets(top: 0, left: categoryCell.bounds.size.width + 200, bottom: 0, right: 0);
-                    categoryCell.contentView.clipsToBounds = true
-                    categoryCell.contentView.layer.cornerRadius = 16
-                    categoryCell.contentView.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
-                } else if indexPath.row == 0 {
-                    categoryCell.separatorInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
-                    categoryCell.contentView.clipsToBounds = true
-                    categoryCell.contentView.layer.cornerRadius = 16
-                    categoryCell.contentView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
-                } else {
-                    categoryCell.separatorInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
-                    categoryCell.contentView.layer.cornerRadius = 0
-                }
-                categoryCell.checkmarkImage.isHidden = viewModel.selectedCategory?.name != categoryName
-                categoryCell.selectionStyle = .none
-                return categoryCell
-            }
-        }
-
-        extension CategoryListView: UITableViewDelegate {
-            func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-                return 75
-            }
-            
-            func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-                guard let categoryCell = tableView.cellForRow(at: indexPath) as? CategoryTableViewCell else {
-                    return
-                }
-                guard let selectedCategoryName = categoryCell.label.text else { return }
-                categoryCell.checkmarkImage.isHidden = !categoryCell.checkmarkImage.isHidden
-                viewModel.selectCategory(with: selectedCategoryName)
-                dismiss(animated: true)
-            }
-            
-            func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-                guard let categoryCell = tableView.cellForRow(at: indexPath) as? CategoryTableViewCell else {
-                    return
-                }
-                categoryCell.checkmarkImage.isHidden = true
-            }
-        }
-
-        extension CategoryListView: CreateCategoryVCDelegate {
-            func createdCategory(_ category: TrackerCategoryModel) {
-                viewModel.selectCategory(category)
-                viewModel.selectCategory(with: category.name)
-            }
-        }
-=======
     func tableView(
         _ tableView: UITableView,
         cellForRowAt indexPath: IndexPath
@@ -336,4 +246,3 @@ extension CategoryListView: CreateCategoryVCDelegate {
         viewModel.selectCategory(with: category.name)
     }
 }
->>>>>>> sprint_17

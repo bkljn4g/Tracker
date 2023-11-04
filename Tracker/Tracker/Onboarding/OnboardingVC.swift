@@ -7,14 +7,9 @@
 
 import UIKit
 
-<<<<<<< HEAD
-final class OnboardingVC: UIPageViewController, UIPageViewControllerDelegate, UIPageViewControllerDataSource {
-    
-=======
 final class OnboardingVC: UIPageViewController {
     
     let analyticsService = AnalyticsService()
->>>>>>> sprint_17
     private lazy var pages: [UIViewController] = {
         return[blueVC, redVC]
     }()
@@ -23,13 +18,9 @@ final class OnboardingVC: UIPageViewController {
     private lazy var redVC: UIViewController = {
         let redVC = UIViewController()
         let image = "onboardingRed"
-<<<<<<< HEAD
-        redVC.view.addBackground(image: image)
-=======
         let imageView = UIImageView(frame: redVC.view.frame)
         imageView.image = UIImage(named: image)
         redVC.view.addSubview(imageView)
->>>>>>> sprint_17
         return redVC
     }()
     
@@ -37,13 +28,9 @@ final class OnboardingVC: UIPageViewController {
     private lazy var blueVC: UIViewController = {
         let blueVC = UIViewController()
         let image = "onboardingBlue"
-<<<<<<< HEAD
-        blueVC.view.addBackground(image: image)
-=======
         let imageView = UIImageView(frame: blueVC.view.frame)
         imageView.image = UIImage(named: image)
         blueVC.view.addSubview(imageView)
->>>>>>> sprint_17
         return blueVC
     }()
     
@@ -111,11 +98,8 @@ final class OnboardingVC: UIPageViewController {
         super.viewDidLoad()
         dataSource = self
         delegate = self
-<<<<<<< HEAD
-=======
         blueVC.overrideUserInterfaceStyle = .light
         redVC.overrideUserInterfaceStyle = .light
->>>>>>> sprint_17
         
         if let first = pages.first { setViewControllers([first], direction: .forward, animated: true, completion: nil)
         }
@@ -173,13 +157,6 @@ final class OnboardingVC: UIPageViewController {
         
         UserDefaults.standard.set(true, forKey: "isOnbordingShown") // отслеживает показ нажатия экрана Онбординга, ставит флаг в юзер дефолтс (экран был показан)
     }
-<<<<<<< HEAD
-    
-    // MARK: - UIPageViewControllerDataSource
-    
-    // определяет предыдущую страницу которая должна отображаться при пролистывании
-    func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-=======
 }
 
 // MARK: - UIPageViewControllerDataSource
@@ -190,7 +167,6 @@ extension OnboardingVC: UIPageViewControllerDataSource {
         _ pageViewController: UIPageViewController,
         viewControllerBefore viewController: UIViewController
     ) -> UIViewController? {
->>>>>>> sprint_17
         guard let viewControllerIndex = pages.firstIndex(of: viewController) else {
             return nil
         }
@@ -203,14 +179,10 @@ extension OnboardingVC: UIPageViewControllerDataSource {
     }
     
     // определяет следующую страницу которая должна отображаться при пролистывании
-<<<<<<< HEAD
-    func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
-=======
     func pageViewController(
         _ pageViewController: UIPageViewController,
         viewControllerAfter viewController: UIViewController
     ) -> UIViewController? {
->>>>>>> sprint_17
         guard let viewControllerIndex = pages.firstIndex(of: viewController) else {
             return nil
         }
@@ -221,33 +193,6 @@ extension OnboardingVC: UIPageViewControllerDataSource {
         }
         return pages[nextIndex]
     }
-<<<<<<< HEAD
-
-    // MARK: - UIPageViewControllerDelegate
-    
-    // обновление индикатора текущей страницы
-    func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
-        if let currentViewController = pageViewController.viewControllers?.first,
-           let currentIndex = pages.firstIndex(of: currentViewController) {
-            pageControl.currentPage = currentIndex
-        }
-    }
-}
-
-// установка фонового изображения на всю область экрана
-extension UIView {
-    
-    func addBackground(image: String) {
-        let width = UIScreen.main.bounds.size.width
-        let height = UIScreen.main.bounds.size.height
-        let imageViewBackground = UIImageView(frame: CGRectMake(0, 0, width, height))
-        imageViewBackground.image = UIImage(named: image)
-        imageViewBackground.contentMode = UIView.ContentMode.scaleAspectFill
-        self.addSubview(imageViewBackground)
-        self.sendSubviewToBack(imageViewBackground)
-    }
-}
-=======
 }
 
 // MARK: - UIPageViewControllerDelegate
@@ -265,4 +210,3 @@ extension OnboardingVC: UIPageViewControllerDelegate {
             }
         }
     }
->>>>>>> sprint_17
