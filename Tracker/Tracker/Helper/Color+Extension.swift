@@ -7,6 +7,17 @@
 
 import UIKit
 
+<<<<<<< HEAD
+=======
+final class Colors {
+    var viewBackgroundColor = UIColor.systemBackground
+    var datePickerTintColor = UIColor { (traits) -> UIColor in
+        let isDarkMode = traits.userInterfaceStyle == .dark
+        return isDarkMode ? UIColor.black : UIColor.black
+    }
+}
+
+>>>>>>> sprint_17
 extension UIColor {
     
     static var backgroundColor: UIColor { UIColor(named: "backgroundColor") ?? UIColor.red }
@@ -34,6 +45,17 @@ extension UIColor {
     static var color17: UIColor { UIColor(named: "Color17") ?? UIColor.red }
     static var color18: UIColor { UIColor(named: "Color18") ?? UIColor.red }
     static var switchColor: UIColor { ypBlue }
+<<<<<<< HEAD
+=======
+    static let ypWhite = UIColor(named: "ypWhite") ?? UIColor.white
+    static let gradientColor1 = UIColor(named: "gradientColor1") ?? UIColor.red
+    static let gradientColor2 = UIColor(named: "gradientColor2") ?? UIColor.green
+    static let gradientColor3 = UIColor(named: "gradientColor3") ?? UIColor.blue
+    static let datePickerColor = UIColor(named: "datePickerColor") ?? UIColor.gray
+    static let datePickerTintColor = UIColor(named: "datePickerTintColor") ?? UIColor.black
+    static let searchTextFieldColor = UIColor(named: "searchTextFieldColor") ?? UIColor.gray
+    
+>>>>>>> sprint_17
     
     var hexString: String {
         let components = self.cgColor.components

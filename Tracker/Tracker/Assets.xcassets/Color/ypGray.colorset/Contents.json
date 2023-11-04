@@ -11,6 +11,27 @@
         }
       },
       "idiom" : "universal"
+<<<<<<< HEAD
+=======
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "color" : {
+        "color-space" : "display-p3",
+        "components" : {
+          "alpha" : "1.000",
+          "blue" : "0.710",
+          "green" : "0.686",
+          "red" : "0.682"
+        }
+      },
+      "idiom" : "universal"
+>>>>>>> sprint_17
     }
   ],
   "info" : {

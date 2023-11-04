@@ -8,7 +8,11 @@
 import UIKit
 
 final class EditCategoryVC: UIViewController {
+<<<<<<< HEAD
     
+=======
+    private let colors = Colors()
+>>>>>>> sprint_17
     var editableCategory: TrackerCategoryModel?
     
     private lazy var titleLabel: UILabel = {
@@ -38,7 +42,11 @@ final class EditCategoryVC: UIViewController {
         let button = UIButton(type: .custom)
         button.setTitle("Готово", for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .medium)
+<<<<<<< HEAD
         button.titleLabel?.textColor = .white
+=======
+        button.titleLabel?.textColor = .ypWhite
+>>>>>>> sprint_17
         button.backgroundColor = .ypBlack
         button.isEnabled = true
         button.layer.cornerRadius = 16
@@ -69,10 +77,18 @@ final class EditCategoryVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+<<<<<<< HEAD
         view.backgroundColor = .white
         textField.becomeFirstResponder()
         addSubviews()
         setupLayout()
+=======
+        view.backgroundColor = colors.viewBackgroundColor
+        textField.becomeFirstResponder()
+        addSubviews()
+        setupLayout()
+        addTapGestureToHideKeyboard(for: view)
+>>>>>>> sprint_17
     }
     
     private func addSubviews() {

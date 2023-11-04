@@ -14,4 +14,11 @@ struct Tracker: Hashable {
     let color: UIColor?
     let emoji: String?
     let schedule: [WeekDay]?
+<<<<<<< HEAD
+=======
+    let pinned: Bool?
+    var category: TrackerCategoryModel? {
+        return TrackerCategoryStore().category(forTracker: self)
+    }
+>>>>>>> sprint_17
 }

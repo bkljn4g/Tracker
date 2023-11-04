@@ -8,18 +8,34 @@
 import UIKit
 
 protocol RegularOrIrregularEventVCDelegate: AnyObject {
+<<<<<<< HEAD
     func createTracker(_ tracker: Tracker, categoryName: String)
 }
 
 class RegularOrIrregularEventVC: UIViewController {
    
+=======
+    func createTracker(
+        _ tracker: Tracker,
+        categoryName: String)
+}
+
+class RegularOrIrregularEventVC: UIViewController {
+    private let colors = Colors()
+>>>>>>> sprint_17
     public weak var delegate: RegularOrIrregularEventVCDelegate?
     
     private lazy var label: UILabel = {
         let label = UILabel()
+<<<<<<< HEAD
         label.textColor = .black
         label.text = "Создание трекера"
         label.font = .systemFont(ofSize: 16, weight: .medium) // поменяла на .medium
+=======
+        label.textColor = .ypBlack
+        label.text = "Создание трекера"
+        label.font = .systemFont(ofSize: 16, weight: .medium)
+>>>>>>> sprint_17
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -27,7 +43,12 @@ class RegularOrIrregularEventVC: UIViewController {
     private lazy var createRegularEventButton: UIButton = {
         let button = UIButton(type: .custom)
         button.setTitle("Привычка", for: .normal)
+<<<<<<< HEAD
         button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .medium) // поправила шрифт кнопки
+=======
+        button.setTitleColor(.ypWhite, for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .medium)
+>>>>>>> sprint_17
         button.backgroundColor = .ypBlack
         button.layer.cornerRadius = 16
         button.addTarget(self, action: #selector(regularEventButtonAction), for: .touchUpInside)
@@ -38,7 +59,12 @@ class RegularOrIrregularEventVC: UIViewController {
     private lazy var createIrregularEventButton: UIButton = {
         let button = UIButton(type: .custom)
         button.setTitle("Нерегулярное событие", for: .normal)
+<<<<<<< HEAD
         button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .medium) // поправила шрифт кнопки
+=======
+        button.setTitleColor(.ypWhite, for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .medium)
+>>>>>>> sprint_17
         button.backgroundColor = .ypBlack
         button.layer.cornerRadius = 16
         button.addTarget(self, action: #selector(irregularEventButtonAction), for: .touchUpInside)
@@ -48,7 +74,11 @@ class RegularOrIrregularEventVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+<<<<<<< HEAD
         view.backgroundColor = .white
+=======
+        view.backgroundColor = colors.viewBackgroundColor
+>>>>>>> sprint_17
         addSubviews()
         setupLayout()
     }
@@ -93,7 +123,15 @@ class RegularOrIrregularEventVC: UIViewController {
 
 extension RegularOrIrregularEventVC: CreateEventVCDelegate {
     
+<<<<<<< HEAD
     func createTracker(_ tracker: Tracker, categoryName: String) {
         delegate?.createTracker(tracker, categoryName: categoryName)
     }
+=======
+    func createTracker(
+        _ tracker: Tracker,
+        categoryName: String) {
+            delegate?.createTracker(tracker, categoryName: categoryName)
+        }
+>>>>>>> sprint_17
 }

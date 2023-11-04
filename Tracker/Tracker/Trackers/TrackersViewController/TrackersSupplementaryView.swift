@@ -11,9 +11,16 @@ class TrackersSupplementaryView: UICollectionReusableView {
     
     static let identifier = "header"
     
+<<<<<<< HEAD
     var titleLabel: UILabel = { // лейбл-название категории трекера (Важное, Тренировки и т.д.)
         let label = UILabel()
         label.textColor = .black
+=======
+    // лейбл-название категории трекера (Важное, Тренировки и т.д.)
+    var titleLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = .ypBlack
+>>>>>>> sprint_17
         label.font = .boldSystemFont(ofSize: 19)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -29,7 +36,11 @@ class TrackersSupplementaryView: UICollectionReusableView {
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 12),
             titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 24),
             titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -12),
+<<<<<<< HEAD
             titleLabel.heightAnchor.constraint(equalToConstant: 18)
+=======
+            titleLabel.heightAnchor.constraint(equalToConstant: 20)
+>>>>>>> sprint_17
         ])
     }
     

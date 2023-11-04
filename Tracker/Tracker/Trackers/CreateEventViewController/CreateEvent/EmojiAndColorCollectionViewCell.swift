@@ -30,9 +30,12 @@ final class EmojiAndColorCollectionViewCell: UICollectionViewCell {
         contentView.addSubview(emojiLabel)
         contentView.addSubview(colorView)
         
+<<<<<<< HEAD
         let colorViewHeight: CGFloat = 40
         let colorViewWidth: CGFloat = 40
         
+=======
+>>>>>>> sprint_17
         NSLayoutConstraint.activate([
             
             emojiLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
@@ -40,8 +43,13 @@ final class EmojiAndColorCollectionViewCell: UICollectionViewCell {
             
             colorView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             colorView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+<<<<<<< HEAD
             colorView.heightAnchor.constraint(equalToConstant: colorViewHeight),
             colorView.widthAnchor.constraint(equalToConstant: colorViewWidth)
+=======
+            colorView.heightAnchor.constraint(equalToConstant: 40),
+            colorView.widthAnchor.constraint(equalToConstant: 40)
+>>>>>>> sprint_17
             
         ])
     }

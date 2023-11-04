@@ -17,7 +17,11 @@ final class WeekDayTableViewCell: UITableViewCell {
     
     lazy var label: UILabel = {
         let label = UILabel()
+<<<<<<< HEAD
         label.textColor = .black
+=======
+        label.textColor = .ypBlack
+>>>>>>> sprint_17
         label.font = .systemFont(ofSize: 17)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -46,11 +50,19 @@ final class WeekDayTableViewCell: UITableViewCell {
     
     private func setupLayout() {
         NSLayoutConstraint.activate([
+<<<<<<< HEAD
         label.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
         label.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
         
         switchCell.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
         switchCell.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+=======
+            label.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            label.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+            
+            switchCell.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            switchCell.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+>>>>>>> sprint_17
         ])
     }
     

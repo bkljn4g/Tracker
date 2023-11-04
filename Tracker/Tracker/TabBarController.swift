@@ -24,14 +24,24 @@ class TabBarController: UITabBarController {
         let trackersViewController = UINavigationController(rootViewController: TrackersVC())
         trackersViewController.tabBarItem.image = UIImage(named: "recordCircle")
         
+<<<<<<< HEAD
         let statisticsViewController = UINavigationController(rootViewController: StatisticsViewController())
         statisticsViewController.tabBarItem.image = UIImage(named: "hare")
         statisticsViewController.title = "Статистика"
+=======
+        let statisticsViewController = UINavigationController(rootViewController: StatisticsVC())
+        statisticsViewController.tabBarItem.image = UIImage(named: "hare")
+        statisticsViewController.title = NSLocalizedString("statistics", comment: "")
+>>>>>>> sprint_17
         
         let tabBarController = TabBarController()
         tabBarController.viewControllers = [trackersViewController, statisticsViewController]
         
+<<<<<<< HEAD
        return tabBarController
+=======
+        return tabBarController
+>>>>>>> sprint_17
     }
 }
 

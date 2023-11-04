@@ -13,7 +13,11 @@ final class EmojiAndColorSupplementaryView: UICollectionReusableView {
     
     var titleLabel: UILabel = {
         let label = UILabel()
+<<<<<<< HEAD
         label.textColor = .black
+=======
+        label.textColor = .ypBlack
+>>>>>>> sprint_17
         label.font = .boldSystemFont(ofSize: 19)
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -24,6 +28,10 @@ final class EmojiAndColorSupplementaryView: UICollectionReusableView {
         super.init(frame: frame)
         
         addSubview(titleLabel)
+<<<<<<< HEAD
+=======
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+>>>>>>> sprint_17
         
         NSLayoutConstraint.activate([
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
